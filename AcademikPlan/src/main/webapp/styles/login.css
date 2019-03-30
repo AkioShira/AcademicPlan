@@ -1,0 +1,60 @@
+body{
+	background-color: #494949;
+	font-family: "Segoe UI", sans-serif;
+	color: #1F1F1F;
+}
+
+.submit{
+	position: absolute;
+	background: #ebebeb;
+	width: 400px;
+	height: 210px;
+	top: calc(50% - 105px);
+	left: calc(50% - 200px);
+	border-radius: 40px;
+	box-shadow: 0 0 50px rgba(41,41,41,0.50);
+	-webkit-box-shadow: 0 0 50px rgba(41,41,41,0.50);
+}
+
+.login-table{
+    font-size: 16pt;
+    padding-left: 30px;
+    border-spacing: 15px;
+}
+
+.submit a{
+    color: #242424;
+}
+
+.text-field {
+    width: 100%;
+    padding: 5px 25px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.input-table{
+    font-size: 12pt;
+}
+
+.input-table td{
+    padding-top: 5px;
+}
+
+.login-button{
+    float: right;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.login-button:hover {
+    background-color: #3D8C40;
+}

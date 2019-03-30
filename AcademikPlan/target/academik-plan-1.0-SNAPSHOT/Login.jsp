@@ -7,15 +7,35 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style><%@ include file="/styles/login.css" %></style>
 <html>
 <head>
-    <title>Title</title>
+    <title>Главная</title>
 </head>
 <body>
-<ul>
-    <c:forEach items="${name}" var="value">
-        <li><c:out value="${value}"/></li>
-    </c:forEach>
-</ul>
+<form action="/" method="POST" class="submit">
+    <table class="login-table">
+        <tr style="padding-bottom: 100px;">
+            <td>Вход в систему:</td>
+        </tr>
+        <tr>
+            <td>
+                <table class = "input-table">
+                    <tr>
+                        <td>Логин</td>
+                        <td style="padding-left: 20px;"><input type="text" name="login" class="text-field"></td>
+                    </tr>
+                    <tr>
+                        <td>Пароль</td>
+                        <td style="padding-left: 20px;"><input type="password" name="password" class="text-field"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="submit" class="login-button" value="Войти"/></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>
