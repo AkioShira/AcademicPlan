@@ -5,12 +5,30 @@
   Time: 19:27
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style><%@ include file="/styles/selectPanel.css" %></style>
 <html>
 <head>
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Учебные планы по кафедре</title>
 </head>
-<body>
-
+<body class="body">
+<div class="top-panel">
+    <a class="top-button">Панель администратора</a>
+    <a class="top-button" href="<c:url value='/logout' />">Выйти</a>
+</div>
+<div class="center-block">
+    <h2>УЧЕБНЫЕ ПЛАНЫ ПО КАФЕДРЕ</h2>
+    <p>Кафедра специализированные компьютерные системы</p>
+    <input type="button" class="button blue" value="Бакалавр"/>
+    <input type="button" class="button purple" value="Магистр"/>
+    <p>Кафедра радиофизики и электроники</p>
+    <input type="button" class="button red" value="Бакалавр"/>
+    <input type="button" class="button orange" value="Магистр"/>
+    <p>Кафедра финансов</p>
+    <input type="button" class="button green" value="Бакалавр"/>
+    <input type="button" class="button gray" value="Магистр"/>
+</div>
 </body>
 </html>

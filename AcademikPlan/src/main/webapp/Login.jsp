@@ -10,7 +10,7 @@
 <style><%@ include file="/styles/login.css" %></style>
 <html>
 <head>
-    <title>Главная</title>
+    <title>Вход в систему</title>
 </head>
 <body>
 <form action="/" method="POST" class="submit">
