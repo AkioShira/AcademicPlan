@@ -13,11 +13,12 @@ public class ConnectionPool {
 
     static {
         try {
-            DriverManager.registerDriver(new org.mariadb.jdbc.Driver ());
+            DriverManager.registerDriver(new org.mariadb.jdbc.Driver());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        config.setJdbcUrl("jdbc:mariadb://localhost:3306/academikplan");
+        //config.setJdbcUrl("jdbc:mariadb://localhost:3306/academikplan?useUnicode=true&characterEncoding=latin1");
+        config.setJdbcUrl("jdbc:mariadb://localhost:3306/academikplan?useUnicode=true&characterEncoding=utf8");
         config.setUsername("root");
         config.setPassword("root");
         config.addDataSourceProperty("cachePrepStmts", "true");

@@ -33,7 +33,17 @@
             </td>
         </tr>
         <tr>
-            <td><input type="submit" name="submit" class="login-button" value="Войти"/></td>
+            <td>
+                <table class = "input-table">
+                    <tr>
+                        <td style = "font-size: 12px; color: red;">${error}</td>
+                        <td style="padding-left: 20px"><input type="submit" name="submit" class="login-button" value="Войти"/></td>
+                    </tr>
+
+                </table>
+
+
+            </td>
         </tr>
     </table>
 </form>

@@ -7,34 +7,24 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static java.util.Objects.nonNull;
-
-@WebFilter(urlPatterns = {"/*"})
-public class LoginFilter implements Filter {
-
-
+@WebFilter(urlPatterns = {"/plans/admin/*"})
+public class RoleFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
+    @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         final HttpServletRequest req = (HttpServletRequest) servletRequest;
         final HttpServletResponse resp = (HttpServletResponse) servletResponse;
         HttpSession session = req.getSession();
-        //пользователь уже авторизован
-        if(nonNull(session) && nonNull(session.getAttribute("login")) && nonNull(session.getAttribute("password"))
-                && nonNull(session.getAttribute("role"))) {
-
+        if((int)session.getAttribute("role")==1)
             filterChain.doFilter(req, resp);
-
-        }else {
-            req.getRequestDispatcher("/").forward(req, resp);
-        }
+        else
+            resp.sendRedirect("/plans");
     }
 
     @Override
     public void destroy() {
-
     }
 }

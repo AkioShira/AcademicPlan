@@ -2,10 +2,6 @@
     font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
 }
 
-a{
-    padding: 10px;
-}
-
 .body {
     background-color: #D7D7D7;
 
@@ -14,18 +10,20 @@ a{
 .top-panel{
     margin: auto;
     width: 650px;
-    text-align: right;
-    color: #1F1F1F;
+    color: #232323;
+}
 
+.top-panel a{
+    float: right;
+    padding-left: 20px;
 }
 
 .center-block {
     position: absolute; /* Абсолютное позиционирование */
     width: 600px; /* Ширина блока */
     min-height: 400px; /* Высота блока */
-    margin: auto; /* Отступ от блока */
-    margin-top: 40px;
-    margin-bottom: 50px;
+    /* Отступ от блока */
+    margin: 40px auto 50px;
     left: 0; /* Положение блока от левого края */
     right: 0; /* Положение блока от правого края */
     background-color: #F5F5F5; /* Рамка блока */

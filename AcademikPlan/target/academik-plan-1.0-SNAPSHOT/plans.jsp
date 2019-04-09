@@ -7,7 +7,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<style><%@ include file="/styles/selectPanel.css" %></style>
+<style><%@ include file="/styles/plans.css" %></style>
 <html>
 <head>
     <meta charset="utf-8">
@@ -15,8 +15,12 @@
 </head>
 <body class="body">
 <div class="top-panel">
-    <a class="top-button">Панель администратора</a>
+    Пользователь: ${login}
+
     <a class="top-button" href="<c:url value='/logout' />">Выйти</a>
+    <c:if test = "${role == 1}">
+        <a class="top-button" href="<c:url value='/plans/admin' />">Панель администратора</a>
+    </c:if>
 </div>
 <div class="center-block">
     <h2>УЧЕБНЫЕ ПЛАНЫ ПО КАФЕДРЕ</h2>
