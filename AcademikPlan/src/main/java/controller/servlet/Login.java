@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
             String password = req.getParameter("password");
             if(nonNull(login) && nonNull(password)) {
                 FactoryMariaDb factory = new FactoryMariaDb();
-                UserMariaDb userDAO = factory.getUserDao(connection);
+                UserMariaDb userDAO = factory.getUserMariaDB(connection);
                 //Если логин и пароль верны занести в сессию и переадресовать на сайт
                 if (userDAO.isExist(login, password)) {
                     int role = userDAO.getRoleByLoginPassword(login, password);

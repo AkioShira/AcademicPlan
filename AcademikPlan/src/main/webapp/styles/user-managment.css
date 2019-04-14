@@ -8,6 +8,18 @@
     background-color: #D7D7D7;
 }
 
+a:link {
+    color: black;
+}
+a:visited {
+    color: black;
+    text-decoration: none;}
+a:active {
+    color: #2A58BD;
+    text-decoration: none;}
+a:hover {
+    color: #2A58BD;
+    text-decoration: none;}
 
 .top-panel{
     margin: auto;
@@ -49,28 +61,28 @@
     right: 0; /* Положение блока от правого края */
 }
 
-table {
+.center-block table {
     border-collapse: collapse;
     width: 100%;
 
 }
 
-p{
+.center-block p{
     padding-right: 8px;
 }
 
-th, td {
+.center-block th, td {
     text-align: center;
     padding: 8px;
 }
 
-td{
+.center-block td{
     font-size: 13px;
 }
 
-tr:nth-child(even) {background-color: #E5E5E5;}
+.center-block tr:nth-child(even) {background-color: #E5E5E5;}
 
-th {
+.center-block th {
     background-color: #383838;
     color: white;
 }

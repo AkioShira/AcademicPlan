@@ -7,10 +7,10 @@ public class User {
     private String login;
     private String password;
     private int idDepartment;
-    private int role;
+    private int idRole;
     private boolean visible;
 
     public enum sortParameter{
-        idUser, login, password, idDepartment, role, visible
+        idUser, login, password, idDepartment, idRole, visible
     }
 }

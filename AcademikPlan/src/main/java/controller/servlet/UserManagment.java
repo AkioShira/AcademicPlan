@@ -3,10 +3,11 @@ package controller.servlet;
 import connection.pooling.ConnectionPool;
 import data.dao.mariaDB.DepartmentMariaDb;
 import data.dao.mariaDB.FactoryMariaDb;
+import data.dao.mariaDB.RoleMariaDb;
 import data.dao.mariaDB.UserMariaDb;
 import data.model.Department;
+import data.model.Role;
 import data.model.User;
-import sun.security.smartcardio.SunPCSC;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/plans/admin/user-managment")
@@ -25,20 +27,23 @@ public class UserManagment extends HttpServlet {
         Connection connection = null;
         try {
             connection = ConnectionPool.getConnection();
-            //Users
             FactoryMariaDb factory = new FactoryMariaDb();
-            UserMariaDb userDao = factory.getUserDao(connection);
-            userDao.setOrder(User.sortParameter.idDepartment);
-            List<User> userList = userDao.getAllUser();
-            req.setAttribute("userList", userList);
-            //Departments
+            UserMariaDb userDao = factory.getUserMariaDB(connection);
             DepartmentMariaDb depDao = factory.getDepartmentMariaDB(connection);
-            depDao.setOrder(Department.sortParameter.idDepartment);
+            RoleMariaDb roleDao = factory.getRoleMariaDB(connection);
             List<Department> depList = depDao.getAllDepartments();
+            List<Role> roleList = roleDao.getAllRoles();
+            List<User> userList = new ArrayList<User>();
+            for(Department d : depList){
+                if(d.isVisible())
+                    userList.addAll(userDao.getUsersByDepartment(d.getIdDepartment(), true));
+            }
+            req.setAttribute("userList", userList);
             req.setAttribute("depList", depList);
+            req.setAttribute("roleList", roleList);
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if(connection != null)
                     connection.close();

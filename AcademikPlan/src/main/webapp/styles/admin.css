@@ -8,6 +8,19 @@
     background-color: #D7D7D7;
 }
 
+a:link {
+    color: black;
+}
+a:visited {
+    color: black;
+    text-decoration: none;}
+a:active {
+    color: #2A58BD;
+    text-decoration: none;}
+a:hover {
+    color: #2A58BD;
+    text-decoration: none;}
+
 
 .top-panel{
     margin: auto;
