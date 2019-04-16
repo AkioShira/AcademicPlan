@@ -1,4 +1,4 @@
-package controller.servlet.restore;
+package controller.servlet.clear;
 
 import connection.pooling.ConnectionPool;
 import data.dao.mariaDB.FactoryMariaDb;
@@ -14,19 +14,18 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet("/restoreUser")
-public class RestoreUser extends HttpServlet {
+@WebServlet("/clearUser")
+public class ClearUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("idUserRestore"));
+        int id = Integer.parseInt(req.getParameter("idUserClear"));
         Connection connection = null;
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
             UserMariaDb userDao = fb.getUserMariaDB(connection);
             User user = userDao.getUserById(id);
-            user.setVisible(true);
-            userDao.updateUser(user);
+            userDao.deleteUser(user);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

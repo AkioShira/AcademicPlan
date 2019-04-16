@@ -1,4 +1,4 @@
-package controller.servlet;
+package controller.servlet.restore;
 
 import connection.pooling.ConnectionPool;
 import data.dao.mariaDB.DepartmentMariaDb;
@@ -20,32 +20,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/plans/admin/user-managment")
-public class UserManagment extends HttpServlet {
+@WebServlet("/restoreAllUsers")
+public class RestoreAllUsers extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection connection = null;
         try {
             connection = ConnectionPool.getConnection();
             FactoryMariaDb factory = new FactoryMariaDb();
             UserMariaDb userDao = factory.getUserMariaDB(connection);
             DepartmentMariaDb depDao = factory.getDepartmentMariaDB(connection);
-            RoleMariaDb roleDao = factory.getRoleMariaDB(connection);
             List<Department> depList = depDao.getAllDepartments();
-            List<Role> roleList = roleDao.getAllRoles();
-            List<User> userListVisible = new ArrayList<>();
             List<User> userListUnvisible = new ArrayList<>();
             //Собрать пользователей из не удалённых кафедр
             for(Department d : depList){
                 if(d.isVisible()) {
-                    userListVisible.addAll(userDao.getUsersByDepartment(d.getIdDepartment(), true));
                     userListUnvisible.addAll(userDao.getUsersByDepartment(d.getIdDepartment(), false));
                 }
             }
-            req.setAttribute("userListVisible", userListVisible);
-            req.setAttribute("userListUnvisible", userListUnvisible);
-            req.setAttribute("depList", depList);
-            req.setAttribute("roleList", roleList);
+            for(User user : userListUnvisible) {
+                user.setVisible(true);
+                userDao.updateUser(user);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -56,6 +52,6 @@ public class UserManagment extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        req.getRequestDispatcher("/user-managment.jsp").forward(req, resp);
+        resp.sendRedirect("/plans/admin/user-managment");
     }
 }

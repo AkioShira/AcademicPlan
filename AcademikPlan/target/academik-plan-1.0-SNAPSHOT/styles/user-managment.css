@@ -61,28 +61,28 @@ a:hover {
     right: 0; /* Положение блока от правого края */
 }
 
-.center-block table {
+table {
     border-collapse: collapse;
     width: 100%;
 
 }
 
-.center-block p{
+p{
     padding-right: 8px;
 }
 
-.center-block th, td {
+th, td {
     text-align: center;
     padding: 8px;
 }
 
-.center-block td{
+td{
     font-size: 13px;
 }
 
-.center-block tr:nth-child(even) {background-color: #E5E5E5;}
+tr:nth-child(even) {background-color: #E5E5E5;}
 
-.center-block th {
+th {
     background-color: #383838;
     color: white;
 }

@@ -13,6 +13,6 @@ public interface UserDao {
     boolean isExist(String login, String password);
     boolean insertUser();
     boolean updateUser(User user);
-    boolean deleteUser();
+    boolean deleteUser(User user);
     void setOrder(User.sortParameter s);
 }

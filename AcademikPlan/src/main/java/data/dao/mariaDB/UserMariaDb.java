@@ -98,6 +98,7 @@ public class UserMariaDb extends ConnectionService implements UserDao {
         try{
             statement = connection.prepareStatement(query);
             statement.execute();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -107,7 +108,19 @@ public class UserMariaDb extends ConnectionService implements UserDao {
     }
 
     @Override
-    public boolean deleteUser() {
+    public boolean deleteUser(User user) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="DELETE FROM users WHERE idUser = "+user.getIdUser();
+        try{
+            statement = connection.prepareStatement(query);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
         return false;
     }
 

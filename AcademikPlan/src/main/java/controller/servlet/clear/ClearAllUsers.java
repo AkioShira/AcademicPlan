@@ -1,8 +1,10 @@
-package controller.servlet.restore;
+package controller.servlet.clear;
 
 import connection.pooling.ConnectionPool;
+import data.dao.mariaDB.DepartmentMariaDb;
 import data.dao.mariaDB.FactoryMariaDb;
 import data.dao.mariaDB.UserMariaDb;
+import data.model.Department;
 import data.model.User;
 
 import javax.servlet.ServletException;
@@ -13,20 +15,30 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-@WebServlet("/restoreUser")
-public class RestoreUser extends HttpServlet {
+@WebServlet("/clearAllUsers")
+public class ClearAllUsers extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("idUserRestore"));
         Connection connection = null;
-        try{
+        try {
             connection = ConnectionPool.getConnection();
-            FactoryMariaDb fb = new FactoryMariaDb();
-            UserMariaDb userDao = fb.getUserMariaDB(connection);
-            User user = userDao.getUserById(id);
-            user.setVisible(true);
-            userDao.updateUser(user);
+            FactoryMariaDb factory = new FactoryMariaDb();
+            DepartmentMariaDb depDao = factory.getDepartmentMariaDB(connection);
+            List<Department> depList = depDao.getAllDepartments();
+            List<User> userListUnvisible = new ArrayList<>();
+            UserMariaDb userDao = factory.getUserMariaDB(connection);
+            //Собрать пользователей из не удалённых кафедр
+            for(Department d : depList){
+                if(d.isVisible()) {
+                    userListUnvisible.addAll(userDao.getUsersByDepartment(d.getIdDepartment(), false));
+                }
+            }
+            for(User user : userListUnvisible) {
+                userDao.deleteUser(user);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
