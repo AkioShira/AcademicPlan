@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -42,6 +43,8 @@ public class RestoreAllUsers extends HttpServlet {
                 user.setVisible(true);
                 userDao.updateUser(user);
             }
+            HttpSession session = req.getSession();
+            session.setAttribute("message", "Все пользователи успешно восстановлены");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

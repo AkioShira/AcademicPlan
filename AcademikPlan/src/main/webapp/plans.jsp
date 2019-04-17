@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="data.model.Department" %><%--
   Created by IntelliJ IDEA.
   User: Arthur
   Date: 30.03.2019
@@ -15,24 +18,35 @@
 </head>
 <body class="body">
 <div class="top-panel">
-    Пользователь: ${login}
+    Пользователь: ${sessionUser.login}
 
     <a class="top-button" href="<c:url value='/logout' />">Выйти</a>
-    <c:if test = "${role == 1}">
+    <c:if test = "${sessionUser.idRole == 1}">
         <a class="top-button" href="<c:url value='/plans/admin' />">Панель администратора</a>
     </c:if>
 </div>
 <div class="center-block">
+
     <h2>УЧЕБНЫЕ ПЛАНЫ ПО КАФЕДРЕ</h2>
-    <p>Кафедра специализированные компьютерные системы</p>
-    <input type="button" class="button blue" value="Бакалавр"/>
-    <input type="button" class="button purple" value="Магистр"/>
-    <p>Кафедра радиофизики и электроники</p>
-    <input type="button" class="button red" value="Бакалавр"/>
-    <input type="button" class="button orange" value="Магистр"/>
-    <p>Кафедра финансов</p>
-    <input type="button" class="button green" value="Бакалавр"/>
-    <input type="button" class="button gray" value="Магистр"/>
+    <% List<String> colors = new ArrayList<String>(Arrays.asList("blue", "purple", "red", "orange", "green", "gray"));
+    int i = 0;
+    %>
+    <c:if test="${departmentUser.idDepartment == 1}">
+        <c:forEach items="${depList}" var="department">
+
+                <p><c:out value="${department.name}"/></p>
+                <input type="button" class="button <%=colors.get(i++)%>" value="Бакалавр"/>
+                <% if(i>colors.size()-1) i=0; %>
+                <input type="button" class="button <%=colors.get(i++)%>" value="Магистр"/>
+                <% if(i>colors.size()-1) i=0; %>
+
+        </c:forEach>
+    </c:if>
+    <c:if test="${departmentUser.idDepartment != 1}">
+            <p><c:out value="${departmentUser.name}"/></p>
+            <input type="button" class="button blue" value="Бакалавр"/>
+            <input type="button" class="button purple" value="Магистр"/>
+    </c:if>
 </div>
 </body>
 </html>

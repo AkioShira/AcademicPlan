@@ -39,17 +39,75 @@ public class DepartmentMariaDb extends ConnectionService implements DepartmentsD
     }
 
     @Override
-    public boolean insertUser() {
+    public boolean isUniqueNames(String name, String shortName) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        try {
+            statement = connection.prepareStatement("SELECT * FROM departments d WHERE name = \""+name+"\" OR d.shortName = \""+shortName+"\"");
+            rs = statement.executeQuery();
+            int i = 0;
+            while(rs.next())
+                i++;
+            return i<1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
         return false;
     }
 
     @Override
-    public boolean updateUser() {
+    public boolean insertDepartment(Department department) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="INSERT INTO departments SET name = '"+department.getName()+"',"
+                + " shortName = '"+department.getShortName()+"', visible = " + (department.isVisible() ? 1 : 0);
+        try{
+            statement = connection.prepareStatement(query);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
         return false;
     }
 
     @Override
-    public boolean deleteUser() {
+    public boolean updateDepartment(Department department) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="UPDATE departments SET name = '"+department.getName()+"',"
+                + " shortName = '"+department.getShortName()+"', visible = " + (department.isVisible() ? 1 : 0)
+                + " WHERE idDepartment = " + department.getIdDepartment();
+        try{
+            statement = connection.prepareStatement(query);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteDepartment(Department department) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="DELETE FROM departments WHERE idDepartment = "+department.getIdDepartment();
+        try{
+            statement = connection.prepareStatement(query);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
         return false;
     }
 

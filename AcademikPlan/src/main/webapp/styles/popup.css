@@ -29,7 +29,7 @@
 
 .popup-big{
     background: #fff;
-    width: 650px;
+    width: 800px;
     margin: 10% auto;
     padding: 5px 20px 13px 20px;
     position: relative;
@@ -59,6 +59,24 @@
 .popup-table td{
     padding-right: 5px;
 }
+
+.popup-table tr:nth-child(even) {background-color: #E5E5E5;}
+
+.popup-update-table{
+    width: 500px;
+    font-size: 12pt;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.popup-update-table tr td{
+    padding-top: 5px;
+}
+
+.popup-update-table td{
+    padding-right: 5px;
+}
+
 .close{
     background-color: #FF8066;
     height: 24px;
@@ -84,6 +102,7 @@
 }
 
 .top-div{
+    font-size: 13pt;
     height: 40px;
     text-align: center;
     padding-top: 40px;
@@ -95,10 +114,33 @@
     overflow-y: scroll;
 }
 
+.center-div-update{
+    width: 100%;
+    height: 250px;
+}
+
 .bottom-div-three{
     padding: 20px 60px 0px 60px;
 }
 
 .bottom-div-two{
     padding: 20px 120px 0px 120px;
+}
+
+.bottom-div-one{
+    padding: 20px 210px 0px 210px;
+}
+
+.bottom-div-zero{
+    padding: 20px 260px 0px 260px;
+}
+
+.text-field-popup {
+    font-size: 12pt;
+    width: 100%;
+    padding: 4px 10px;
+    display: inline-block;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    border-radius: 5px;
 }

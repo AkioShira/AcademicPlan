@@ -15,7 +15,7 @@
 </head>
 <body class="body">
 <div class="top-panel">
-    Пользователь: ${login}
+    Пользователь: ${sessionUser.login}
     <a href="<c:url value='/plans' />">Назад</a>
 
 </div>
@@ -24,11 +24,9 @@
 
     <div class="center-center-block">
         <p><a class="top-button" href="<c:url value='/plans/admin/user-managment' />">Редактировать пользователей</a></p>
-        <p>Управление кафедрами</p>
+        <p><a class="top-button" href="<c:url value='/plans/admin/department-managment' />">Управление кафедрами</a></p>
         <p>Редактирование информации на страницах</p>
     </div>
 </div>
-
-
 </body>
 </html>

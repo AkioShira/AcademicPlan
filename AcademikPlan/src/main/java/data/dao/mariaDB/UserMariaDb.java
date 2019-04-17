@@ -47,20 +47,47 @@ public class UserMariaDb extends ConnectionService implements UserDao {
     }
 
     @Override
-    public int getRoleByLoginPassword(String login, String password) {
+    public User getUserByLoginPassword(String login, String password) {
         PreparedStatement statement = null;
         ResultSet rs = null;
+        User user = null;
         try {
-            statement = connection.prepareStatement("SELECT idRole FROM users WHERE login = \""+login+"\" AND password = \""+password+"\"");
+            statement = connection.prepareStatement("SELECT * FROM users WHERE login = \""+login+"\" AND password = \""+password+"\"");
             rs = statement.executeQuery();
             rs.next();
-            return rs.getInt(1);
+            user = new User();
+            user.setIdUser(rs.getInt("idUser"));
+            user.setLogin(rs.getString("login"));
+            user.setPassword(rs.getString("password"));
+            user.setIdDepartment(rs.getInt("idDepartment"));
+            user.setIdRole(rs.getInt("idRole"));
+            user.setVisible(rs.getInt("visible") == 1);
+            return user;
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
             closeResurse(statement, rs);
         }
-        return 0;
+        return user;
+    }
+
+    @Override
+    public boolean isUniqueLogin(String login) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        try {
+            statement = connection.prepareStatement("SELECT * FROM users WHERE login = \""+login+"\"");
+            rs = statement.executeQuery();
+            int i = 0;
+            while(rs.next())
+                i++;
+            return i<1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return false;
     }
 
     @Override
@@ -83,7 +110,22 @@ public class UserMariaDb extends ConnectionService implements UserDao {
     }
 
     @Override
-    public boolean insertUser() {
+    public boolean insertUser(User user) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="INSERT INTO users SET login = '"+user.getLogin()+"',"
+                + " password = '"+user.getPassword()+"', idDepartment = "+user.getIdDepartment()+", "
+                + " idRole = " + user.getIdRole() + ", visible = " + (user.isVisible() ? 1 : 0);
+        try{
+            System.out.println(query);
+            statement = connection.prepareStatement(query);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
         return false;
     }
 
@@ -163,7 +205,7 @@ public class UserMariaDb extends ConnectionService implements UserDao {
             List<User> users = u.getAllUser();
             for(User el : users)
                 System.out.println(el.toString());
-
+            System.out.println(u.isUniqueLogin("3"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

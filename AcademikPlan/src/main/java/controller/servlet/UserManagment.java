@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @WebServlet("/plans/admin/user-managment")
@@ -31,21 +32,29 @@ public class UserManagment extends HttpServlet {
             UserMariaDb userDao = factory.getUserMariaDB(connection);
             DepartmentMariaDb depDao = factory.getDepartmentMariaDB(connection);
             RoleMariaDb roleDao = factory.getRoleMariaDB(connection);
-            List<Department> depList = depDao.getAllDepartments();
+            List<Department> depList = depDao.getDepartmentByVisible(true);
             List<Role> roleList = roleDao.getAllRoles();
             List<User> userListVisible = new ArrayList<>();
             List<User> userListUnvisible = new ArrayList<>();
-            //Собрать пользователей из не удалённых кафедр
             for(Department d : depList){
-                if(d.isVisible()) {
-                    userListVisible.addAll(userDao.getUsersByDepartment(d.getIdDepartment(), true));
-                    userListUnvisible.addAll(userDao.getUsersByDepartment(d.getIdDepartment(), false));
-                }
+                userListVisible.addAll(userDao.getUsersByDepartment(d.getIdDepartment(), true));
+                userListUnvisible.addAll(userDao.getUsersByDepartment(d.getIdDepartment(), false));
             }
+            //
+            HashMap<Integer, String> depMap = new HashMap<Integer, String>();
+            for(Department d : depList)
+                depMap.put(d.getIdDepartment(), d.getShortName());
+            //
+            HashMap<Integer, String> roleMap = new HashMap<Integer, String>();
+            for(Role r : roleList)
+                roleMap.put(r.getIdRole(), r.getName());
+
             req.setAttribute("userListVisible", userListVisible);
             req.setAttribute("userListUnvisible", userListUnvisible);
             req.setAttribute("depList", depList);
             req.setAttribute("roleList", roleList);
+            req.setAttribute("depMap", depMap);
+            req.setAttribute("roleMap", roleMap);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

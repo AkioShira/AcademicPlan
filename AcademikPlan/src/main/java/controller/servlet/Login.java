@@ -3,6 +3,7 @@ package controller.servlet;
 import connection.pooling.ConnectionPool;
 import data.dao.mariaDB.FactoryMariaDb;
 import data.dao.mariaDB.UserMariaDb;
+import data.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +24,7 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         //Переадресовать на сайт авторизованного пользователя
-        if(nonNull(session) && nonNull(session.getAttribute("login")) && nonNull(session.getAttribute("password"))
-                && nonNull(session.getAttribute("role"))) {
+        if(nonNull(session) && nonNull(session.getAttribute("sessionUser"))) {
             resp.sendRedirect("/plans");
             return;
         }
@@ -49,14 +49,11 @@ public class Login extends HttpServlet {
                 UserMariaDb userDAO = factory.getUserMariaDB(connection);
                 //Если логин и пароль верны занести в сессию и переадресовать на сайт
                 if (userDAO.isExist(login, password)) {
-                    int role = userDAO.getRoleByLoginPassword(login, password);
-                    if(role !=0) {
-                        session.setAttribute("login", login);
-                        session.setAttribute("password", password);
-                        session.setAttribute("role", role);
-                        resp.sendRedirect("/plans");
-                        return;
-                    }
+                    User user = userDAO.getUserByLoginPassword(login, password);
+                    session.setAttribute("sessionUser", user);
+                    resp.sendRedirect("/plans");
+                    return;
+
                 }else{
                     req.setAttribute("errAuth", "Неверный логин-пароль");
                 }

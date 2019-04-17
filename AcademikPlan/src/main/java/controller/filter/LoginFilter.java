@@ -23,8 +23,7 @@ public class LoginFilter implements Filter {
         final HttpServletResponse resp = (HttpServletResponse) servletResponse;
         HttpSession session = req.getSession();
         //пользователь уже авторизован
-        if(nonNull(session) && nonNull(session.getAttribute("login")) && nonNull(session.getAttribute("password"))
-                && nonNull(session.getAttribute("role"))) {
+        if(nonNull(session) && nonNull(session.getAttribute("sessionUser"))) {
 
             filterChain.doFilter(req, resp);
 

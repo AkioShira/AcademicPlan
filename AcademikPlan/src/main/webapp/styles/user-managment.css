@@ -34,7 +34,7 @@ a:hover {
 
 .center-block {
     position: absolute; /* Абсолютное позиционирование */
-    width: 700px; /* Ширина блока */
+    width: 800px; /* Ширина блока */
     min-height: 400px; /* Высота блока */
     margin: auto; /* Отступ от блока */
     margin-top: 40px;
@@ -61,28 +61,27 @@ a:hover {
     right: 0; /* Положение блока от правого края */
 }
 
-table {
+.center-table {
     border-collapse: collapse;
     width: 100%;
-
 }
 
-p{
+.center-block p{
     padding-right: 8px;
 }
 
-th, td {
+.center-table th, td {
     text-align: center;
     padding: 8px;
 }
 
-td{
+.center-table td{
     font-size: 13px;
 }
 
-tr:nth-child(even) {background-color: #E5E5E5;}
+.center-table tr:nth-child(even) {background-color: #E5E5E5;}
 
-th {
+.center-table th {
     background-color: #383838;
     color: white;
 }

@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -39,6 +40,9 @@ public class ClearAllUsers extends HttpServlet {
             for(User user : userListUnvisible) {
                 userDao.deleteUser(user);
             }
+
+            HttpSession session = req.getSession();
+            session.setAttribute("message", "Список удалённых пользователей очищен");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

@@ -18,7 +18,7 @@ public class ConnectionPool {
             e.printStackTrace();
         }
         //config.setJdbcUrl("jdbc:mariadb://localhost:3306/academikplan?useUnicode=true&characterEncoding=latin1");
-        config.setJdbcUrl("jdbc:mariadb://localhost:3306/academikplan?useUnicode=true&characterEncoding=utf8");
+        config.setJdbcUrl("jdbc:mariadb://localhost:3306/academikplan?useUnicode=true&characterEncoding=utf8mb4");
         config.setUsername("root");
         config.setPassword("root");
         config.addDataSourceProperty("cachePrepStmts", "true");

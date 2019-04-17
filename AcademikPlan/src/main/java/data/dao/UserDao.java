@@ -9,9 +9,10 @@ public interface UserDao {
     List<User> getAllUser();
     List<User> getUsersByVisible(boolean visible);
     List<User> getUsersByDepartment(int idDepartment, boolean visible);
-    int getRoleByLoginPassword(String login, String password);
+    User getUserByLoginPassword(String login, String password);
+    boolean isUniqueLogin(String login);
     boolean isExist(String login, String password);
-    boolean insertUser();
+    boolean insertUser(User user);
     boolean updateUser(User user);
     boolean deleteUser(User user);
     void setOrder(User.sortParameter s);
