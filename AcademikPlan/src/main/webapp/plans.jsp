@@ -19,7 +19,6 @@
 <body class="body">
 <div class="top-panel">
     Пользователь: ${sessionUser.login}
-
     <a class="top-button" href="<c:url value='/logout' />">Выйти</a>
     <c:if test = "${sessionUser.idRole == 1}">
         <a class="top-button" href="<c:url value='/plans/admin' />">Панель администратора</a>
@@ -27,25 +26,35 @@
 </div>
 <div class="center-block">
 
-    <h2>УЧЕБНЫЕ ПЛАНЫ ПО КАФЕДРЕ</h2>
+    <h2>УЧЕБНЫЕ ПЛАНЫ</h2>
     <% List<String> colors = new ArrayList<String>(Arrays.asList("blue", "purple", "red", "orange", "green", "gray"));
     int i = 0;
     %>
+
     <c:if test="${departmentUser.idDepartment == 1}">
-        <c:forEach items="${depList}" var="department">
+        <c:forEach items="${facList}" var="faculty">
+        <p style="padding-top: 20px; font-weight: bold;">Факультет: <c:out value="${faculty.name}"/></p>
 
-                <p><c:out value="${department.name}"/></p>
-                <input type="button" class="button <%=colors.get(i++)%>" value="Бакалавр"/>
-                <% if(i>colors.size()-1) i=0; %>
-                <input type="button" class="button <%=colors.get(i++)%>" value="Магистр"/>
-                <% if(i>colors.size()-1) i=0; %>
-
+            <c:forEach items="${depList}" var="department">
+                <c:if test="${department.idFaculty == faculty.idFaculty}">
+                    <p>Кафедра: <c:out value="${department.name}"/></p>
+                    <div class="button-block">
+                        <input type="button" class="button <%=colors.get(i++)%>" value="Бакалавр"/>
+                        <% if(i>colors.size()-1) i=0; %>
+                        <input type="button" class="button <%=colors.get(i++)%>" value="Магистр"/>
+                        <% if(i>colors.size()-1) i=0; %>
+                    </div>
+                </c:if>
+            </c:forEach>
         </c:forEach>
     </c:if>
     <c:if test="${departmentUser.idDepartment != 1}">
-            <p><c:out value="${departmentUser.name}"/></p>
+        <p style="padding-top: 20px; font-weight: bold;">Факультет: <c:out value="${facultyUser.name}"/></p>
+        <p><c:out value="${departmentUser.name}"/></p>
+        <div class="button-block">
             <input type="button" class="button blue" value="Бакалавр"/>
             <input type="button" class="button purple" value="Магистр"/>
+        </div>
     </c:if>
 </div>
 </body>

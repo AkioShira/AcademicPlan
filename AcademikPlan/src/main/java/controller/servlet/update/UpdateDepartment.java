@@ -25,20 +25,28 @@ public class UpdateDepartment extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("idDapUpdate"));
         String name = req.getParameter("nameUpdate");
         String shortName = req.getParameter("shortNameUpdate");
+        int idFaculty = Integer.parseInt(req.getParameter("facultyUserUpdate"));
         Connection connection = null;
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
             DepartmentMariaDb depDao = fb.getDepartmentMariaDB(connection);
-            if(!depDao.isUniqueNames(name, shortName) && (!name.equals(depDao.getDepartmentById(id).getName())
-                    || !shortName.equals(depDao.getDepartmentById(id).getShortName()))){
-                session.setAttribute("erMessage", "Такое имя кафедры или сокращение уже существует!");
+
+            if(!depDao.isUniqueName(name) && !name.equals(depDao.getDepartmentById(id).getName())){
+                session.setAttribute("erMessage", "Такое имя кафедры уже существует!");
                 resp.sendRedirect("/plans/admin/department-managment");
                 return;
             }
+            if(!depDao.isUniqueShortName(shortName) && !shortName.equals(depDao.getDepartmentById(id).getShortName())){
+                session.setAttribute("erMessage", "Такое сокращение уже существует!");
+                resp.sendRedirect("/plans/admin/department-managment");
+                return;
+            }
+
             Department department = depDao.getDepartmentById(id);
             department.setName(name);
             department.setShortName(shortName);
+            department.setIdFaculty(idFaculty);
             depDao.updateDepartment(department);
 
             session.setAttribute("message", "Кафедра успешно редактирована");

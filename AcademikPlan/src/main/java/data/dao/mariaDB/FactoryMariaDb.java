@@ -6,6 +6,11 @@ import java.sql.Connection;
 
 public class FactoryMariaDb implements FactoryDao {
     @Override
+    public FacultyMariaDb getFacultyMariaDB(Connection connection) {
+        return new FacultyMariaDb(connection);
+    }
+
+    @Override
     public UserMariaDb getUserMariaDB(Connection connection) {
         return new UserMariaDb(connection);
     }

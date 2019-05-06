@@ -32,7 +32,7 @@ public class UserManagment extends HttpServlet {
             UserMariaDb userDao = factory.getUserMariaDB(connection);
             DepartmentMariaDb depDao = factory.getDepartmentMariaDB(connection);
             RoleMariaDb roleDao = factory.getRoleMariaDB(connection);
-            List<Department> depList = depDao.getDepartmentByVisible(true);
+            List<Department> depList = depDao.getDepartmentByVisibleFaculty(true, true);
             List<Role> roleList = roleDao.getAllRoles();
             List<User> userListVisible = new ArrayList<>();
             List<User> userListUnvisible = new ArrayList<>();

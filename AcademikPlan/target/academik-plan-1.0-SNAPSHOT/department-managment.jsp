@@ -42,11 +42,12 @@
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
 
-    function updateRow(idpk, name, shortName){
+    function updateRow(idpk, name, shortName, idfac){
         document.getElementById('update_popup').style.display='block';
         document.getElementById('idDapUpdate').value = idpk;
         document.getElementById('nameUpdate').value = name;
         document.getElementById('shortNameUpdate').value = shortName;
+        document.getElementById('facultyUserUpdate').value = idfac;
     }
 
     function restoreRow(){
@@ -89,12 +90,14 @@
                     <tr>
                         <th>Имя кафедры</th>
                         <th>Сокращение</th>
+                        <th>Факультет</th>
                         <th></th>
                     </tr>
                     <c:forEach items="${depListUnvisible}" var="dep">
                         <tr>
                             <td>${dep.name}</td>
                             <td>${dep.shortName}</td>
+                            <td>${facMap.get(dep.idFaculty)}</td>
                             <td>
                                 <input type="submit" class="button red" onclick="clearDepartment(${dep.idDepartment}, '${dep.shortName}');" value="Очистить"/>
                                 <input type="submit" class="button blue" onclick="restoreDepartment(${dep.idDepartment}, '${dep.shortName}');" value="Восстановить"/>
@@ -112,7 +115,7 @@
         </div>
         <a class="close" title="Закрыть" onclick="document.getElementById('restore_popup').style.display='none';">X</a></div>
 </div>
-<!-- ОКНО ПОДТВЕРЖДЕНИЯ ОЧИСТКИ ВСЕХ ПОЛЬЗОВАТЕЛЕЙ -->
+<!-- ОКНО ПОДТВЕРЖДЕНИЯ ОЧИСТКИ ВСЕХ КАФЕДР -->
 <div id="clear_all_popup" class="parent_popup">
     <div class="popup" style="margin: 20% auto;">
         <div class="popup-form" style="height:200px;">
@@ -179,12 +182,12 @@
 <!-- ОКНО РЕДАКТИРОВАНИЯ КАФЕДРЫ-->
 <div id="update_popup" class="parent_popup">
     <div class="popup-big">
-        <div class="popup-form" style="height:300px;">
+        <div class="popup-form" style="height:340px;">
             <div class="top-div">
                 Редактирование кафедры
             </div>
             <form action="/updateDepartment" autocomplete="off" method="POST">
-                <div class="center-div-update" style="height:150px;">
+                <div class="center-div-update" style="height:190px;">
                     <input type="text" hidden id="idDapUpdate" name="idDapUpdate"/>
                     <table class="popup-update-table" style="width: 600px;">
                         <tr>
@@ -203,6 +206,16 @@
                                             также должно содержать буквы и/или цифры."
                                        minlength="1" maxlength="20" required="required" id="shortNameUpdate" name="shortNameUpdate" class="text-field-popup"/></td>
                         </tr>
+                        <tr>
+                            <td>Факультет</td>
+                            <td>
+                                <select id="facultyUserUpdate" name="facultyUserUpdate" class="text-field-popup">
+                                    <c:forEach items="${facList}" var="fac">
+                                        <option value="${fac.idFaculty}">${fac.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <div class="bottom-div-zero">
@@ -216,12 +229,12 @@
 <!-- ОКНО ДОБАВЛЕНИЯ КАФЕДРЫ-->
 <div id="insert_popup" class="parent_popup">
     <div class="popup-big">
-        <div class="popup-form" style="height:300px;">
+        <div class="popup-form" style="height:340px;">
             <div class="top-div">
                 Добавить кафедру
             </div>
             <form action="/insertDepartment" autocomplete="off" method="POST">
-                <div class="center-div-update" style="height:150px;">
+                <div class="center-div-update" style="height:190px;">
                     <table class="popup-update-table" style="width: 600px;">
                         <tr>
                             <td>Имя кафедры</td>
@@ -238,6 +251,16 @@
                                        title="Сокращение кафедры должно быть размером от 1 до 20 символов, а
                                             также должно содержать буквы и/или цифры."
                                        minlength="1" maxlength="10" required="required" id="shortNameInsert" name="shortNameInsert" class="text-field-popup"/></td>
+                        </tr>
+                        <tr>
+                            <td>Факультет</td>
+                            <td>
+                                <select id="facultyUserInsert" name="facultyUserInsert" class="text-field-popup">
+                                    <c:forEach items="${facList}" var="fac">
+                                        <option value="${fac.idFaculty}">${fac.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -275,19 +298,21 @@
         <tr>
             <th>Имя кафедры</th>
             <th>Сокращение</th>
+            <th>Факультет</th>
             <th></th>
         </tr>
         <c:forEach items="${depListVisible}" var="dep">
+            <c:if test="${dep.idDepartment!=1}">
             <tr>
                 <td>${dep.name}</td>
                 <td>${dep.shortName}</td>
+                <td>${facMap.get(dep.idFaculty)}</td>
                 <td>
-                    <c:if test="${dep.idDepartment!=1}">
-                        <input type="button" class="button red" onclick="deleteRow(${dep.idDepartment}, '${dep.shortName}');" value="Удалить"/>
-                    </c:if>
-                    <input type="button" class="button blue" onclick="updateRow(${dep.idDepartment}, '${dep.name}', '${dep.shortName}');" value="Редактировать"/>
+                    <input type="button" class="button red" onclick="deleteRow(${dep.idDepartment}, '${dep.shortName}');" value="Удалить"/>
+                    <input type="button" class="button blue" onclick="updateRow(${dep.idDepartment}, '${dep.name}', '${dep.shortName}', ${dep.idFaculty});" value="Редактировать"/>
                 </td>
             </tr>
+            </c:if>
         </c:forEach>
 
     </table>

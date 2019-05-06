@@ -22,21 +22,22 @@ public class InsertDepartment extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
         String name = req.getParameter("nameInsert");
-        //Проверка на размер вводимых данных
         String shortName = req.getParameter("shortNameInsert");
+        int idFaculty = Integer.parseInt(req.getParameter("facultyUserInsert"));
         Connection connection = null;
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
             DepartmentMariaDb depDao = fb.getDepartmentMariaDB(connection);
-            if(!depDao.isUniqueNames(name, shortName)){
-                session.setAttribute("erMessage", "Такое имя кафедры или сокращение уже существует!!");
+            if(!depDao.isUniqueName(name) || !depDao.isUniqueShortName(shortName)){
+                session.setAttribute("erMessage", "Такое имя кафедры или сокращение уже существует!");
                 resp.sendRedirect("/plans/admin/department-managment");
                 return;
             }
             Department department = new Department();
             department.setName(name);
             department.setShortName(shortName);
+            department.setIdFaculty(idFaculty);
             department.setVisible(true);
             depDao.insertDepartment(department);
 

@@ -24,16 +24,9 @@ public class ClearDepartment extends HttpServlet {
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
-            //UserMariaDb userDao = fb.getUserMariaDB(connection);
             DepartmentMariaDb depDao = fb.getDepartmentMariaDB(connection);
             Department department = depDao.getDepartmentById(id);
-            /*List<User> users = new ArrayList<>();
-            users.addAll(userDao.getUsersByDepartment(id, true));
-            users.addAll(userDao.getUsersByDepartment(id, false));
-            for(User user : users)
-                userDao.deleteUser(user);*/
             depDao.deleteDepartment(department);
-
             HttpSession session = req.getSession();
             session.setAttribute("message", "Кафедра полностью удалена");
         } catch (SQLException e) {

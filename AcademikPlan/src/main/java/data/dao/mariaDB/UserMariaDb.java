@@ -9,8 +9,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Objects.nonNull;
-
 public class UserMariaDb extends ConnectionService implements UserDao {
     private Connection connection;
     private String sortParameter = "idUser";
@@ -117,7 +115,6 @@ public class UserMariaDb extends ConnectionService implements UserDao {
                 + " password = '"+user.getPassword()+"', idDepartment = "+user.getIdDepartment()+", "
                 + " idRole = " + user.getIdRole() + ", visible = " + (user.isVisible() ? 1 : 0);
         try{
-            System.out.println(query);
             statement = connection.prepareStatement(query);
             statement.execute();
             return true;

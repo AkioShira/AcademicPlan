@@ -11,10 +11,19 @@ import java.util.List;
 
 public class DepartmentMariaDb extends ConnectionService implements DepartmentsDao  {
     private Connection connection;
+
     private String sortParameter = "idDepartment";
 
     DepartmentMariaDb(Connection connection){
         this.connection = connection;
+    }
+
+    @Override
+    public List<Department> getDepartmentByVisibleFaculty(boolean facultyVisible, boolean departmentVisible) {
+        String query = "SELECT * FROM departments d\n" +
+                "  INNER JOIN faculties f ON d.idFaculty = f.idFaculty\n" +
+                "  WHERE f.visible = "+(facultyVisible? 1 : 0)+" AND d.visible = "+(departmentVisible? 1 : 0);
+        return getDepartments(query);
     }
 
     @Override
@@ -39,11 +48,30 @@ public class DepartmentMariaDb extends ConnectionService implements DepartmentsD
     }
 
     @Override
-    public boolean isUniqueNames(String name, String shortName) {
+    public boolean isUniqueName(String name) {
         PreparedStatement statement = null;
         ResultSet rs = null;
         try {
-            statement = connection.prepareStatement("SELECT * FROM departments d WHERE name = \""+name+"\" OR d.shortName = \""+shortName+"\"");
+            statement = connection.prepareStatement("SELECT * FROM departments d WHERE name = '"+name+"'");
+            rs = statement.executeQuery();
+            int i = 0;
+            while(rs.next())
+                i++;
+            return i<1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isUniqueShortName(String shortName) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        try {
+            statement = connection.prepareStatement("SELECT * FROM departments d WHERE shortName = '"+shortName+"'");
             rs = statement.executeQuery();
             int i = 0;
             while(rs.next())
@@ -62,7 +90,8 @@ public class DepartmentMariaDb extends ConnectionService implements DepartmentsD
         PreparedStatement statement = null;
         ResultSet rs = null;
         String query="INSERT INTO departments SET name = '"+department.getName()+"',"
-                + " shortName = '"+department.getShortName()+"', visible = " + (department.isVisible() ? 1 : 0);
+                + " shortName = '"+department.getShortName()+"', idFaculty = " + department.getIdFaculty()
+                + ", visible = " + (department.isVisible() ? 1 : 0);
         try{
             statement = connection.prepareStatement(query);
             statement.execute();
@@ -80,7 +109,8 @@ public class DepartmentMariaDb extends ConnectionService implements DepartmentsD
         PreparedStatement statement = null;
         ResultSet rs = null;
         String query="UPDATE departments SET name = '"+department.getName()+"',"
-                + " shortName = '"+department.getShortName()+"', visible = " + (department.isVisible() ? 1 : 0)
+                + " shortName = '"+department.getShortName()+"', idFaculty = " + department.getIdFaculty()
+                + ", visible = " + (department.isVisible() ? 1 : 0)
                 + " WHERE idDepartment = " + department.getIdDepartment();
         try{
             statement = connection.prepareStatement(query);
@@ -131,6 +161,7 @@ public class DepartmentMariaDb extends ConnectionService implements DepartmentsD
                 department.setIdDepartment(rs.getInt("idDepartment"));
                 department.setName(rs.getString("name"));
                 department.setShortName(rs.getString("shortName"));
+                department.setIdFaculty(rs.getInt("idFaculty"));
                 department.setVisible(rs.getInt("visible") == 1);
                 depList.add(department);
             }

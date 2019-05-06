@@ -42,7 +42,7 @@ a:hover {
     background-color: #F5F5F5; /* Рамка блока */
     padding: 30px; /* Отступ внутри блока */
     overflow: auto; /* Полоса прокрутки */
-    border-radius: 50px;
+    border-radius: 20px;
     box-shadow: 0 0 60px rgba(0,0,0,0.5); /* Параметры тени */
     color: #454545;
 
@@ -51,17 +51,18 @@ a:hover {
     -webkit-box-shadow: 0 0 60px rgba(0,0,0,0.5);
 }
 
+.button-block{
+    width: 450px;
+    text-align: justify;
+    margin: auto;
+}
+
 h2{
     padding-bottom: 20px;
 }
 
 p {
-    padding-top: 5px;
-    padding-bottom: 5px;
     border-radius: 25px;
-    -webkit-box-shadow: 0px 0px 1px 0px;
-    box-shadow: 0px 0px 1px 0px;
-
 }
 
 .button{

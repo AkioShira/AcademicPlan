@@ -44,7 +44,7 @@ a:hover {
     background-color: #F5F5F5; /* Рамка блока */
     padding: 30px; /* Отступ внутри блока */
     overflow: auto; /* Полоса прокрутки */
-    border-radius: 50px;
+    border-radius: 20px;
     box-shadow: 0 0 60px rgba(0,0,0,0.5); /* Параметры тени */
     color: #454545;
     text-align: center;
