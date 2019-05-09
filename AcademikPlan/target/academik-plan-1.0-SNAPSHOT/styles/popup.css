@@ -53,11 +53,11 @@
 }
 
 .popup-table tr td{
-    padding-top: 8px;
+   // padding-top: 8px;
 }
 
 .popup-table td{
-    padding-right: 5px;
+  //  padding-right: 5px;
 }
 
 .popup-table tr:nth-child(even) {background-color: #E5E5E5;}
@@ -70,11 +70,11 @@
 }
 
 .popup-update-table tr td{
-    padding-top: 5px;
+   // padding-top: 5px;
 }
 
 .popup-update-table td{
-    padding-right: 5px;
+    //padding-right: 5px;
 }
 
 .close{

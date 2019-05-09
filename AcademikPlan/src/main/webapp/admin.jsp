@@ -23,9 +23,12 @@
     <h2>Панель администратора</h2>
 
     <div class="center-center-block">
-        <p><a class="top-button" href="<c:url value='/plans/admin/user-managment' />">Редактировать пользователей</a></p>
+        <p><a class="top-button" href="<c:url value='/plans/admin/user-managment' />">Управление пользователями</a></p>
         <p><a class="top-button" href="<c:url value='/plans/admin/department-managment' />">Управление кафедрами</a></p>
         <p><a class="top-button" href="<c:url value='/plans/admin/faculty-managment' />">Управление факультетами</a></p>
+        <p><a class="top-button" href="<c:url value='/plans/admin/profile-managment' />">Управление профилями (направленность)</a></p>
+        <p><a class="top-button" href="<c:url value='/plans/admin/direction-managment' />">Управление направлениями подготовки</a></p>
+        <p><a class="top-button" href="<c:url value='/plans/admin/group-direction-managment' />">Управление укрупленными группами направлений подготовки</a></p>
         <p>Редактирование информации на страницах</p>
     </div>
 </div>

@@ -187,9 +187,9 @@
             <form action="/updateFaculty" autocomplete="off" method="POST">
                 <div class="center-div-update" style="height:150px;">
                     <input type="text" hidden id="idFacUpdate" name="idFacUpdate"/>
-                    <table class="popup-update-table" style="width: 600px;">
+                    <table class="popup-update-table" style="width: 800px;">
                         <tr>
-                            <td>Имя кафедры</td>
+                            <td style="width: 150px">Имя кафедры</td>
                             <td><input type="text"
                                        pattern="^(?![ ])[А-Яа-яA-Za-z0-9 ]{4,100}"
                                        title="Имя факультета должно быть размером от 4 до 100 символов, а
@@ -197,7 +197,7 @@
                                        minlength="4" maxlength="100" required="required" id="nameUpdate" name="nameUpdate" class="text-field-popup"/></td>
                         </tr>
                         <tr>
-                            <td>Сокращение</td>
+                            <td style="width: 150px">Сокращение</td>
                             <td><input type="text"
                                        pattern="^(?![ ])[А-Яа-яA-Za-z0-9 ]{1,20}"
                                        title="Сокращение факультета должно быть размером от 1 до 20 символов, а
@@ -223,9 +223,9 @@
             </div>
             <form action="/insertFaculty" autocomplete="off" method="POST">
                 <div class="center-div-update" style="height:150px;">
-                    <table class="popup-update-table" style="width: 600px;">
+                    <table class="popup-update-table" style="width: 800px;">
                         <tr>
-                            <td>Имя факультета</td>
+                            <td style="width: 150px">Имя факультета</td>
                             <td><input type="text"
                                        pattern="^(?![ ])[А-Яа-яA-Za-z0-9 ]{4,100}"
                                        title="Имя факультета должно быть размером от 4 до 100 символов, а
@@ -233,7 +233,7 @@
                                        minlength="4" maxlength="100" required="required" id="nameInsert" name="nameInsert" class="text-field-popup"/></td>
                         </tr>
                         <tr>
-                            <td>Сокращение</td>
+                            <td style="width: 150px">Сокращение</td>
                             <td><input type="text"
                                        pattern="^(?![ ])[А-Яа-яA-Za-z0-9 ]{1,20}"
                                        title="Сокращение факультета должно быть размером от 1 до 20 символов, а

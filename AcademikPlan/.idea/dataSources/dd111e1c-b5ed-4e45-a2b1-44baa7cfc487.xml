@@ -1318,696 +1318,773 @@
     <table id="331" parent="2" name="departments"/>
     <table id="332" parent="2" name="directions"/>
     <table id="333" parent="2" name="faculties"/>
-    <table id="334" parent="2" name="partes"/>
-    <table id="335" parent="2" name="pract_types"/>
-    <table id="336" parent="2" name="practs"/>
-    <table id="337" parent="2" name="profiles"/>
-    <table id="338" parent="2" name="roles"/>
-    <table id="339" parent="2" name="state_sertification"/>
-    <table id="340" parent="2" name="study_shedules"/>
-    <table id="341" parent="2" name="subjects"/>
-    <table id="342" parent="2" name="time_budgets"/>
-    <table id="343" parent="2" name="titles"/>
-    <table id="344" parent="2" name="users"/>
-    <table id="345" parent="2" name="work_type"/>
-    <column id="346" parent="330" name="idCycle">
+    <table id="334" parent="2" name="group_direction"/>
+    <table id="335" parent="2" name="partes"/>
+    <table id="336" parent="2" name="pract_types"/>
+    <table id="337" parent="2" name="practs"/>
+    <table id="338" parent="2" name="profiles"/>
+    <table id="339" parent="2" name="roles"/>
+    <table id="340" parent="2" name="state_sertification"/>
+    <table id="341" parent="2" name="study_shedules"/>
+    <table id="342" parent="2" name="subjects"/>
+    <table id="343" parent="2" name="time_budgets"/>
+    <table id="344" parent="2" name="titles"/>
+    <table id="345" parent="2" name="users"/>
+    <table id="346" parent="2" name="work_type"/>
+    <column id="347" parent="330" name="idCycle">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="347" parent="330" name="idTitle">
+    <column id="348" parent="330" name="idTitle">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="348" parent="330" name="shortName">
+    <column id="349" parent="330" name="shortName">
       <Position>3</Position>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="349" parent="330" name="name">
+    <column id="350" parent="330" name="name">
       <Position>4</Position>
       <DataType>varchar(80)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="350" parent="330" name="FK_cycles_idTitle">
+    <index id="351" parent="330" name="FK_cycles_idTitle">
       <ColNames>idTitle</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="351" parent="330" name="PRIMARY">
+    <key id="352" parent="330" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idCycle</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="352" parent="330" name="FK_cycles_idTitle">
+    <foreign-key id="353" parent="330" name="FK_cycles_idTitle">
       <ColNames>idTitle</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>titles</RefTableName>
       <RefColNames>idTitle</RefColNames>
     </foreign-key>
-    <column id="353" parent="331" name="idDepartment">
+    <column id="354" parent="331" name="idDepartment">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="354" parent="331" name="name">
+    <column id="355" parent="331" name="name">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="355" parent="331" name="shortName">
+    <column id="356" parent="331" name="shortName">
       <Position>3</Position>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="356" parent="331" name="visible">
+    <column id="357" parent="331" name="idFaculty">
       <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="358" parent="331" name="visible">
+      <Position>5</Position>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="357" parent="331" name="PRIMARY">
+    <index id="359" parent="331" name="FK_departments_idFaculty">
+      <ColNames>idFaculty</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="360" parent="331" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idDepartment</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="358" parent="332" name="idDirection">
+    <foreign-key id="361" parent="331" name="FK_departments_idFaculty">
+      <ColNames>idFaculty</ColNames>
+      <RefSchemaName>academikplan</RefSchemaName>
+      <RefTableName>faculties</RefTableName>
+      <RefColNames>idFaculty</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="362" parent="332" name="idDirection">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="359" parent="332" name="number">
+    <column id="363" parent="332" name="number">
       <Position>2</Position>
       <DataType>varchar(8)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="360" parent="332" name="name">
+    <column id="364" parent="332" name="name">
       <Position>3</Position>
       <DataType>varchar(120)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="361" parent="332" name="PRIMARY">
+    <key id="365" parent="332" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idDirection</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="362" parent="333" name="idFaculty">
+    <column id="366" parent="333" name="idFaculty">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="363" parent="333" name="name">
+    <column id="367" parent="333" name="name">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="364" parent="333" name="shortName">
+    <column id="368" parent="333" name="shortName">
       <Position>3</Position>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="365" parent="333" name="visible">
+    <column id="369" parent="333" name="visible">
       <Position>4</Position>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="366" parent="333" name="PRIMARY">
+    <key id="370" parent="333" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idFaculty</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="367" parent="334" name="idPart">
+    <column id="371" parent="334" name="idGroupDirection">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="368" parent="334" name="idCycle">
+    <column id="372" parent="334" name="number">
+      <Position>2</Position>
+      <DataType>varchar(8)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="373" parent="334" name="name">
+      <Position>3</Position>
+      <DataType>varchar(120)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="374" parent="334" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idGroupDirection</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="375" parent="335" name="idPart">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="376" parent="335" name="idCycle">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="369" parent="334" name="shortName">
+    <column id="377" parent="335" name="shortName">
       <Position>3</Position>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="370" parent="334" name="name">
+    <column id="378" parent="335" name="name">
       <Position>4</Position>
       <DataType>varchar(80)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="371" parent="334" name="FK_partes_idCycle">
+    <index id="379" parent="335" name="FK_partes_idCycle">
       <ColNames>idCycle</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="372" parent="334" name="PRIMARY">
+    <key id="380" parent="335" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idPart</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="373" parent="334" name="FK_partes_idCycle">
+    <foreign-key id="381" parent="335" name="FK_partes_idCycle">
       <ColNames>idCycle</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>cycles</RefTableName>
       <RefColNames>idCycle</RefColNames>
     </foreign-key>
-    <column id="374" parent="335" name="idPractType">
+    <column id="382" parent="336" name="idPractType">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="375" parent="335" name="name">
+    <column id="383" parent="336" name="name">
       <Position>2</Position>
       <DataType>varchar(40)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="376" parent="335" name="PRIMARY">
+    <key id="384" parent="336" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idPractType</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="377" parent="336" name="idPract">
+    <column id="385" parent="337" name="idPract">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="378" parent="336" name="idTitle">
+    <column id="386" parent="337" name="idTitle">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="379" parent="336" name="idPractType">
+    <column id="387" parent="337" name="idPractType">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="380" parent="336" name="name">
+    <column id="388" parent="337" name="name">
       <Position>4</Position>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="381" parent="336" name="weekCount">
+    <column id="389" parent="337" name="weekCount">
       <Position>5</Position>
       <DataType>int(4)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="382" parent="336" name="FK_practs_idTitle">
+    <index id="390" parent="337" name="FK_practs_idTitle">
       <ColNames>idTitle</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="383" parent="336" name="FK_practs_idPractType">
+    <index id="391" parent="337" name="FK_practs_idPractType">
       <ColNames>idPractType</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="384" parent="336" name="PRIMARY">
+    <key id="392" parent="337" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idPract</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="385" parent="336" name="FK_practs_idTitle">
+    <foreign-key id="393" parent="337" name="FK_practs_idTitle">
       <ColNames>idTitle</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>titles</RefTableName>
       <RefColNames>idTitle</RefColNames>
     </foreign-key>
-    <foreign-key id="386" parent="336" name="FK_practs_idPractType">
+    <foreign-key id="394" parent="337" name="FK_practs_idPractType">
       <ColNames>idPractType</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>pract_types</RefTableName>
       <RefColNames>idPractType</RefColNames>
     </foreign-key>
-    <column id="387" parent="337" name="idProfile">
+    <column id="395" parent="338" name="idProfile">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="388" parent="337" name="name">
+    <column id="396" parent="338" name="name">
       <Position>2</Position>
-      <DataType>varchar(80)|0s</DataType>
+      <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="389" parent="337" name="PRIMARY">
+    <key id="397" parent="338" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idProfile</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="390" parent="338" name="idRole">
+    <column id="398" parent="339" name="idRole">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="391" parent="338" name="name">
+    <column id="399" parent="339" name="name">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="392" parent="338" name="PRIMARY">
+    <key id="400" parent="339" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idRole</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="393" parent="339" name="idSertification">
+    <column id="401" parent="340" name="idSertification">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="394" parent="339" name="idTitle">
+    <column id="402" parent="340" name="idTitle">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="395" parent="339" name="form">
+    <column id="403" parent="340" name="form">
       <Position>3</Position>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="396" parent="339" name="name">
+    <column id="404" parent="340" name="name">
       <Position>4</Position>
       <DataType>varchar(80)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="397" parent="339" name="FK_state_sertification_idTitle">
+    <index id="405" parent="340" name="FK_state_sertification_idTitle">
       <ColNames>idTitle</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="398" parent="339" name="PRIMARY">
+    <key id="406" parent="340" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idSertification</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="399" parent="339" name="FK_state_sertification_idTitle">
+    <foreign-key id="407" parent="340" name="FK_state_sertification_idTitle">
       <ColNames>idTitle</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>titles</RefTableName>
       <RefColNames>idTitle</RefColNames>
     </foreign-key>
-    <column id="400" parent="340" name="idShedule">
+    <column id="408" parent="341" name="idShedule">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="401" parent="340" name="idTitle">
+    <column id="409" parent="341" name="idTitle">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="402" parent="340" name="course">
+    <column id="410" parent="341" name="course">
       <Position>3</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="403" parent="340" name="month">
+    <column id="411" parent="341" name="month">
       <Position>4</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="404" parent="340" name="week">
+    <column id="412" parent="341" name="week">
       <Position>5</Position>
       <DataType>int(4)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="405" parent="340" name="dateStart">
+    <column id="413" parent="341" name="dateStart">
       <Position>6</Position>
       <DataType>int(4)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="406" parent="340" name="dateEnd">
+    <column id="414" parent="341" name="dateEnd">
       <Position>7</Position>
       <DataType>int(4)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="407" parent="340" name="label">
+    <column id="415" parent="341" name="label">
       <Position>8</Position>
       <DataType>varchar(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="408" parent="340" name="FK_study_shedules_idTitle">
+    <index id="416" parent="341" name="FK_study_shedules_idTitle">
       <ColNames>idTitle</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="409" parent="340" name="PRIMARY">
+    <key id="417" parent="341" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idShedule</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="410" parent="340" name="FK_study_shedules_idTitle">
+    <foreign-key id="418" parent="341" name="FK_study_shedules_idTitle">
       <ColNames>idTitle</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>titles</RefTableName>
       <RefColNames>idTitle</RefColNames>
     </foreign-key>
-    <column id="411" parent="341" name="idSubject">
+    <column id="419" parent="342" name="idSubject">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="412" parent="341" name="number">
+    <column id="420" parent="342" name="number">
       <Position>2</Position>
       <DataType>decimal(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="413" parent="341" name="idPart">
+    <column id="421" parent="342" name="idPart">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="414" parent="341" name="idWork">
+    <column id="422" parent="342" name="idWork">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="415" parent="341" name="name">
+    <column id="423" parent="342" name="name">
       <Position>5</Position>
       <DataType>varchar(120)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="416" parent="341" name="exams">
+    <column id="424" parent="342" name="exams">
       <Position>6</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="417" parent="341" name="credits">
+    <column id="425" parent="342" name="credits">
       <Position>7</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="418" parent="341" name="lections">
+    <column id="426" parent="342" name="lections">
       <Position>8</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="419" parent="341" name="labs">
+    <column id="427" parent="342" name="labs">
       <Position>9</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="420" parent="341" name="practs">
+    <column id="428" parent="342" name="practs">
       <Position>10</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="421" parent="341" name="ksr">
+    <column id="429" parent="342" name="ksr">
       <Position>11</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="422" parent="341" name="bsr">
+    <column id="430" parent="342" name="bsr">
       <Position>12</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="423" parent="341" name="FK_subjects_idPart">
+    <index id="431" parent="342" name="FK_subjects_idPart">
       <ColNames>idPart</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="424" parent="341" name="FK_subjects_idWork">
+    <index id="432" parent="342" name="FK_subjects_idWork">
       <ColNames>idWork</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="425" parent="341" name="PRIMARY">
+    <key id="433" parent="342" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idSubject</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="426" parent="341" name="FK_subjects_idPart">
+    <foreign-key id="434" parent="342" name="FK_subjects_idPart">
       <ColNames>idPart</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>partes</RefTableName>
       <RefColNames>idPart</RefColNames>
     </foreign-key>
-    <foreign-key id="427" parent="341" name="FK_subjects_idWork">
+    <foreign-key id="435" parent="342" name="FK_subjects_idWork">
       <ColNames>idWork</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>work_type</RefTableName>
       <RefColNames>idWork</RefColNames>
     </foreign-key>
-    <column id="428" parent="342" name="idBudget">
+    <column id="436" parent="343" name="idBudget">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="429" parent="342" name="idTitle">
+    <column id="437" parent="343" name="idTitle">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="430" parent="342" name="course">
+    <column id="438" parent="343" name="course">
       <Position>3</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="431" parent="342" name="weeksTheory">
+    <column id="439" parent="343" name="weeksTheory">
       <Position>4</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="432" parent="342" name="weeksSession">
+    <column id="440" parent="343" name="weeksSession">
       <Position>5</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="433" parent="342" name="weeksPract">
+    <column id="441" parent="343" name="weeksPract">
       <Position>6</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="434" parent="342" name="weeksDiplom">
+    <column id="442" parent="343" name="weeksDiplom">
       <Position>7</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="435" parent="342" name="weeksExam">
+    <column id="443" parent="343" name="weeksExam">
       <Position>8</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="436" parent="342" name="weeksHoliday">
+    <column id="444" parent="343" name="weeksHoliday">
       <Position>9</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="437" parent="342" name="FK_time_budgets_idTitle">
+    <index id="445" parent="343" name="FK_time_budgets_idTitle">
       <ColNames>idTitle</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="438" parent="342" name="PRIMARY">
+    <key id="446" parent="343" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idBudget</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="439" parent="342" name="FK_time_budgets_idTitle">
+    <foreign-key id="447" parent="343" name="FK_time_budgets_idTitle">
       <ColNames>idTitle</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>titles</RefTableName>
       <RefColNames>idTitle</RefColNames>
     </foreign-key>
-    <column id="440" parent="343" name="idTitle">
+    <column id="448" parent="344" name="idTitle">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="441" parent="343" name="yearReception">
+    <column id="449" parent="344" name="name">
       <Position>2</Position>
-      <DataType>int(4)|0s</DataType>
+      <DataType>varchar(15)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="442" parent="343" name="yearCreation">
+    <column id="450" parent="344" name="yearReception">
       <Position>3</Position>
       <DataType>int(4)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="443" parent="343" name="qualification">
+    <column id="451" parent="344" name="yearCreation">
       <Position>4</Position>
+      <DataType>int(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="452" parent="344" name="qualification">
+      <Position>5</Position>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="444" parent="343" name="studyTime">
-      <Position>5</Position>
+    <column id="453" parent="344" name="studyTime">
+      <Position>6</Position>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="445" parent="343" name="studyLevel">
-      <Position>6</Position>
+    <column id="454" parent="344" name="studyLevel">
+      <Position>7</Position>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="446" parent="343" name="idDepartment">
-      <Position>7</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="447" parent="343" name="idDirection">
+    <column id="455" parent="344" name="idGroupDirection">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="448" parent="343" name="idProfile">
+    <column id="456" parent="344" name="idDirection">
       <Position>9</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="457" parent="344" name="idProfile">
+      <Position>10</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="458" parent="344" name="idDepartment">
+      <Position>11</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="449" parent="343" name="FK_titles_idDepartment">
-      <ColNames>idDepartment</ColNames>
+    <column id="459" parent="344" name="visible">
+      <Position>12</Position>
+      <DataType>int(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="460" parent="344" name="FK_titles_idLargDirection">
+      <ColNames>idGroupDirection</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="450" parent="343" name="FK_titles_idDirection">
+    <index id="461" parent="344" name="FK_titles_idDirection">
       <ColNames>idDirection</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="451" parent="343" name="FK_titles_idProfile">
+    <index id="462" parent="344" name="FK_titles_idProfile">
       <ColNames>idProfile</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="452" parent="343" name="PRIMARY">
+    <index id="463" parent="344" name="FK_titles_idDepartment">
+      <ColNames>idDepartment</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="464" parent="344" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idTitle</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="453" parent="343" name="FK_titles_idDepartment">
+    <foreign-key id="465" parent="344" name="FK_titles_idGroupDirection">
+      <ColNames>idGroupDirection</ColNames>
+      <RefSchemaName>academikplan</RefSchemaName>
+      <RefTableName>group_direction</RefTableName>
+      <RefColNames>idGroupDirection</RefColNames>
+      <OnUpdate>set-null</OnUpdate>
+      <OnDelete>set-null</OnDelete>
+    </foreign-key>
+    <foreign-key id="466" parent="344" name="FK_titles_idDirection">
+      <ColNames>idDirection</ColNames>
+      <RefSchemaName>academikplan</RefSchemaName>
+      <RefTableName>directions</RefTableName>
+      <RefColNames>idDirection</RefColNames>
+      <OnUpdate>set-null</OnUpdate>
+      <OnDelete>set-null</OnDelete>
+    </foreign-key>
+    <foreign-key id="467" parent="344" name="FK_titles_idProfile">
+      <ColNames>idProfile</ColNames>
+      <RefSchemaName>academikplan</RefSchemaName>
+      <RefTableName>profiles</RefTableName>
+      <RefColNames>idProfile</RefColNames>
+      <OnUpdate>set-null</OnUpdate>
+      <OnDelete>set-null</OnDelete>
+    </foreign-key>
+    <foreign-key id="468" parent="344" name="FK_titles_idDepartment">
       <ColNames>idDepartment</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>departments</RefTableName>
       <RefColNames>idDepartment</RefColNames>
     </foreign-key>
-    <foreign-key id="454" parent="343" name="FK_titles_idDirection">
-      <ColNames>idDirection</ColNames>
-      <RefSchemaName>academikplan</RefSchemaName>
-      <RefTableName>directions</RefTableName>
-      <RefColNames>idDirection</RefColNames>
-    </foreign-key>
-    <foreign-key id="455" parent="343" name="FK_titles_idProfile">
-      <ColNames>idProfile</ColNames>
-      <RefSchemaName>academikplan</RefSchemaName>
-      <RefTableName>profiles</RefTableName>
-      <RefColNames>idProfile</RefColNames>
-    </foreign-key>
-    <column id="456" parent="344" name="idUser">
+    <column id="469" parent="345" name="idUser">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="457" parent="344" name="login">
+    <column id="470" parent="345" name="login">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="458" parent="344" name="password">
+    <column id="471" parent="345" name="password">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="459" parent="344" name="idDepartment">
+    <column id="472" parent="345" name="idDepartment">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="460" parent="344" name="idRole">
+    <column id="473" parent="345" name="idRole">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="461" parent="344" name="visible">
+    <column id="474" parent="345" name="visible">
       <Position>6</Position>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="462" parent="344" name="FK_users_idDepartment">
+    <index id="475" parent="345" name="FK_users_idDepartment">
       <ColNames>idDepartment</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="463" parent="344" name="FK_users_role">
+    <index id="476" parent="345" name="FK_users_role">
       <ColNames>idRole</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="464" parent="344" name="PRIMARY">
+    <key id="477" parent="345" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idUser</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="465" parent="344" name="FK_users_idDepartment">
+    <foreign-key id="478" parent="345" name="FK_users_idDepartment">
       <ColNames>idDepartment</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>departments</RefTableName>
@@ -2015,26 +2092,26 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="466" parent="344" name="FK_users_idRole">
+    <foreign-key id="479" parent="345" name="FK_users_idRole">
       <ColNames>idRole</ColNames>
       <RefSchemaName>academikplan</RefSchemaName>
       <RefTableName>roles</RefTableName>
       <RefColNames>idRole</RefColNames>
     </foreign-key>
-    <column id="467" parent="345" name="idWork">
+    <column id="480" parent="346" name="idWork">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="468" parent="345" name="name">
+    <column id="481" parent="346" name="name">
       <Position>2</Position>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="469" parent="345" name="PRIMARY">
+    <key id="482" parent="346" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idWork</ColNames>
       <Primary>1</Primary>

@@ -27,7 +27,7 @@
 <div class="center-block">
 
     <h2>УЧЕБНЫЕ ПЛАНЫ</h2>
-    <% List<String> colors = new ArrayList<String>(Arrays.asList("blue", "purple", "red", "orange", "green", "gray"));
+    <% List<String> colors = new ArrayList<String>(Arrays.asList("blue"));
     int i = 0;
     %>
 
@@ -56,6 +56,9 @@
             <input type="button" class="button purple" value="Магистр"/>
         </div>
     </c:if>
+
+    <p style="padding-top: 30px;"><a class="top-button" href="">Управление учебными планами</a></p>
+
 </div>
 </body>
 </html>

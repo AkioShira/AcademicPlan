@@ -56,6 +56,9 @@
             <input type="button" class="button purple" value="Магистр"/>
         </div>
     </c:if>
+
+    <p style="padding-top: 30px;"><a class="top-button" href="">Управление учебными планами</a></p>
+
 </div>
 </body>
 </html>
