@@ -15,7 +15,7 @@ public class Title {
     private int idDirection;
     private int idProfile;
     private int idDepartment;
-    private int visible;
+    private boolean visible;
 
     public enum sortParameter{
         idTitle, name, yearReception, yearCreation, qualification, studyTime,

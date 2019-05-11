@@ -21,16 +21,18 @@ public class ClearDepartment extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("idDepartmentClear"));
         Connection connection = null;
+        HttpSession session = req.getSession();
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
             DepartmentMariaDb depDao = fb.getDepartmentMariaDB(connection);
             Department department = depDao.getDepartmentById(id);
-            depDao.deleteDepartment(department);
-            HttpSession session = req.getSession();
-            session.setAttribute("message", "Кафедра полностью удалена");
+            if(!depDao.deleteDepartment(department))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Кафедра полностью удалена");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

@@ -21,6 +21,7 @@ public class ClearAllDepartments extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection connection = null;
+        HttpSession session = req.getSession();
         try {
             connection = ConnectionPool.getConnection();
             FactoryMariaDb factory = new FactoryMariaDb();
@@ -28,8 +29,6 @@ public class ClearAllDepartments extends HttpServlet {
             List<Department> depList = depDao.getDepartmentByVisible(false);
             for(Department department : depList)
                 depDao.deleteDepartment(department);
-
-            HttpSession session = req.getSession();
             session.setAttribute("message", "Список удалённых кафедр очищен");
         } catch (SQLException e) {
             e.printStackTrace();

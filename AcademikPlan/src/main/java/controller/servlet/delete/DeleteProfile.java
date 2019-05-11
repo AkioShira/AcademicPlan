@@ -21,17 +21,18 @@ public class DeleteProfile extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("idProfileDelete"));
         Connection connection = null;
+        HttpSession session = req.getSession();
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
             ProfileMariaDb profileDao = fb.getProfileMariaDb(connection);
             Profile profile = profileDao.getProfileById(id);
-            profileDao.deleteProfile(profile);
-
-            HttpSession session = req.getSession();
-            session.setAttribute("message", "Профиль удалён");
+            if(!profileDao.deleteProfile(profile))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Профиль удалён");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

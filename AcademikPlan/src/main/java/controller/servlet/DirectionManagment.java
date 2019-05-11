@@ -26,6 +26,7 @@ public class DirectionManagment extends HttpServlet {
             FactoryMariaDb factory = new FactoryMariaDb();
             DirectionMariaDb directionDao = factory.getDirectionMariaDb(connection);
             List<Direction> directionList = directionDao.getAllDirections();
+            directionList.remove(0);
             req.setAttribute("directionList", directionList);
         } catch (SQLException e) {
             e.printStackTrace();

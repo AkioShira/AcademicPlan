@@ -28,6 +28,7 @@ public class ProfileManagment extends HttpServlet {
             FactoryMariaDb factory = new FactoryMariaDb();
             ProfileMariaDb profileDao = factory.getProfileMariaDb(connection);
             List<Profile> profileList = profileDao.getAllProfiles();
+            profileList.remove(0);
             req.setAttribute("profileList", profileList);
         } catch (SQLException e) {
             e.printStackTrace();

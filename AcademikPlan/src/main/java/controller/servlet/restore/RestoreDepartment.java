@@ -22,17 +22,20 @@ public class RestoreDepartment extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("idDepartmentRestore"));
         Connection connection = null;
+        HttpSession session = req.getSession();
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
             DepartmentMariaDb depDao = fb.getDepartmentMariaDB(connection);
             Department department = depDao.getDepartmentById(id);
             department.setVisible(true);
-            depDao.updateDepartment(department);
-            HttpSession session = req.getSession();
-            session.setAttribute("message", "Кафедра успешно восстановлена");
+
+            if(!depDao.updateDepartment(department))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Кафедра успешно восстановлена");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

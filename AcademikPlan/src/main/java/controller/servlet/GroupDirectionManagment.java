@@ -28,6 +28,7 @@ public class GroupDirectionManagment extends HttpServlet {
             FactoryMariaDb factory = new FactoryMariaDb();
             GroupDirectionMariaDb directionDao = factory.getGroupDirectionMariaDb(connection);
             List<GroupDirection> directionList = directionDao.getAllDirections();
+            directionList.remove(0);
             req.setAttribute("directionList", directionList);
         } catch (SQLException e) {
             e.printStackTrace();

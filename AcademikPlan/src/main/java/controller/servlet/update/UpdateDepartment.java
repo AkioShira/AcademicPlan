@@ -47,9 +47,10 @@ public class UpdateDepartment extends HttpServlet {
             department.setName(name);
             department.setShortName(shortName);
             department.setIdFaculty(idFaculty);
-            depDao.updateDepartment(department);
 
-            session.setAttribute("message", "Кафедра успешно редактирована");
+            if(!depDao.updateDepartment(department))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Кафедра успешно редактирована");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

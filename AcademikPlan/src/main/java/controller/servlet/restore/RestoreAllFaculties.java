@@ -22,6 +22,7 @@ public class RestoreAllFaculties extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection connection = null;
+        HttpSession session = req.getSession();
         try {
             connection = ConnectionPool.getConnection();
             FactoryMariaDb factory = new FactoryMariaDb();
@@ -31,7 +32,7 @@ public class RestoreAllFaculties extends HttpServlet {
                 fac.setVisible(true);
                 facDao.updateFaculty(fac);
             }
-            HttpSession session = req.getSession();
+
             session.setAttribute("message", "Все факультеты успешно восстановлены");
         } catch (SQLException e) {
             e.printStackTrace();

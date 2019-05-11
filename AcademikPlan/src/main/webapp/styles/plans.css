@@ -31,6 +31,10 @@ a:hover {
     padding-left: 20px;
 }
 
+form{
+    display: inline-block;
+}
+
 .center-block {
     position: absolute; /* Абсолютное позиционирование */
     width: 600px; /* Ширина блока */
@@ -53,7 +57,7 @@ a:hover {
 
 .button-block{
     width: 450px;
-    text-align: justify;
+    /* text-align: justify; */
     margin: auto;
 }
 
@@ -101,62 +105,14 @@ p {
     color: white;
 }
 
-.blue{
+.b1{
     border: 1px solid #6097c9;
     background-color: white;
     color: #272727;
 }
 
-.blue:hover{
+.b1:hover{
     background-color: #6097c9;
     border: 1px solid #6097c9;
-    color: white;
-}
-
-.orange{
-    border: 1px solid #FF8E39;
-    background-color: white;
-    color: #272727;
-}
-
-.orange:hover{
-    background-color: #FF8E39;
-    border: 1px solid #FF8E39;
-    color: white;
-}
-
-.purple{
-    border: 1px solid #8B66E8;
-    background-color: white;
-    color: #272727;
-}
-
-.purple:hover{
-    background-color: #8B66E8;
-    border: 1px solid #8B66E8;
-    color: white;
-}
-
-.green{
-    border: 1px solid #70C76A;
-    background-color: white;
-    color: #272727;
-}
-
-.green:hover{
-    background-color: #70C76A;
-    border: 1px solid #70C76A;
-    color: white;
-}
-
-.gray{
-    border: 1px solid #717273;
-    background-color: white;
-    color: #272727;
-}
-
-.gray:hover{
-    background-color: #717273;
-    border: 1px solid #717273;
     color: white;
 }

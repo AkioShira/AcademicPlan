@@ -29,7 +29,7 @@ public class UpdateUser extends HttpServlet {
             idDepartment = Integer.parseInt(req.getParameter("departmentUserUpdate"));
             idRole = Integer.parseInt(req.getParameter("roleUserUpdate"));
         }catch (NumberFormatException e){
-            idDepartment = 0;
+            idDepartment = 1;
             idRole = 1;
         }
         Connection connection = null;
@@ -49,11 +49,12 @@ public class UpdateUser extends HttpServlet {
                 user.setIdDepartment(idDepartment);
                 user.setIdRole(idRole);
             }
-            userDao.updateUser(user);
-
-            session.setAttribute("message", "Пользователь успешно редактирован");
+            if(!userDao.updateUser(user))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Пользователь успешно редактирован");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

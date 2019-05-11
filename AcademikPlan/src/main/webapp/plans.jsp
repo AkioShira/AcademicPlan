@@ -27,8 +27,10 @@
 <div class="center-block">
 
     <h2>УЧЕБНЫЕ ПЛАНЫ</h2>
-    <% List<String> colors = new ArrayList<String>(Arrays.asList("blue", "purple", "red", "orange", "green", "gray"));
+    <% List<String> colors = new ArrayList<String>(Arrays.asList("b1"));
+
     int i = 0;
+    boolean isEmpty = false;
     %>
 
     <c:if test="${departmentUser.idDepartment == 1}">
@@ -38,11 +40,19 @@
             <c:forEach items="${depList}" var="department">
                 <c:if test="${department.idFaculty == faculty.idFaculty}">
                     <p>Кафедра: <c:out value="${department.name}"/></p>
-                    <div class="button-block">
-                        <input type="button" class="button <%=colors.get(i++)%>" value="Бакалавр"/>
-                        <% if(i>colors.size()-1) i=0; %>
-                        <input type="button" class="button <%=colors.get(i++)%>" value="Магистр"/>
-                        <% if(i>colors.size()-1) i=0; %>
+                    <div class="button-block" style="font-size: 12px">
+                        <c:forEach items="${titleList}" var="title">
+                            <c:if test="${department.idDepartment == title.idDepartment}">
+                                <form action="/title" method="POST">
+                                    <input type="number" hidden id="idTitle" name="idTitle" value="${title.idTitle}"/>
+                                    <input type="submit" class="button <%=colors.get(i++)%>" value="${title.name}"/>
+                                </form>
+                                <% if(i>colors.size()-1) i=0; isEmpty = true; %>
+                            </c:if>
+                        </c:forEach>
+                        <% if(!isEmpty) { %>
+                        На этой кафедре пока нет учебных планов
+                        <% } else {isEmpty = false;}%>
                     </div>
                 </c:if>
             </c:forEach>
@@ -52,12 +62,22 @@
         <p style="padding-top: 20px; font-weight: bold;">Факультет: <c:out value="${facultyUser.name}"/></p>
         <p><c:out value="${departmentUser.name}"/></p>
         <div class="button-block">
-            <input type="button" class="button blue" value="Бакалавр"/>
-            <input type="button" class="button purple" value="Магистр"/>
+            <c:forEach items="${userTitleList}" var="title">
+                <form action="/title" method="POST">
+                    <input type="number" hidden id="idTitle" name="idTitle" value="${title.idTitle}"/>
+                    <input type="submit" class="button <%=colors.get(i++)%>" value="${title.name}"/>
+                </form>
+                <% if(i>colors.size()-1) i=0; isEmpty = true; %>
+            </c:forEach>
+            <% if(!isEmpty) { %>
+            На этой кафедре пока нет учебных планов
+            <% } else {isEmpty = false;}%>
         </div>
     </c:if>
+    <c:if test = "${sessionUser.idRole <=2}">
+        <p style="padding-top: 30px;"><a class="top-button" href="/plans/title-managment">Управление учебными планами</a></p>
+    </c:if>
 
-    <p style="padding-top: 30px;"><a class="top-button" href="">Управление учебными планами</a></p>
 
 </div>
 </body>

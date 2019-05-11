@@ -45,10 +45,12 @@ public class UpdateFaculty extends HttpServlet {
             Faculty faculty = facDao.getFacultyById(id);
             faculty.setName(name);
             faculty.setShortName(shortName);
-            facDao.updateFaculty(faculty);
-            session.setAttribute("message", "Факультет успешно редактирован");
+            if(!facDao.updateFaculty(faculty))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Факультет успешно редактирован");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

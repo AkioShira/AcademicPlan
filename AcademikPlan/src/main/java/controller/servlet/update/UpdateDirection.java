@@ -36,9 +36,10 @@ public class UpdateDirection extends HttpServlet {
             Direction direction = directionDao.getDirectionById(id);
             direction.setNumber(number);
             direction.setName(name);
-            directionDao.updateDirection(direction);
 
-            session.setAttribute("message", "Направление успешно редактировано");
+            if(!directionDao.updateDirection(direction))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Направление успешно редактировано");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

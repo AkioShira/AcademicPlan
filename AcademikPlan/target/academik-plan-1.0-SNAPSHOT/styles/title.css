@@ -1,0 +1,95 @@
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper{
+    font-family: sans-serif;
+    background: #3e3e3e;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+}
+
+
+/* ГЛАВНОЕ МЕНЮ */
+.menu ul {
+    min-height: 60px;
+    list-style: none;
+    margin: 0 auto;
+    display: -webkit-flex;
+    display: flex;
+    background: #EBEBEB;
+}
+
+.menu a {
+    min-height: 30px;
+    text-decoration: none;
+    transition: .1s linear;
+    padding: 15px;
+    display: block;
+    color: #242424;
+}
+
+.menu a:hover {background: #BDBDBD}
+
+
+/* КОНТЕЙНЕР ДЛЯ ТАБЛИЦ */
+.content-block{
+    background:#FFFFFF;
+    width: 2100px;
+    height: 1240px;
+    margin: 10px auto;
+    box-shadow: 0 0 25px rgba(0,0,0,0.8);
+    padding: 40px;
+}
+
+.head-table{
+    text-align:center;
+    width: 100%;
+}
+
+/* СКРОЛЛЫ ДЛЯ КОНТЕЙНЕРА */
+.custom-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.toolbar{
+    color: #242424;
+    border-top: 1px solid rgba(0,0,0,0.5);
+    background-color: #D0D0D0;
+    height: 40px;
+    position: fixed;
+    width: 100%;
+    bottom: 30px;
+}
+
+.center-block{
+    padding: 10px;
+}
+
+/* ФУТЕР */
+.footer{
+    text-align: center;
+    font-size: 11px;
+    color: #242424;
+    border-top: 1px solid rgba(0,0,0,0.5);
+    background-color: #D0D0D0;
+    height: 30px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

@@ -38,11 +38,13 @@ public class InsertFaculty extends HttpServlet {
             fac.setName(name);
             fac.setShortName(shortName);
             fac.setVisible(true);
-            facDao.insertFaculty(fac);
 
-            session.setAttribute("message", "Факультет удачно добавлен");
+            if(!facDao.insertFaculty(fac))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Факультет удачно добавлен");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

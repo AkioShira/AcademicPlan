@@ -21,18 +21,19 @@ public class DeleteFaculty extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("idFacultyDelete"));
         Connection connection = null;
+        HttpSession session = req.getSession();
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
             FacultyMariaDb facDao = fb.getFacultyMariaDB(connection);
             Faculty faculty = facDao.getFacultyById(id);
             faculty.setVisible(false);
-            facDao.updateFaculty(faculty);
-
-            HttpSession session = req.getSession();
-            session.setAttribute("message", "Факультет удалён");
+            if(!facDao.updateFaculty(faculty))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Факультет удалён");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

@@ -29,10 +29,12 @@ public class InsertProfile extends HttpServlet {
             ProfileMariaDb profileDao = fb.getProfileMariaDb(connection);
             Profile profile = new Profile();
             profile.setName(name);
-            profileDao.insertProfile(profile);
-            session.setAttribute("message", "Профиль удачно добавлен");
+            if(!profileDao.insertProfile(profile))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Профиль удачно добавлен");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

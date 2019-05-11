@@ -22,11 +22,11 @@ public class LoginFilter implements Filter {
         final HttpServletRequest req = (HttpServletRequest) servletRequest;
         final HttpServletResponse resp = (HttpServletResponse) servletResponse;
         HttpSession session = req.getSession();
+
         //пользователь уже авторизован
         if(nonNull(session) && nonNull(session.getAttribute("sessionUser"))) {
 
             filterChain.doFilter(req, resp);
-
         }else {
             req.getRequestDispatcher("/").forward(req, resp);
         }

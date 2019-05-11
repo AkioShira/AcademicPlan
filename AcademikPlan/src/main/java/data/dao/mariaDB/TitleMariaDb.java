@@ -15,6 +15,11 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
     private Connection connection;
     private String sortParameter = "idTitle";
 
+    @Override
+    public List<Title> getTitlesByVisible(boolean visible) {
+        return getTitlesByVisible(visible? 1 : 0);
+    }
+
     TitleMariaDb(Connection connection){
         this.connection = connection;
     }
@@ -23,6 +28,12 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
     public Title getTitleById(int id) {
         String query = "SELECT * FROM titles WHERE idTitle = "+id+" ORDER BY "+sortParameter;
         return getTitles(query).get(0);
+    }
+
+    @Override
+    public List<Title> getTitlesByDepartment(int idDepartment, boolean visibleTitle) {
+        String query = "SELECT * FROM titles WHERE idDepartment = "+idDepartment+" AND visible = "+ (visibleTitle ? 1:0) +" ORDER BY "+sortParameter;
+        return getTitles(query);
     }
 
     @Override
@@ -40,7 +51,7 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
                 +"', studyTime = "+title.getStudyTime() + ", studyLevel = '"+title.getStudyLevel()
                 + "', idGroupDirection = "+ title.getIdGroupDirection() + ", idDirection = " + title.getIdDirection()
                 + ", idProfile = " + title.getIdProfile() + ", idDepartment = " + title.getIdDepartment()
-                + ", visible = " + title.getVisible();
+                + ", visible = " + title.isVisible();
         try{
             statement = connection.prepareStatement(query);
             statement.execute();
@@ -50,6 +61,7 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
         }finally {
             closeResurse(statement, rs);
         }
+
         return false;
     }
 
@@ -62,7 +74,7 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
                 +"', studyTime = "+title.getStudyTime() + ", studyLevel = '"+title.getStudyLevel()
                 + "', idGroupDirection = "+ title.getIdGroupDirection() + ", idDirection = " + title.getIdDirection()
                 + ", idProfile = " + title.getIdProfile() + ", idDepartment = " + title.getIdDepartment()
-                + ", visible = " + title.getVisible() + " WHERE idTitle = "+ title.getIdTitle();
+                + ", visible = " + title.isVisible() + " WHERE idTitle = "+ title.getIdTitle();
         try{
             statement = connection.prepareStatement(query);
             statement.execute();
@@ -97,6 +109,14 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
         this.sortParameter = s.toString();
     }
 
+    private List<Title> getTitlesByVisible(int visible) {
+        String query = "SELECT * FROM titles";
+        if(visible != -1)
+            query += " WHERE visible = "+visible;
+        query += " ORDER BY "+sortParameter;
+        return getTitles(query);
+    }
+
     private List<Title> getTitles(String query) {
         List<Title> titleList = new ArrayList<Title>();
         PreparedStatement statement = null;
@@ -116,8 +136,8 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
                 title.setIdGroupDirection(rs.getInt("idGroupDirection"));
                 title.setIdDirection(rs.getInt("idDirection"));
                 title.setIdProfile(rs.getInt("idProfile"));
-                title.setIdDepartment(rs.getInt(rs.getInt("idDepartment")));
-                title.setVisible(rs.getInt("visible"));
+                title.setIdDepartment(rs.getInt("idDepartment"));
+                title.setVisible(rs.getInt("visible") == 1);
                 titleList.add(title);
             }
         } catch (SQLException e) {

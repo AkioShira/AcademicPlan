@@ -31,10 +31,12 @@ public class UpdateProfile extends HttpServlet {
             ProfileMariaDb profileDao = fb.getProfileMariaDb(connection);
             Profile profile = profileDao.getProfileById(id);
             profile.setName(name);
-            profileDao.updateProfile(profile);
-            session.setAttribute("message", "Профиль успешно редактирован");
+            if(!profileDao.updateProfile(profile))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Профиль успешно редактирован");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

@@ -33,10 +33,13 @@ public class InsertDirection extends HttpServlet {
             Direction direction = new Direction();
             direction.setName(name);
             direction.setNumber(number);
-            directionDao.insertDirection(direction);
-            session.setAttribute("message", "Направление успешно добавлено");
+
+            if(!directionDao.insertDirection(direction))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Направление успешно добавлено");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

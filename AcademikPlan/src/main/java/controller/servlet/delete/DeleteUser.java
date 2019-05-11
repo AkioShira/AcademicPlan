@@ -21,18 +21,19 @@ public class DeleteUser extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("idUser"));
         Connection connection = null;
+        HttpSession session = req.getSession();
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
             UserMariaDb userDao = fb.getUserMariaDB(connection);
             User user = userDao.getUserById(id);
             user.setVisible(false);
-            userDao.updateUser(user);
-
-            HttpSession session = req.getSession();
-            session.setAttribute("message", "Пользователь удалён");
+            if(!userDao.updateUser(user))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Пользователь удалён");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

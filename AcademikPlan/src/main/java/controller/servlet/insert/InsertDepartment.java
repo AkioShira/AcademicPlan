@@ -39,11 +39,13 @@ public class InsertDepartment extends HttpServlet {
             department.setShortName(shortName);
             department.setIdFaculty(idFaculty);
             department.setVisible(true);
-            depDao.insertDepartment(department);
 
-            session.setAttribute("message", "Кафедра успешно добавлена");
+            if(!depDao.insertDepartment(department))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Кафедра успешно добавлена");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

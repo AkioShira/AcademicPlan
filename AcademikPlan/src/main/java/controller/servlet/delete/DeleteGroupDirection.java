@@ -23,16 +23,18 @@ public class DeleteGroupDirection extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("idDirectionDelete"));
         Connection connection = null;
+        HttpSession session = req.getSession();
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
             GroupDirectionMariaDb directionDao = fb.getGroupDirectionMariaDb(connection);
             GroupDirection direction = directionDao.getDirectionById(id);
-            directionDao.deleteDirection(direction);
-            HttpSession session = req.getSession();
-            session.setAttribute("message", "Направление удалено");
+            if(!directionDao.deleteDirection(direction))
+                session.setAttribute("message", "Направление удалено");
+            else session.setAttribute("erMessage", "Не удалось провести операцию");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

@@ -4,8 +4,10 @@ import connection.pooling.ConnectionPool;
 import data.dao.mariaDB.DepartmentMariaDb;
 import data.dao.mariaDB.FactoryMariaDb;
 import data.dao.mariaDB.FacultyMariaDb;
+import data.dao.mariaDB.TitleMariaDb;
 import data.model.Department;
 import data.model.Faculty;
+import data.model.Title;
 import data.model.User;
 
 import javax.servlet.ServletException;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/plans")
@@ -29,16 +32,29 @@ public class Plans extends HttpServlet {
             FactoryMariaDb factory = new FactoryMariaDb();
             FacultyMariaDb facDao = factory.getFacultyMariaDB(connection);
             DepartmentMariaDb depDao = factory.getDepartmentMariaDB(connection);
+            TitleMariaDb titleDao = factory.getTitleMariaDb(connection);
             HttpSession session = req.getSession();
             User user = (User) session.getAttribute("sessionUser");
             Department dep = depDao.getDepartmentById(user.getIdDepartment());
             Faculty fac = facDao.getFacultyById(dep.getIdFaculty());
-            List<Faculty> facList = facDao.getFacultyByVisible(true);
-            List<Department> depList = depDao.getDepartmentByVisible(true);
-            depList.remove(0);
-            facList.remove(0);
-            req.setAttribute("facList", facList);
-            req.setAttribute("depList", depList);
+            if(user.getIdDepartment()==1) {
+                List<Faculty> facList = facDao.getFacultyByVisible(true);
+                List<Department> depList = depDao.getDepartmentByVisibleFaculty(true, true);
+
+                List<Title> titleList = new ArrayList<>();
+                for (Department d : depList) {
+                    titleList.addAll(titleDao.getTitlesByDepartment(d.getIdDepartment(), true));
+                }
+                depList.remove(0);
+                facList.remove(0);
+                req.setAttribute("facList", facList);
+                req.setAttribute("depList", depList);
+                req.setAttribute("titleList", titleList);
+            }else {
+                List<Title> userTitleList = new ArrayList<>();
+                userTitleList.addAll(titleDao.getTitlesByDepartment(dep.getIdDepartment(), true));
+                req.setAttribute("userTitleList", userTitleList);
+            }
             req.setAttribute("departmentUser", dep);
             req.setAttribute("facultyUser", fac);
         } catch (SQLException e) {

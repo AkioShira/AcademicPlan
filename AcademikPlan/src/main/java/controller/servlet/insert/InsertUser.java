@@ -41,11 +41,13 @@ public class InsertUser extends HttpServlet {
             user.setIdDepartment(idDepartment);
             user.setIdRole(idRole);
             user.setVisible(true);
-            userDao.insertUser(user);
 
-            session.setAttribute("message", "Пользователь успешно добавлен");
+            if(!userDao.insertUser(user))
+                session.setAttribute("erMessage", "Не удалось провести операцию");
+            else session.setAttribute("message", "Пользователь успешно добавлен");
         } catch (SQLException e) {
             e.printStackTrace();
+
         } finally {
             try {
                 if(connection != null)

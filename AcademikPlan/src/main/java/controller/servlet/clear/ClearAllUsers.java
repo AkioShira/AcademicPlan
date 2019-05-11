@@ -24,24 +24,22 @@ public class ClearAllUsers extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection connection = null;
+        HttpSession session = req.getSession();
         try {
             connection = ConnectionPool.getConnection();
             FactoryMariaDb factory = new FactoryMariaDb();
             DepartmentMariaDb depDao = factory.getDepartmentMariaDB(connection);
-            List<Department> depList = depDao.getAllDepartments();
+            List<Department> depList = depDao.getDepartmentByVisibleFaculty(true, true);
             List<User> userListUnvisible = new ArrayList<>();
             UserMariaDb userDao = factory.getUserMariaDB(connection);
             //Собрать пользователей из не удалённых кафедр
             for(Department d : depList){
-                if(d.isVisible()) {
-                    userListUnvisible.addAll(userDao.getUsersByDepartment(d.getIdDepartment(), false));
-                }
+                userListUnvisible.addAll(userDao.getUsersByDepartment(d.getIdDepartment(), false));
             }
             for(User user : userListUnvisible) {
                 userDao.deleteUser(user);
             }
 
-            HttpSession session = req.getSession();
             session.setAttribute("message", "Список удалённых пользователей очищен");
         } catch (SQLException e) {
             e.printStackTrace();
