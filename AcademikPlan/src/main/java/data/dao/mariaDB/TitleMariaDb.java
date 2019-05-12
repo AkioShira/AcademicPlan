@@ -49,6 +49,7 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
         String query="INSERT INTO titles SET name = '" + title.getName() + "', yearReception = "+title.getYearReception()
                 + ", yearCreation = "+ title.getYearCreation()+", qualification = '"+title.getQualification()
                 +"', studyTime = "+title.getStudyTime() + ", studyLevel = '"+title.getStudyLevel()
+                + "', formEducation = '" + title.getFormEducation()
                 + "', idGroupDirection = "+ title.getIdGroupDirection() + ", idDirection = " + title.getIdDirection()
                 + ", idProfile = " + title.getIdProfile() + ", idDepartment = " + title.getIdDepartment()
                 + ", visible = " + title.isVisible();
@@ -72,6 +73,7 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
         String query="UPDATE titles SET name = '" + title.getName() + "', yearReception = "+title.getYearReception()
                 + ", yearCreation = "+ title.getYearCreation()+", qualification = '"+title.getQualification()
                 +"', studyTime = "+title.getStudyTime() + ", studyLevel = '"+title.getStudyLevel()
+                + "', formEducation = '" + title.getFormEducation()
                 + "', idGroupDirection = "+ title.getIdGroupDirection() + ", idDirection = " + title.getIdDirection()
                 + ", idProfile = " + title.getIdProfile() + ", idDepartment = " + title.getIdDepartment()
                 + ", visible = " + title.isVisible() + " WHERE idTitle = "+ title.getIdTitle();
@@ -133,6 +135,7 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
                 title.setQualification(rs.getString("qualification"));
                 title.setStudyTime(rs.getInt("studyTime"));
                 title.setStudyLevel(rs.getString("studyLevel"));
+                title.setFormEducation(rs.getString("formEducation"));
                 title.setIdGroupDirection(rs.getInt("idGroupDirection"));
                 title.setIdDirection(rs.getInt("idDirection"));
                 title.setIdProfile(rs.getInt("idProfile"));

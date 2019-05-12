@@ -11,6 +11,7 @@ public class Title {
     private String qualification;
     private int studyTime;
     private String studyLevel;
+    private String formEducation;
     private int idGroupDirection;
     private int idDirection;
     private int idProfile;
@@ -19,6 +20,6 @@ public class Title {
 
     public enum sortParameter{
         idTitle, name, yearReception, yearCreation, qualification, studyTime,
-        studyLevel, idGroupDirection, idDirection, idProfile, idDepartment
+        studyLevel, formEducation, idGroupDirection, idDirection, idProfile, idDepartment
     }
 }

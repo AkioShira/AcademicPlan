@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -20,6 +21,7 @@ import java.util.List;
 public class TitleManagment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         Connection connection = null;
         try {
             connection = ConnectionPool.getConnection();
@@ -32,26 +34,21 @@ public class TitleManagment extends HttpServlet {
             ProfileMariaDb profileDao = fb.getProfileMariaDb(connection);
             List<Profile> profileList = profileDao.getAllProfiles();
             DepartmentMariaDb departmentDao = fb.getDepartmentMariaDB(connection);
-            List<Department> departmentList = departmentDao.getDepartmentByVisibleFaculty(true, true);
+
             List<Title> titleListVisible = new ArrayList<>();
             List<Title> titleListUnvisible = new ArrayList<>();
+
+            List<Department> departmentList = new ArrayList<>();
+            User user = (User) session.getAttribute("sessionUser");
+            if(user.getIdRole()==2){
+                departmentList.add(departmentDao.getDepartmentById(user.getIdDepartment()));
+            }else
+                departmentList = departmentDao.getDepartmentByVisibleFaculty(true, true);
 
             for(Department d : departmentList){
                 titleListVisible.addAll(titleDao.getTitlesByDepartment(d.getIdDepartment(), true));
                 titleListUnvisible.addAll(titleDao.getTitlesByDepartment(d.getIdDepartment(), false));
             }
-
-            HashMap<Integer, String> groupDirectionMap = new HashMap<Integer, String>();
-            for(GroupDirection g : groupDirectionList)
-                groupDirectionMap.put(g.getIdGroupDirection(), g.getNumber()+ " " + g.getName());
-
-            HashMap<Integer, String> directionMap = new HashMap<Integer, String>();
-            for(Direction d : directionList)
-                directionMap.put(d.getIdDirection(), d.getNumber()+ " " + d.getName());
-
-            HashMap<Integer, String> profileMap = new HashMap<Integer, String>();
-            for(Profile p : profileList)
-                profileMap.put(p.getIdProfile(), p.getName());
 
             HashMap<Integer, String> departmentMap = new HashMap<Integer, String>();
             for(Department d : departmentList)
@@ -68,11 +65,8 @@ public class TitleManagment extends HttpServlet {
             req.setAttribute("directionList", directionList);
             req.setAttribute("profileList", profileList);
             req.setAttribute("departmentList", departmentList);
-            req.setAttribute("groupDirectionMap", groupDirectionMap);
-            req.setAttribute("directionMap", directionMap);
-            req.setAttribute("profileMap", profileMap);
-            req.setAttribute("departmentMap", departmentMap);
 
+            req.setAttribute("departmentMap", departmentMap);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
