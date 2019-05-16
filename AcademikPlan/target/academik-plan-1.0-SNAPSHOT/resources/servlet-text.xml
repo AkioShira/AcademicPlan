@@ -50,13 +50,11 @@
         <timeBudget>
             <budget>КУРС</budget>
             <budget>Теорет. обучение</budget>
-            <budget>Сдача кредитов</budget>
             <budget>Экзамен. сессия</budget>
-            <budget>Каникулы</budget>
             <budget>Практика</budget>
-            <budget>Научно-исслед. работа (НИР)</budget>
+            <budget>Выпускная квалификац. работа</budget>
             <budget>Гос. экзамен</budget>
-            <budget>Подготовка ВКР</budget>
+            <budget>Каникулы</budget>
             <budget>Всего</budget>
         </timeBudget>
         <!-- ПРАКТИКА -->

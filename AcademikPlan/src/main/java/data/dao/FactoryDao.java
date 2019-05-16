@@ -13,4 +13,7 @@ public interface FactoryDao {
     DirectionMariaDb getDirectionMariaDb(Connection connection);
     GroupDirectionMariaDb getGroupDirectionMariaDb(Connection connection);
     TitleMariaDb getTitleMariaDb(Connection connection);
+    StudyShedulesMariaDb getStudySheduleMariaDb(Connection connection);
+    PractMariaDb getPractMariaDb(Connection connection);
+    StateSertificationMariaDb getStateSertificationMariaDb(Connection connection);
 }

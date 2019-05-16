@@ -3,8 +3,10 @@ package controller.servlet.insert;
 import connection.pooling.ConnectionPool;
 import data.dao.mariaDB.DirectionMariaDb;
 import data.dao.mariaDB.FactoryMariaDb;
+import data.dao.mariaDB.StudyShedulesMariaDb;
 import data.dao.mariaDB.TitleMariaDb;
 import data.model.Direction;
+import data.model.StudyShedule;
 import data.model.Title;
 
 import javax.servlet.ServletException;
@@ -16,6 +18,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/insertTitle")
 public class InsertTitle extends HttpServlet {
@@ -49,9 +53,12 @@ public class InsertTitle extends HttpServlet {
             title.setIdDepartment(idDepartment);
             title.setVisible(true);
 
-            if(!titleDao.insertTitle(title))
+            if(!titleDao.insertTitle(title)) {
                 session.setAttribute("erMessage", "Не удалось провести операцию");
-            else session.setAttribute("message", "Титул успешно добавлен");
+                throw new SQLException();
+            }else session.setAttribute("message", "Титул успешно добавлен");
+
+
         } catch (SQLException e) {
             e.printStackTrace();
 

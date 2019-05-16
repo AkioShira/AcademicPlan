@@ -206,9 +206,9 @@
                         <tr>
                             <td>Время обучения</td>
                             <td><input type="text"
-                                       pattern="[0-9]{1,2}"
-                                       title="Время обучения должно быть не более 2 символов и состоять из цифр."
-                                       minlength="1" maxlength="2" required="required" id="studyTimeUpdate" name="studyTimeUpdate" class="text-field-popup"/></td>
+                                       pattern="[1-8]{1}"
+                                       title="Время обучения должно быть однозначное число от 1 до 8."
+                                       minlength="1" maxlength="1" required="required" id="studyTimeUpdate" name="studyTimeUpdate" class="text-field-popup"/></td>
                         </tr>
                         <tr>
                             <td>Уровень обучения</td>
@@ -302,9 +302,9 @@
                         <tr>
                             <td>Время обучения</td>
                             <td><input type="text"
-                                       pattern="[0-9]{1,2}"
-                                       title="Время обучения должно быть не более 2 символов и состоять из цифр."
-                                       minlength="1" maxlength="2" required="required" id="studyTimeInsert" name="studyTimeInsert" class="text-field-popup"/></td>
+                                       pattern="[1-8]{1}"
+                                       title="Время обучения должно быть однозначное число от 1 до 8."
+                                       minlength="1" maxlength="1" required="required" id="studyTimeInsert" name="studyTimeInsert" class="text-field-popup"/></td>
                         </tr>
                         <tr>
                             <td>Уровень обучения</td>

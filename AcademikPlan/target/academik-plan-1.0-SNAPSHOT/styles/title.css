@@ -12,6 +12,12 @@ p{
     display: inline-block; font-size: 12px; text-decoration: underline; margin: 0px;
 }
 
+table{
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
 a:link {
     color: black;
 }
@@ -102,6 +108,14 @@ a:hover {
     padding: 10px;
 }
 
+.rotatable{
+    width: 20px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
 
 .button{
     color: white;
@@ -144,4 +158,21 @@ a:hover {
     border: 1px solid #5d5d5d;
     border-radius: 4px;
     box-sizing: border-box
+}
+
+.text-field-n {
+    border: 0px solid #242424;
+    border-bottom-width: 1px;
+    width: 20px;
+}
+
+.title-table{
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.title-table tr td {
+    border: 1px solid black;
+    padding: 5px 5px 5px 5px;
 }
