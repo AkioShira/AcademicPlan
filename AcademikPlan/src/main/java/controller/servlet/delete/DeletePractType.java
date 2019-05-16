@@ -1,8 +1,10 @@
-package controller.servlet.insert;
+package controller.servlet.delete;
 
 import connection.pooling.ConnectionPool;
 import data.dao.mariaDB.FactoryMariaDb;
+import data.dao.mariaDB.PractTypesMariaDb;
 import data.dao.mariaDB.ProfileMariaDb;
+import data.model.PractType;
 import data.model.Profile;
 
 import javax.servlet.ServletException;
@@ -15,23 +17,21 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet("/insertProfile")
-public class InsertProfile extends HttpServlet {
+@WebServlet("/deletePractType")
+public class DeletePractType extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        HttpSession session = req.getSession();
-        String name = req.getParameter("nameInsert");
+        int id = Integer.parseInt(req.getParameter("idPracticDelete"));
         Connection connection = null;
+        HttpSession session = req.getSession();
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
-            ProfileMariaDb profileDao = fb.getProfileMariaDb(connection);
-            Profile profile = new Profile();
-            profile.setName(name);
-            if(!profileDao.insertProfile(profile))
+            PractTypesMariaDb practDao = fb.getPractTypesMariaDb(connection);
+            PractType practType = practDao.getPractTypeById(id);
+            if(!practDao.deletePractType(practType))
                 session.setAttribute("erMessage", "Не удалось провести операцию");
-            else session.setAttribute("message", "Профиль успешно добавлен");
+            else session.setAttribute("message", "Вид практики удалён");
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -43,7 +43,6 @@ public class InsertProfile extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        resp.sendRedirect("/plans/admin/profile-managment");
-
+        resp.sendRedirect("/plans/admin/practic-managment");
     }
 }

@@ -6,6 +6,7 @@ import data.model.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class TitleGenerate {
@@ -145,7 +146,7 @@ public class TitleGenerate {
         StudyShedulesMariaDb sheduleDao = fb.getStudySheduleMariaDb(connection);
         List<Budget> budgets = sheduleDao.getBudgetByTitle(title.getIdTitle(), title.getStudyTime());
         List<NodePage> budgetList = xmlEditor.getArrayXml("budget");
-        StringBuilder html = new StringBuilder("<div style=\"width: 400px; float: left; font-size: 12px; padding-left: 50px; padding-top: 10px;\">\n" +
+        StringBuilder html = new StringBuilder("<div style=\"width: 400px; float: left; font-size: 12px; padding-left: 50px; padding-top: 20px;\">\n" +
                 "                    <h4 style=\"text-align: center;\">" + titleList.get(19).getValue() + "</h4>\n" +
                 "                    <table border=\"1\" style=\"font-size: 12px; text-align: center;\">\n" +
                 "                        <tr>");
@@ -177,6 +178,57 @@ public class TitleGenerate {
         return html.toString();
     }
 
+    public String getPractic(){
+        PractMariaDb practDao = fb.getPractMariaDb(connection);
+        List<Pract> practList = practDao.getPractsByTitle(title.getIdTitle());
+        PractTypesMariaDb typesDao = fb.getPractTypesMariaDb(connection);
+        List<PractType> practTypes = typesDao.getAllPractTypes();
+        HashMap<Integer, String> typeMap = new HashMap<Integer, String>();
+        for(PractType t : practTypes)
+            typeMap.put(t.getIdPractType(), t.getName());
+        List<NodePage> practHeadList = xmlEditor.getArrayXml("headPractics");
+        StringBuilder html = new StringBuilder("<div style=\"width: 200px; float: left; padding-left: 30px; font-size: 12px; padding-top: 20px;\">\n" +
+                "                    <h4 style=\"text-align: center;\">" + titleList.get(20).getValue() + "</h4>\n" +
+                "                    <table border=\"1\" style=\"text-align: center;\">\n" +
+                "                        <tr style=\"height: 45px;\">");
+        for(NodePage node : practHeadList)
+            html.append("<td>").append(node.getValue()).append("</td>");
+        html.append(" </tr>");
+        for(Pract pract : practList){
+            html.append("<tr><td>").append(typeMap.get(pract.getIdPractType())).append("</td>");
+            html.append("<td>").append(pract.getSemester()).append("</td>");
+            html.append("<td>").append(pract.getWeek()).append("</td></tr>");
+        }
+        html.append("</table></div>");
+        return html.toString();
+    }
+
+    public String getStateSertification(){
+        StateSertificationMariaDb stateDao = fb.getStateSertificationMariaDb(connection);
+        List<StateSertification> listState = stateDao.getSertificationsByTitle(title.getIdTitle());
+        List<NodePage> headList = xmlEditor.getArrayXml("headState");
+        String html = "<div style=\"width: 300px; font-size: 12px; float: left; padding-left: 30px; padding-top: 20px;\">\n" +
+                "                    <h4 style=\"text-align: center;\">"+titleList.get(21).getValue()+
+                "</h4>\n" +
+                "                    <table border=\"1\" style=\"font-size: 12px; text-align: center;\">\n" +
+                "                        <tr style=\"height: 45px;\">";
+        for(NodePage node : headList)
+            html+="<td>"+node.getValue()+"</td>";
+        html+="</tr>\n" +
+                "<tr>\n" +
+                "<td>Государственная итоговая аттестация</td>\n" +
+                "<td>Государственный экзамен</td><td>"+listState.get(0).getSemester()+"</td>\n" +
+                "                        </tr>\n" +
+                "                        <tr>\n" +
+                "                            <td>Государственная итоговая аттестация</td>\n" +
+                "                            <td>Выпускная квалификационная работа</td>\n" +
+                "                            <td>"+listState.get(1).getSemester()+"</td>\n" +
+                "                        </tr>\n" +
+                "                    </table>\n" +
+                "                </div>";
+        return html;
+    }
+
     public String getStyle(){
         return "<style>\n" +
                 "\t* {\n" +
@@ -189,7 +241,7 @@ public class TitleGenerate {
                 "}\n" +
                 "\t\n" +
                 "\ttable{\n" +
-                "\t\ttable-layout: fixed;\n" +
+                "\t\ttable-layout: fixed; border-color: black;\n" +
                 "    \tborder-collapse: collapse;\n" +
                 "    \tmargin: 0 auto;\n" +
                 "\t}\n" +

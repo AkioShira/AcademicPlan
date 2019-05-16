@@ -32,9 +32,18 @@ public class UpdateTitlePage extends HttpServlet {
         int studyTime = Integer.parseInt(req.getParameter("studyTime"));
         String studyLevel = req.getParameter("studyLevel");
         String formEducation = req.getParameter("formEducation");
-        int groupDirection = Integer.parseInt(req.getParameter("groupDirection"));
-        int direction = Integer.parseInt(req.getParameter("direction"));
-        int profile = Integer.parseInt(req.getParameter("profile"));
+        int groupDirection = 1;
+        int direction = 1;
+        int profile = 1;
+        try {
+            groupDirection = Integer.parseInt(req.getParameter("groupDirection"));
+        }catch (NumberFormatException e){        }
+        try {
+            direction = Integer.parseInt(req.getParameter("direction"));
+        }catch (NumberFormatException e){       }
+        try {
+            profile = Integer.parseInt(req.getParameter("profile"));
+        }catch (NumberFormatException e){     }
 
         Connection connection = null;
         try{
@@ -68,10 +77,16 @@ public class UpdateTitlePage extends HttpServlet {
             PractMariaDb practDao = fb.getPractMariaDb(connection);
 
             List<Pract> practs = practDao.getPractsByTitle(id);
-            for(int i = 0; i<practs.size(); i++){
+            for(int i = 1; i<=practs.size(); i++){
+                int idPract = 1;
+                try {
+                    idPract = Integer.parseInt(req.getParameter("practType"+i));
+                }catch (NumberFormatException e){     }
+
+                practs.get(i-1).setIdPractType(idPract);
                 String[] pract = req.getParameterValues("pract"+i);
-                practs.get(i).setSemester(Integer.parseInt(pract[0]));
-                practs.get(i).setWeek(Integer.parseInt(pract[1]));
+                practs.get(i-1).setSemester(Integer.parseInt(pract[0]));
+                practs.get(i-1).setWeek(Integer.parseInt(pract[1]));
             }
             practDao.updatePracts(practs);
 

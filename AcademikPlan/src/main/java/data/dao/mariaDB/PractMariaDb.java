@@ -15,8 +15,14 @@ import java.util.List;
 public class PractMariaDb extends ConnectionService implements PractDao {
     private Connection connection;
 
+
     PractMariaDb(Connection connection){
         this.connection = connection;
+    }
+
+    @Override
+    public Pract getPractById(int id) {
+        return getPractTypes("SELECT * FROM practs WHERE idPract = "+id).get(0);
     }
 
     @Override
@@ -92,6 +98,23 @@ public class PractMariaDb extends ConnectionService implements PractDao {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            closeResurse(statement, rs);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deletePract(Pract pract) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="DELETE FROM practs WHERE idPract = "+pract.getIdPract();
+        try{
+            statement = connection.prepareStatement(query);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
             closeResurse(statement, rs);
         }
         return false;

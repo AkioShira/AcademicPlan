@@ -16,6 +16,11 @@ public class FactoryMariaDb implements FactoryDao {
     }
 
     @Override
+    public PractTypesMariaDb getPractTypesMariaDb(Connection connection) {
+        return new PractTypesMariaDb(connection);
+    }
+
+    @Override
     public StateSertificationMariaDb getStateSertificationMariaDb(Connection connection) {
         return new StateSertificationMariaDb(connection);
     }

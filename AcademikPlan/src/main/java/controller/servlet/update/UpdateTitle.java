@@ -29,9 +29,18 @@ public class UpdateTitle extends HttpServlet {
         String qualification = req.getParameter("qualificationUpdate");
         int studyTime = Integer.parseInt(req.getParameter("studyTimeUpdate"));
         String studyLevel = req.getParameter("studyLevelUpdate");
-        int groupDirection = Integer.parseInt(req.getParameter("groupDirectionUpdate"));
-        int direction = Integer.parseInt(req.getParameter("directionUpdate"));
-        int profile = Integer.parseInt(req.getParameter("profileUpdate"));
+        int groupDirection = 1;
+        int direction = 1;
+        int profile = 1;
+        try {
+            groupDirection = Integer.parseInt(req.getParameter("groupDirection"));
+        }catch (NumberFormatException e){        }
+        try {
+            direction = Integer.parseInt(req.getParameter("direction"));
+        }catch (NumberFormatException e){       }
+        try {
+            profile = Integer.parseInt(req.getParameter("profile"));
+        }catch (NumberFormatException e){     }
         int department = Integer.parseInt(req.getParameter("departmentUpdate"));
 
         Connection connection = null;

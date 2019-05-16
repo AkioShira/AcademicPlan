@@ -2,6 +2,7 @@ package data.dao;
 
 import data.dao.mariaDB.*;
 
+import java.net.ConnectException;
 import java.sql.Connection;
 
 public interface FactoryDao {
@@ -15,5 +16,6 @@ public interface FactoryDao {
     TitleMariaDb getTitleMariaDb(Connection connection);
     StudyShedulesMariaDb getStudySheduleMariaDb(Connection connection);
     PractMariaDb getPractMariaDb(Connection connection);
+    PractTypesMariaDb getPractTypesMariaDb(Connection connection);
     StateSertificationMariaDb getStateSertificationMariaDb(Connection connection);
 }

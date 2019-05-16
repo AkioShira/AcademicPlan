@@ -2,7 +2,9 @@ package controller.servlet.insert;
 
 import connection.pooling.ConnectionPool;
 import data.dao.mariaDB.FactoryMariaDb;
+import data.dao.mariaDB.PractTypesMariaDb;
 import data.dao.mariaDB.ProfileMariaDb;
+import data.model.PractType;
 import data.model.Profile;
 
 import javax.servlet.ServletException;
@@ -15,8 +17,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet("/insertProfile")
-public class InsertProfile extends HttpServlet {
+@WebServlet("/insertPractType")
+public class InsertPractType extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -26,12 +28,13 @@ public class InsertProfile extends HttpServlet {
         try{
             connection = ConnectionPool.getConnection();
             FactoryMariaDb fb = new FactoryMariaDb();
-            ProfileMariaDb profileDao = fb.getProfileMariaDb(connection);
-            Profile profile = new Profile();
-            profile.setName(name);
-            if(!profileDao.insertProfile(profile))
+            PractTypesMariaDb practDao = fb.getPractTypesMariaDb(connection);
+            PractType practType = new PractType();
+            practType.setName(name);
+            practType.setName(name);
+            if(!practDao.insertPractType(practType))
                 session.setAttribute("erMessage", "Не удалось провести операцию");
-            else session.setAttribute("message", "Профиль успешно добавлен");
+            else session.setAttribute("message", "Вид практики успешно добавлен");
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -43,7 +46,7 @@ public class InsertProfile extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        resp.sendRedirect("/plans/admin/profile-managment");
+        resp.sendRedirect("/plans/admin/practic-managment");
 
     }
 }

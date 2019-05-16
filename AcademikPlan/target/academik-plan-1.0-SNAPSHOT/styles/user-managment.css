@@ -61,13 +61,14 @@ a:hover {
     right: 0; /* Положение блока от правого края */
 }
 
+.center-block p{
+    padding-right: 8px;
+}
+
+
 .center-table {
     border-collapse: collapse;
     width: 100%;
-}
-
-.center-block p{
-    padding-right: 8px;
 }
 
 .center-table th, td {

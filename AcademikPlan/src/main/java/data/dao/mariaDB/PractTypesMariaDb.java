@@ -24,6 +24,62 @@ public class PractTypesMariaDb  extends ConnectionService implements PractTypesD
         return getPractTypes("SELECT * FROM pract_types");
     }
 
+    @Override
+    public PractType getPractTypeById(int id) {
+        return getPractTypes("SELECT * FROM pract_types WHERE idPractType = "+id).get(0);
+    }
+
+    @Override
+    public boolean insertPractType(PractType pract) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="INSERT INTO pract_types SET name = '"+pract.getName()+"'";
+        try{
+            statement = connection.prepareStatement(query);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updatePractType(PractType pract) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="UPDATE pract_types SET name = '"+pract.getName()+"' WHERE idPractType = "+pract.getIdPractType();
+        try{
+            statement = connection.prepareStatement(query);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deletePractType(PractType pract) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="DELETE FROM pract_types WHERE idPractType = "+pract.getIdPractType();
+        try{
+            statement = connection.prepareStatement(query);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return false;
+    }
+
     private List<PractType> getPractTypes(String query) {
         List<PractType> typesList = new ArrayList<PractType>();
         PreparedStatement statement = null;

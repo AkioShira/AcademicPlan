@@ -29,7 +29,9 @@
         <p><a class="top-button" href="<c:url value='/plans/admin/profile-managment' />">Управление профилями (направленность)</a></p>
         <p><a class="top-button" href="<c:url value='/plans/admin/direction-managment' />">Управление направлениями подготовки</a></p>
         <p><a class="top-button" href="<c:url value='/plans/admin/group-direction-managment' />">Управление укрупленными группами направлений подготовки</a></p>
+        <p><a class="top-button" href="<c:url value='/plans/admin/practic-managment' />">Управление видами практик</a></p>
         <p><a class="top-button" href="<c:url value='/plans/admin/page-managment' />">Редактирование информации на страницах</a></p>
+
     </div>
 </div>
 </body>

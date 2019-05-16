@@ -113,15 +113,21 @@ public class TitlePage extends HttpServlet {
             PractMariaDb practDao = fb.getPractMariaDb(connection);
             List<Pract> practList = practDao.getPractsByTitle(id);
 
+            PractTypesMariaDb typesDao = fb.getPractTypesMariaDb(connection);
+            List<PractType> practTypes = typesDao.getAllPractTypes();
+
+            //
+            HashMap<Integer, String> typeMap = new HashMap<Integer, String>();
+            for(PractType t : practTypes)
+                typeMap.put(t.getIdPractType(), t.getName());
+
             if(practList.size()<1){
-                for(int i = 1; i<4; i++){
-                    Pract pract = new Pract();
-                    pract.setIdTitle(id);
-                    pract.setIdPractType(i);
-                    pract.setSemester(0);
-                    pract.setWeek(0);
-                    practList.add(pract);
-                }
+                Pract pract = new Pract();
+                pract.setIdTitle(id);
+                pract.setIdPractType(1);
+                pract.setSemester(0);
+                pract.setWeek(0);
+                practList.add(pract);
                 practDao.insertPracts(practList);
             }
 
@@ -137,13 +143,15 @@ public class TitlePage extends HttpServlet {
                 }
                 stateDao.insertSertifications(listState);
             }
-
+            practTypes.remove(0);
             req.setAttribute("row0", row0);
             req.setAttribute("row1", row1);
             req.setAttribute("courses", courses);
             req.setAttribute("sheduleList", sheduleList);
             req.setAttribute("budgets", budgets);
             req.setAttribute("practList", practList);
+            req.setAttribute("practTypes", practTypes);
+            req.setAttribute("typeMap", typeMap);
             req.setAttribute("stateList", listState);
         }catch (SQLException e) {
             e.printStackTrace();

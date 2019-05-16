@@ -11,49 +11,60 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7600fc8c-8387-46bc-ad72-e0e3d09efff5" name="Default Changelist" comment="User restore commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/generate/TitleGenerate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/PractDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/PractTypesDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/StateSertificationDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/StudySheduleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractMariaDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractTypesMariaDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/StateSertificationMariaDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/StudyShedulesMariaDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/model/Budget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/model/Pract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/model/PractType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/model/StateSertification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/model/StudyShedule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/PracticManagment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/delete/DeletePract.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/delete/DeletePractType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertPract.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertPractType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdatePractType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/practic-managment.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/generate/TitleGenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/generate/TitleGenerate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/PdfSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/PdfSaver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/TitlePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/TitlePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertTitle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitlePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitlePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/FactoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/FactoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/PractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/PractDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/PractTypesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/PractTypesDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/FactoryMariaDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/FactoryMariaDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/servlet-text.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/servlet-text.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractMariaDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractMariaDb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractTypesMariaDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractTypesMariaDb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/styles/message.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/styles/message.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/styles/title.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/styles/title.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/title-managment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/title-managment.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/styles/user-managment.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/styles/user-managment.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/title.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/title.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/Login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/generate/TitleGenerate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/generate/TitleGenerate.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/PdfSaver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/PdfSaver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/TitlePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/TitlePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/insert/InsertTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/insert/InsertTitle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/insert/InsertProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/insert/InsertProfile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/update/UpdateTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/update/UpdateTitle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/update/UpdateTitlePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/update/UpdateTitlePage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/FactoryDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/FactoryDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/PractDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/PractDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/PractTypesDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/PractTypesDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/FactoryMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/FactoryMariaDb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/resources/servlet-text.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/resources/servlet-text.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/PractMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/PractMariaDb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/PractTypesMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/PractTypesMariaDb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/styles/message.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/styles/message.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/styles/title.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/styles/title.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title-managment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title-managment.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/styles/user-managment.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/styles/user-managment.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/generate/TitleGenerate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/generate/TitleGenerate.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/PdfSaver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/PdfSaver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/TitlePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/TitlePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/insert/InsertTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/insert/InsertTitle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/insert/InsertProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/insert/InsertProfile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/update/UpdateTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/update/UpdateTitle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/update/UpdateTitlePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/update/UpdateTitlePage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/dao/FactoryDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/FactoryDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/dao/PractDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/PractDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/dao/PractTypesDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/PractTypesDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/FactoryMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/FactoryMariaDb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/PractMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/PractMariaDb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/PractTypesMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/PractTypesMariaDb.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -120,10 +131,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/title.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdatePractType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="79" column="28" selection-start-line="79" selection-start-column="28" selection-end-line="79" selection-end-column="28" />
+            <state relative-caret-position="197">
+              <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -131,8 +142,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/generate/TitleGenerate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="179" column="29" lean-forward="true" selection-start-line="179" selection-start-column="29" selection-end-line="179" selection-end-column="29" />
+            <state relative-caret-position="2662">
+              <caret line="270" column="76" lean-forward="true" selection-start-line="270" selection-start-column="76" selection-end-line="270" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,10 +152,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/PdfSaver.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitlePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+            <state relative-caret-position="-738">
+              <caret line="45" column="47" selection-start-line="34" selection-start-column="8" selection-end-line="45" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -152,26 +172,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="65" column="54" selection-start-line="65" selection-start-column="54" selection-end-line="65" selection-end-column="54" />
+            <state relative-caret-position="203">
+              <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/title-managment.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/TitlePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4930">
-              <caret line="290" column="57" selection-start-line="290" selection-start-column="57" selection-end-line="290" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/connection/pooling/ConnectionPool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+            <state relative-caret-position="323">
+              <caret line="145" column="33" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -194,6 +208,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Title</find>
+      <find>center-table</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -203,34 +218,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateProfile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateUser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/Login.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/filter/LoginFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/filter/RoleFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/page.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/xmleditor/servlet-text.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/xmleditor/XmlEditor.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/admin.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/styles/pageManagment.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/styles/user-managment.css" />
-        <option value="$PROJECT_DIR$/src/main/java/data/model/NodePage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/PageManagment.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/xml/editor/XmlEditor.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdatePage.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/page-managment.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/data/model/Title.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/TitleMariaDb.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/servlet/TitleServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/filter/PlanFilter.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/styles/popup.css" />
         <option value="$PROJECT_DIR$/src/main/java/controller/servlet/TitleManagment.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/model/StudyShedule.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertTitle.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/styles/title.css" />
         <option value="$PROJECT_DIR$/src/main/java/data/dao/StudySheduleDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/StudyShedulesMariaDb.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/model/Budget.java" />
@@ -238,22 +237,38 @@
         <option value="$PROJECT_DIR$/src/main/java/data/model/PractTypes.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/dao/PractTypes.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/model/Pract.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/dao/PractTypesDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractTypesMariaDb.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/dao/PractDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractMariaDb.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/model/StateSertification.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/dao/StateSertificationDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/StateSertificationMariaDb.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/title-managment.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/connection/pooling/ConnectionPool.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/dao/FactoryDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/FactoryMariaDb.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/StateSertificationMariaDb.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitlePage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/TitlePage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/PdfSaver.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/generate/TitleGenerate.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/title-managment.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/styles/user-managment.css" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/UserManagment.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/styles/title.css" />
+        <option value="$PROJECT_DIR$/src/main/java/data/dao/PractDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractMariaDb.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/delete/DeletePract.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/filter/PlanFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertPract.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/styles/message.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/title.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/connection/pooling/ConnectionPool.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/PdfSaver.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/admin.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/data/dao/PractTypesDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractTypesMariaDb.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertProfile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertPractType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdatePracticType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdatePractType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/delete/DeletePractType.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/practic-managment.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/PracticManagment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/TitlePage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitlePage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/generate/TitleGenerate.java" />
       </list>
     </option>
   </component>
@@ -283,8 +298,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1075" />
-    <option name="width" value="852" />
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -341,7 +356,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="filter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AcademikPlan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AcademikPlan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="generate" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AcademikPlan" type="b2602c69:ProjectViewProjectNode" />
@@ -351,7 +375,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="servlet" type="462c0819:PsiDirectoryNode" />
-              <item name="clear" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AcademikPlan" type="b2602c69:ProjectViewProjectNode" />
@@ -372,16 +395,6 @@
               <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="servlet" type="462c0819:PsiDirectoryNode" />
               <item name="insert" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AcademikPlan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AcademikPlan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="servlet" type="462c0819:PsiDirectoryNode" />
-              <item name="restore" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AcademikPlan" type="b2602c69:ProjectViewProjectNode" />
@@ -417,7 +430,40 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="mariaDB" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AcademikPlan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AcademikPlan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AcademikPlan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AcademikPlan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AcademikPlan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AcademikPlan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AcademikPlan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AcademikPlan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AcademikPlan" type="b2602c69:ProjectViewProjectNode" />
@@ -452,7 +498,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554645413878" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/controller/xmleditor" />
+    <property name="last_opened_file_path" value="D:/JavaProjects/AnalyzerLan_0.1" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -465,25 +511,25 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\webapp" />
+      <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\java\controller\xmleditor" />
+      <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\webapp\resources\fonts" />
+      <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\webapp\styles" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="controller.servlet.update" />
+      <recent name="controller.servlet.delete" />
+      <recent name="controller.servlet.insert" />
+      <recent name="controller.servlet" />
+      <recent name="data.dao.mariaDB" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\webapp\resources\fonts" />
       <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\webapp\resources" />
       <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\resources" />
       <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\java\controller\servlet" />
       <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\webapp" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="data.dao.mariaDB" />
-      <recent name="controller.servlet.update" />
-      <recent name="controller.servlet" />
-      <recent name="controller.servlet.clear" />
-      <recent name="controller.servlet.restore" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\java\controller\xmleditor" />
-      <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\webapp\resources\fonts" />
-      <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\webapp" />
-      <recent name="D:\github\AcademicPlan\AcademikPlan\src\main\webapp\styles" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -809,7 +855,7 @@
       <workItem from="1557942513253" duration="3597000" />
       <workItem from="1557947863097" duration="58000" />
       <workItem from="1557948028214" duration="5889000" />
-      <workItem from="1558003463969" duration="600000" />
+      <workItem from="1558003463969" duration="22950000" />
     </task>
     <task id="LOCAL-00001" summary="commit login.jsp">
       <created>1553979508624</created>
@@ -843,7 +889,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="388985000" />
+    <option name="totallyTimeSpent" value="411335000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -868,14 +914,14 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.23445825" weight="0.23522976" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7969083" weight="0.29252437" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7963753" visible="true" weight="0.29252437" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6902985" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32972974" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32972974" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.20309168" side_tool="true" visible="true" weight="0.29252437" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.20362474" side_tool="true" visible="true" weight="0.29252437" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.6050107" weight="0.2654388" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -912,256 +958,6 @@
     </SUITE>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/styles/popup.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="96" column="26" lean-forward="true" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/model/Title.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdatePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="31" column="71" lean-forward="true" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/clear/ClearAllDepartments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/UserManagment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/TitleManagment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="54" column="73" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/GroupDirectionMariaDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/model/StudyShedule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertTitle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="45" column="56" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="25" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/plans.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="44" column="90" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/UserMariaDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1156">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/TitleMariaDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="68" column="13" lean-forward="true" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/ProfileMariaDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-493">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/model/Budget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/model/PractTypes.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/PractTypes.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/model/PractType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/DepartmentMariaDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="177" column="86" selection-start-line="177" selection-start-column="56" selection-end-line="177" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/DirectionMariaDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/PractTypesDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/StudySheduleDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/StudyShedulesMariaDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="112" column="22" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractMariaDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="127" column="31" selection-start-line="127" selection-start-column="31" selection-end-line="127" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractTypesMariaDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/model/Pract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/PractDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/FactoryMariaDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="57" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
-          <folding>
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#554#555#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/FactoryDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/model/StateSertification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/StateSertificationDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1182,27 +978,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitlePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="83" column="69" selection-start-line="83" selection-start-column="69" selection-end-line="83" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/xml/editor/XmlEditor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/PageManagment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="107" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1220,6 +999,162 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/connection/pooling/ConnectionPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/FactoryDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="66" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/UserMariaDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/DepartmentManagment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/FacultyManagment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/PageManagment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="107" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/ProfileManagment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/model/PractType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/styles/plans.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="92" column="30" lean-forward="true" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/UserManagment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="42" column="14" lean-forward="true" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/styles/popup.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1962" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/styles/user-managment.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="78" column="17" lean-forward="true" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/department-managment.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-969">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/styles/department-managment.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="88" selection-start-line="88" selection-end-line="108" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/styles/title.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="240" column="18" lean-forward="true" selection-start-line="240" selection-start-column="18" selection-end-line="240" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/model/Pract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/FactoryMariaDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding>
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractMariaDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="109" column="77" selection-start-line="109" selection-start-column="77" selection-end-line="109" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/PractDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/delete/DeletePract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="33" column="69" lean-forward="true" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/RoleFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1229,22 +1164,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/filter/PlanFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        <state relative-caret-position="68">
+          <caret line="9" column="62" lean-forward="true" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/styles/title.css">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/styles/message.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="116" column="15" selection-start-line="116" selection-start-column="15" selection-end-line="116" selection-end-column="15" />
+        <state relative-caret-position="170">
+          <caret line="10" column="15" lean-forward="true" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/TitlePage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/profile-managment.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="99" column="18" selection-start-line="99" selection-start-column="18" selection-end-line="99" selection-end-column="18" />
+        <state relative-caret-position="357">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/title.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="285" column="22" lean-forward="true" selection-start-line="282" selection-start-column="165" selection-end-line="285" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#table#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/PdfSaver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="67" column="35" lean-forward="true" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1253,50 +1208,154 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/servlet-text.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="50" column="19" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="19" />
+        <state relative-caret-position="476">
+          <caret line="67" column="22" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/title.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/plans.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="79" column="28" selection-start-line="79" selection-start-column="28" selection-end-line="79" selection-end-column="28" />
+        <state relative-caret-position="-765" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="122" selection-start-line="31" selection-start-column="122" selection-end-line="31" selection-end-column="122" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/PdfSaver.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/PractTypesDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/ProfileMariaDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="86" column="21" selection-start-line="74" selection-start-column="8" selection-end-line="86" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertPract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractTypesMariaDb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <caret line="69" column="90" selection-start-line="69" selection-start-column="90" selection-end-line="69" selection-end-column="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertPractType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="65" column="54" selection-start-line="65" selection-start-column="54" selection-end-line="65" selection-end-column="54" />
+        <state relative-caret-position="68">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/delete/DeletePractType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/practic-managment.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10">
+          <caret line="62" column="75" lean-forward="true" selection-start-line="62" selection-start-column="75" selection-end-line="62" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/PracticManagment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/title-managment.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4930">
+        <state relative-caret-position="-228">
           <caret line="290" column="57" selection-start-line="290" selection-start-column="57" selection-end-line="290" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/connection/pooling/ConnectionPool.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/TitleManagment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+        <state relative-caret-position="384">
+          <caret line="54" column="73" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdatePractType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/TitlePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="145" column="33" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitlePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-738">
+          <caret line="45" column="47" selection-start-line="34" selection-start-column="8" selection-end-line="45" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/generate/TitleGenerate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="179" column="29" lean-forward="true" selection-start-line="179" selection-start-column="29" selection-end-line="179" selection-end-column="29" />
+        <state relative-caret-position="2662">
+          <caret line="270" column="76" lean-forward="true" selection-start-line="270" selection-start-column="76" selection-end-line="270" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

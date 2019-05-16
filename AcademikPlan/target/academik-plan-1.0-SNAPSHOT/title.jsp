@@ -11,7 +11,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style><%@ include file="/styles/title.css" %>
-    <%@ include file="/styles/message.css" %></style>
+    <%@ include file="/styles/message.css" %>
+    <%@ include file="/styles/popup.css" %></style>
 <html>
 <head>
     <meta charset="utf-8">
@@ -28,6 +29,21 @@
         var x = document.getElementById("snackbar1");
         x.className = "show";
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+
+    function showPracts(){
+        document.getElementById('pract_popup').style.display='block';
+    }
+
+    function deletePract(idpk, name){
+        document.getElementById('delete_popup').style.display='block';
+        var el=document.getElementById('idPractDelete');
+        el.value = idpk;
+        document.getElementById('text-delete').innerHTML = "Удалить практику '"+name+"'?";
+    }
+
+    function addPract() {
+        document.getElementById('insert_popup').style.display='block';
     }
 </script>
 <body>
@@ -182,7 +198,7 @@
                     <p style="text-align: center; text-decoration: none;">${titleContent.get(17).value}</p>
                 </div>
                 <!-- Сводные данные о бюджете времени -->
-                <div style="width: 500px; float: left; padding-top: 10px; padding-left: 80px;">
+                <div style="width: 500px; float: left; padding-top: 10px; padding-left: 60px;">
                     <h4 style="text-align: center;">${titleContent.get(19).value}</h4>
                     <table border="1" style="font-size: 14px; text-align: center;">
                         <tr style="height: 100px;">
@@ -215,29 +231,32 @@
                     </table>
                 </div>
                 <!-- Таблица практики -->
-                <div style="width: 300px; float: left; padding-top: 10px;">
+                <div style="width: 350px; float: left; padding-top: 10px;">
                     <h4 style="text-align: center;">${titleContent.get(20).value}</h4>
                     <table border="1" style="font-size: 14px; text-align: center;">
                         <tr style="height: 100px;">
                             <c:forEach items="${titlePractics}" var="pract">
-                                <td class="rotatable">${pract.value}</td>
+                                <td>${pract.value}</td>
                             </c:forEach>
                         </tr>
+                        <c:forEach items="${practList}" var="pract" varStatus="status">
                         <tr>
-                            <td>Учебная</td>
-                            <td><input type="text" maxlength="2" class="text-field-n" name="pract0" value="${practList.get(0).semester}"/></td>
-                            <td><input type="text" style="width: 30px" maxlength="4" class="text-field-n" name="pract0" value="${practList.get(0).week}"/></td>
+                            <td>
+                                <select id="practType${status.count}" name="practType${status.count}" class="text-field" style="font-size: 12px">
+                                    <c:forEach items="${practTypes}" var="type">
+                                        <option value="${type.idPractType}">${type.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                            <td><input type="text" pattern="[0-9]{1,2}"
+                                       title="Семестр должен состоять из цифр."
+                                       required="required" maxlength="2" class="text-field-n" name="pract${status.count}" value="${pract.semester}"/></td>
+                            <td><input type="text" pattern="[0-9]{1,2}"
+                                       title="Недели должны состоять из цифр."
+                                       required="required" maxlength="2" class="text-field-n" name="pract${status.count}" value="${pract.week}"/></td>
                         </tr>
-                        <tr>
-                            <td>Производственная</td>
-                            <td><input type="text" maxlength="2" class="text-field-n" name="pract1" value="${practList.get(1).semester}"/></td>
-                            <td><input type="text" style="width: 30px" maxlength="4" class="text-field-n" name="pract1" value="${practList.get(1).week}"/></td>
-                        </tr>
-                        <tr>
-                            <td>Преддипломная</td>
-                            <td><input type="text" maxlength="2" class="text-field-n" name="pract2" value="${practList.get(2).semester}"/></td>
-                            <td><input type="text" style="width: 30px" maxlength="4" class="text-field-n" name="pract2" value="${practList.get(2).week}"/></td>
-                        </tr>
+                        </c:forEach>
+
                     </table>
                 </div>
                 <!-- Таблица гос аттестации -->
@@ -252,14 +271,17 @@
                         <tr>
                             <td>Государственная итоговая аттестация</td>
                             <td>Государственный экзамен</td>
-                            <td><input type="text" style="width: 20px" maxlength="2" class="text-field-n" name="state" value="${stateList.get(0).semester}"/></td>
+                            <td><input type="text" pattern="[0-9]{1,2}"
+                                       title="Семестр должен состоять из цифр."
+                                       required="required" maxlength="2" style="width: 20px" class="text-field-n" name="state" value="${stateList.get(0).semester}"/></td>
                         </tr>
                         <tr>
                             <td>Государственная итоговая аттестация</td>
                             <td>Выпускная квалификационная работа</td>
-                            <td><input type="text" style="width: 20px" maxlength="2" class="text-field-n" name="state" value="${stateList.get(1).semester}"/></td>
+                            <td><input type="text" pattern="[0-9]{1,2}"
+                                       title="Семестр должен состоять из цифр."
+                                       required="required" maxlength="2" style="width: 20px" class="text-field-n" name="state" value="${stateList.get(1).semester}"/></td>
                         </tr>
-
                     </table>
                 </div>
                 <div style = "width: 100%; height: 100px; float: left;">
@@ -270,10 +292,100 @@
         </div>
     </div>
     <div class="toolbar">
+        <form>
+            <input type="button" onclick="showPracts();" value="Редактировать практики" class="button green" style="width: 180px;"/>
+        </form>
         <form action="/toPdf" method="POST">
-            <input type="submit" value="Сохранить PDF" class="button red" style="float: right; margin: 10px 50px 10px 10px;"/>
+            <input type="submit" value="Экспорт в PDF" class="button gray"/>
         </form>
     </div>
+</div>
+
+<!-- РЕДАКТИРОВАТЬ ПРАКТИКИ -->
+<div id="pract_popup" class="parent_popup">
+    <div class="popup-big">
+        <div class="popup-form" style="height:470px;">
+            <div class="top-div">
+                Редактировать практики
+            </div>
+            <div class="center-div">
+                <table class="center-table">
+                    <tr>
+                        <th>Название практики</th>
+                        <th>Семестр</th>
+                        <th>Недели</th>
+                        <th></th>
+                    </tr>
+                    <c:forEach items="${practList}" var="pract" varStatus="status">
+                        <tr>
+                            <td>${typeMap.get(pract.idPractType)}</td>
+                            <td>${pract.semester}</td>
+                            <td>${pract.week}</td>
+                            <td>
+                                <c:if test="${status.count!=1}">
+                                    <input type="button" class="button red button-little" onclick="deletePract(${pract.idPract}, '${typeMap.get(pract.idPractType)}');" value="Удалить"/>
+                                </c:if>
+                            </td>
+                        </tr>
+                    </c:forEach>
+
+                </table>
+            </div>
+            <div style = "padding: 20px 250px 0px 250px;">
+                <c:if test="${practList.size()<=6}">
+                    <input type="button" class="button blue button-little" onclick="addPract();" value="Добавить" name="restore-all"/>
+                </c:if>
+                <input type="button" class="button gray button-little" onclick="document.getElementById('pract_popup').style.display='none';" value="Отмена"/>
+            </div>
+        </div>
+        <a class="close" title="Закрыть" onclick="document.getElementById('pract_popup').style.display='none';">X</a></div>
+</div>
+
+<!-- ОКНО ПОДТВЕРЖДЕНИЯ УДАЛЕНИЯ СТРОКИ -->
+<div id="delete_popup" class="parent_popup">
+    <div class="popup">
+        <form action="/deletePract" method="POST" id="form-popup1" class="popup-form" style="height:140px;">
+            <div id="text-delete" class="top-div">
+            </div>
+            <div class="bottom-div-two">
+                <input type="number" hidden id="idPractDelete" name="idPractDelete"/>
+                <input type="submit" class="button red button-little" value="Подтвердить"/>
+                <input type="button" class="button gray button-little" onclick="document.getElementById('delete_popup').style.display='none';" value="Отмена"/>
+            </div>
+        </form>
+        <a class="close" title="Закрыть" onclick="document.getElementById('delete_popup').style.display='none';">X</a>
+    </div>
+</div>
+<!-- ОКНО ДОБАВЛЕНИЯ ПРАКТИКИ-->
+<div id="insert_popup" class="parent_popup">
+    <div class="popup-big">
+        <div class="popup-form" style="height:250px;">
+            <div class="top-div">
+                Добавить практику
+            </div>
+            <form action="/insertPract" autocomplete="off" method="POST">
+                <div class="center-div-update" style="height:100px;">
+                    <table class="center-table" style="width: 600px;">
+                        <tr>
+                            <td style="width: 150px; font-size: 16px;">Название практики</td>
+                            <td>
+                                <select id="practInsert" name="practInsert" class="text-field" style="width: 90%; height: 30px;">
+                                    <c:forEach items="${practTypes}" var="type">
+                                        <option value="${type.idPractType}">${type.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="bottom-div-zero">
+                    <input type="submit" class="button green button-little" value="Сохранить" name="insert"/>
+                    <input type="button" class="button gray button-little" onclick="document.getElementById('insert_popup').style.display='none';" value="Отмена"/>
+                </div>
+            </form>
+        </div>
+        <a class="close" title="Закрыть" onclick="document.getElementById('insert_popup').style.display='none';">X</a></div>
 </div>
 <div id="snackbar"><c:out value="${sessionScope.erMessage}"/></div>
 <c:if test="${sessionScope.erMessage!=null}">
@@ -287,6 +399,9 @@
     document.getElementById('groupDirection').value = ${title.idGroupDirection};
     document.getElementById('direction').value = ${title.idDirection};
     document.getElementById('profile').value = ${title.idProfile};
+    <c:forEach items="${practList}" var="pract" varStatus="status">
+        document.getElementById('practType${status.count}').value = ${pract.idPractType};
+    </c:forEach>
 </script>
 </body>
 </html>

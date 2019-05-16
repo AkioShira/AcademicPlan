@@ -63,7 +63,8 @@ public class PdfSaver extends HttpServlet {
                 "<title>Учебный план</title>\n" +
                 "</head>" + title.getStyle() +
                 "<body style=\"padding: 20px;\">\n" +
-                "\t<div style=\"font-size: 14px;\">" + title.getHeadTable()+title.getStudyShedules()+title.getBudget();
+                "\t<div style=\"font-size: 14px;\">" + title.getHeadTable()+title.getStudyShedules()+title.getBudget()+
+                title.getPractic()+title.getStateSertification();
         html += "</div></body>\n" +
                 "</html>";
 
