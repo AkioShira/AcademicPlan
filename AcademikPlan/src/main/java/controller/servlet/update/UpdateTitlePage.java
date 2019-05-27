@@ -92,11 +92,18 @@ public class UpdateTitlePage extends HttpServlet {
 
             //Обновить таблицу гос аттестаций
             StateSertificationMariaDb stateDao = fb.getStateSertificationMariaDb(connection);
-            List<StateSertification> statelist = stateDao.getSertificationsByTitle(id);
-            String[] state = req.getParameterValues("state");
 
-            statelist.get(0).setSemester(Integer.parseInt(state[0]));
-            statelist.get(1).setSemester(Integer.parseInt(state[1]));
+            List<StateSertification> statelist = stateDao.getSertificationsByTitle(id);
+
+            for(int i=1; i<=statelist.size(); i++){
+                int idSertification = 1;
+                try {
+                    idSertification = Integer.parseInt(req.getParameter("stateType"+i));
+                }catch (NumberFormatException e){     }
+                statelist.get(i-1).setIdSertificationType(idSertification);
+                String state = req.getParameter("state"+i);
+                statelist.get(i-1).setSemester(Integer.parseInt(state));
+            }
             stateDao.updateSertifications(statelist);
 
             if(!titleDao.updateTitle(title))

@@ -36,9 +36,9 @@ public class TitleGenerate {
         Direction direction = directionDao.getDirectionById(title.getIdDirection());
         Profile profile = profileDao.getProfileById(title.getIdProfile());
 
-        return "<table style=\"width: 100%; font-size: 12px;\">\n" +
-                "\t\t\t<tr style=\"text-align:center;\">\n" +
-                "\t\t\t\t<td style=\"font-weight: bold;\" colspan=\"2\">\n" +
+        return "<table class=\"head-table\" style=\"width: 100%; font-size: 12px;\">\n" +
+                "\t\t\t<tr style=\"text-align:center; \">\n" +
+                "\t\t\t\t<td style=\" font-weight: bold;\" colspan=\"2\">\n" +
                 titleList.get(0).getValue() + " <br>\n" +
                 titleList.get(1).getValue() +
                 "\t\t\t\t</td>\n" +
@@ -101,7 +101,7 @@ public class TitleGenerate {
         List<NodePage> titleShedules = xmlEditor.getArrayXml("month");
         StringBuilder html = new StringBuilder("<div style = \"width: 90%; margin: 0 auto; font-size: 12px; padding-top: 10px;\">\n" +
                 "<h4 style=\"text-align: center;\">" + titleList.get(18).getValue() + "</h4> <table " +
-                "border=\"1\" style=\"width:100%; text-align: center; \">\n" +
+                "style=\"width:100%; text-align: center; \">\n" +
                 "<tr> <td rowspan=\"4\" style=\"width:40px\">КУРС</td>\n" +
                 "<td colspan=\"4\">" + titleShedules.get(0).getValue() + "</td>\n" +
                 "<td colspan=\"5\">" + titleShedules.get(1).getValue() + "</td>\n" +
@@ -148,7 +148,7 @@ public class TitleGenerate {
         List<NodePage> budgetList = xmlEditor.getArrayXml("budget");
         StringBuilder html = new StringBuilder("<div style=\"width: 400px; float: left; font-size: 12px; padding-left: 50px; padding-top: 20px;\">\n" +
                 "                    <h4 style=\"text-align: center;\">" + titleList.get(19).getValue() + "</h4>\n" +
-                "                    <table border=\"1\" style=\"font-size: 12px; text-align: center;\">\n" +
+                "                    <table style=\"font-size: 12px; text-align: center;\">\n" +
                 "                        <tr>");
         for(NodePage node : budgetList)
             html.append("<td class=\"rotatable\">").append(node.getValue()).append("</td>");
@@ -189,7 +189,7 @@ public class TitleGenerate {
         List<NodePage> practHeadList = xmlEditor.getArrayXml("headPractics");
         StringBuilder html = new StringBuilder("<div style=\"width: 200px; float: left; padding-left: 30px; font-size: 12px; padding-top: 20px;\">\n" +
                 "                    <h4 style=\"text-align: center;\">" + titleList.get(20).getValue() + "</h4>\n" +
-                "                    <table border=\"1\" style=\"text-align: center;\">\n" +
+                "                    <table style=\"text-align: center;\">\n" +
                 "                        <tr style=\"height: 45px;\">");
         for(NodePage node : practHeadList)
             html.append("<td>").append(node.getValue()).append("</td>");
@@ -205,28 +205,30 @@ public class TitleGenerate {
 
     public String getStateSertification(){
         StateSertificationMariaDb stateDao = fb.getStateSertificationMariaDb(connection);
-        List<StateSertification> listState = stateDao.getSertificationsByTitle(title.getIdTitle());
+        List<StateSertification> stateList = stateDao.getSertificationsByTitle(title.getIdTitle());
+
+        SertificationTypesMariaDb typeDao = fb.getSertificationTypesMariaDb(connection);
+        List<SertificationType> typeList = typeDao.getAllSertificationTypes();
+        HashMap<Integer, String> typeMap = new HashMap<Integer, String>();
+        for(SertificationType t : typeList)
+            typeMap.put(t.getIdSertificationType(), t.getName());
+
         List<NodePage> headList = xmlEditor.getArrayXml("headState");
-        String html = "<div style=\"width: 300px; font-size: 12px; float: left; padding-left: 30px; padding-top: 20px;\">\n" +
-                "                    <h4 style=\"text-align: center;\">"+titleList.get(21).getValue()+
+        StringBuilder html = new StringBuilder("<div style=\"width: 300px; font-size: 12px; float: left; padding-left: 30px; padding-top: 20px;\">\n" +
+                "                    <h4 style=\"text-align: center;\">" + titleList.get(21).getValue() +
                 "</h4>\n" +
-                "                    <table border=\"1\" style=\"font-size: 12px; text-align: center;\">\n" +
-                "                        <tr style=\"height: 45px;\">";
+                "                    <table style=\"font-size: 11px; text-align: center;\">\n" +
+                "                        <tr style=\"height: 45px;\">");
         for(NodePage node : headList)
-            html+="<td>"+node.getValue()+"</td>";
-        html+="</tr>\n" +
-                "<tr>\n" +
-                "<td>Государственная итоговая аттестация</td>\n" +
-                "<td>Государственный экзамен</td><td>"+listState.get(0).getSemester()+"</td>\n" +
-                "                        </tr>\n" +
-                "                        <tr>\n" +
-                "                            <td>Государственная итоговая аттестация</td>\n" +
-                "                            <td>Выпускная квалификационная работа</td>\n" +
-                "                            <td>"+listState.get(1).getSemester()+"</td>\n" +
-                "                        </tr>\n" +
-                "                    </table>\n" +
-                "                </div>";
-        return html;
+            html.append("<td>").append(node.getValue()).append("</td>");
+        html.append("</tr>");
+        for(StateSertification ss : stateList){
+            html.append("<tr><td>Государственная итоговая аттестация</td>");
+            html.append("<td>").append(typeMap.get(ss.getIdSertificationType())).append("</td>");
+            html.append("<td>").append(ss.getSemester()).append("</td></tr>");
+        }
+        html.append("</table></div>");
+        return html.toString();
     }
 
     public String getStyle(){
@@ -237,7 +239,7 @@ public class TitleGenerate {
                 "    }\t\n" +
                 "\t\n" +
                 "\t.rotatable{\n" +
-                "   font-size: 11px; transform: rotate(-90deg);\n" +
+                "   font-size: 11px; transform: rotate(-90deg); \n" +
                 "}\n" +
                 "\t\n" +
                 "\ttable{\n" +
@@ -245,9 +247,10 @@ public class TitleGenerate {
                 "    \tborder-collapse: collapse;\n" +
                 "    \tmargin: 0 auto;\n" +
                 "\t}\n" +
+                ".head-table td{ border-color: white; }" +
                 "\t\n" +
                 "\ttd{\n" +
-                "\t\tmin-width: 15px;\n" +
+                "\t\tmin-width: 18px; border: 1px solid black;\n" +
                 "\t}\n" +
                 "\t\n" +
                 "\t@page {\n" +

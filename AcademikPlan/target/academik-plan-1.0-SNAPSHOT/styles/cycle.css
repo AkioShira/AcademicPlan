@@ -1,0 +1,21 @@
+.cycle-table{
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 12px;
+    text-align: center;
+}
+
+.cycle-table td {
+    border: 1px solid black;
+    width: 30px;
+}
+
+.cycle-table tr{
+    height: 25px;
+}
+
+.button-table{
+    padding: 5px 5px;
+    width: 100px;
+}

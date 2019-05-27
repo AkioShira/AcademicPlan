@@ -206,8 +206,8 @@
                         <tr>
                             <td>Время обучения</td>
                             <td><input type="text"
-                                       pattern="[1-8]{1}"
-                                       title="Время обучения должно быть однозначное число от 1 до 8."
+                                       pattern="[1-6]{1}"
+                                       title="Время обучения должно быть однозначное число от 1 до 6."
                                        minlength="1" maxlength="1" required="required" id="studyTimeUpdate" name="studyTimeUpdate" class="text-field-popup"/></td>
                         </tr>
                         <tr>

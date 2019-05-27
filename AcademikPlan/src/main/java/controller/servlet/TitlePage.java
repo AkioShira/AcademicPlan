@@ -133,17 +133,31 @@ public class TitlePage extends HttpServlet {
 
             //Заполнение гос аттестаций
             StateSertificationMariaDb stateDao = fb.getStateSertificationMariaDb(connection);
-            List<StateSertification> listState = stateDao.getSertificationsByTitle(id);
-            if(listState.size()<1){
-                for(int i=0; i<2; i++){
-                    StateSertification state = new StateSertification();
-                    state.setIdTitle(id);
-                    state.setSemester(0);
-                    listState.add(state);
-                }
-                stateDao.insertSertifications(listState);
+            List<StateSertification> stateList = stateDao.getSertificationsByTitle(id);
+
+            SertificationTypesMariaDb stateTypeDao = fb.getSertificationTypesMariaDb(connection);
+            List<SertificationType> stateTypes = stateTypeDao.getAllSertificationTypes();
+
+            if(stateList.size()<1){
+                StateSertification state = new StateSertification();
+                state.setIdTitle(id);
+                state.setIdSertificationType(1);
+                state.setSemester(0);
+                stateList.add(state);
+                stateDao.insertSertifications(stateList);
             }
+
+            //
+            HashMap<Integer, String> stateMap = new HashMap<Integer, String>();
+            for(SertificationType t : stateTypes)
+                stateMap.put(t.getIdSertificationType(), t.getName());
+
+            //Заполнение циклов
+            List<Cycle> cycleList = fb.getCycleMariaDb(connection).getCyclesByTitle(id);
+
+
             practTypes.remove(0);
+            stateTypes.remove(0);
             req.setAttribute("row0", row0);
             req.setAttribute("row1", row1);
             req.setAttribute("courses", courses);
@@ -152,7 +166,10 @@ public class TitlePage extends HttpServlet {
             req.setAttribute("practList", practList);
             req.setAttribute("practTypes", practTypes);
             req.setAttribute("typeMap", typeMap);
-            req.setAttribute("stateList", listState);
+            req.setAttribute("stateList", stateList);
+            req.setAttribute("stateTypes", stateTypes);
+            req.setAttribute("stateMap", stateMap);
+            req.setAttribute("cycleList", cycleList);
         }catch (SQLException e) {
             e.printStackTrace();
         } finally {

@@ -5,6 +5,7 @@ import com.lowagie.text.DocumentException;
 
 import com.lowagie.text.pdf.BaseFont;
 import connection.pooling.ConnectionPool;
+import controller.generate.SubjectGenerate;
 import controller.generate.TitleGenerate;
 import controller.xml.editor.XmlEditor;
 import org.htmlcleaner.CleanerProperties;
@@ -38,7 +39,8 @@ public class PdfSaver extends HttpServlet {
             HttpSession session = req.getSession();
             int id = (int) session.getAttribute("idTitle");
             TitleGenerate title = new TitleGenerate(connection, xmlEditor, id);
-            byte[] pdfDoc = performPdfDocument(title);
+            SubjectGenerate subject = new SubjectGenerate(connection, xmlEditor, id);
+            byte[] pdfDoc = performPdfDocument(title, subject);
 
             resp.setContentLength(pdfDoc.length);
             resp.getOutputStream().write(pdfDoc);
@@ -55,7 +57,7 @@ public class PdfSaver extends HttpServlet {
      * Метод, подготавливащий PDF документ.
      * @return PDF документ
      */
-    private byte[] performPdfDocument(TitleGenerate title) throws IOException, DocumentException {
+    private byte[] performPdfDocument(TitleGenerate title, SubjectGenerate subject) throws IOException, DocumentException {
         String html = "<!doctype html>\n" +
                 "<html>\n" +
                 "<head>\n" +
@@ -65,23 +67,24 @@ public class PdfSaver extends HttpServlet {
                 "<body style=\"padding: 20px;\">\n" +
                 "\t<div style=\"font-size: 14px;\">" + title.getHeadTable()+title.getStudyShedules()+title.getBudget()+
                 title.getPractic()+title.getStateSertification();
+        html += "<div class=\"new_page\">&nbsp;</div>"+subject.getSubjects();
+
         html += "</div></body>\n" +
                 "</html>";
 
 
+        //<div class="new_page">&nbsp;</div>
 
-        // Буффер, в котором будет лежать отформатированный HTML код
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-        // Форматирование HTML кода
-        /* эта процедура не обязательна, но я настоятельно рекомендую использовать этот блок */
+
         HtmlCleaner cleaner = new HtmlCleaner();
         CleanerProperties props = cleaner.getProperties();
         props.setCharset(CHARSET);
         TagNode node = cleaner.clean(html);
         new PrettyXmlSerializer(props).writeToStream(node, out);
 
-        // Создаем PDF из подготовленного HTML кода
+
         ITextRenderer renderer = new ITextRenderer();
 
         renderer
@@ -92,13 +95,11 @@ public class PdfSaver extends HttpServlet {
 
         renderer.setDocumentFromString(new String(out.toByteArray(), CHARSET));
         renderer.layout();
-        /* заметьте, на этом этапе Вы можете записать PDF документ, скажем, в файл
-         * но раз мы пишем сервлет, который будет возвращать PDF документ,
-         * нам нужен массив байт, который мы отдадим пользователю */
+
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         renderer.createPDF(outputStream);
 
-        // Завершаем работу
+
         renderer.finishPDF();
         out.flush();
         out.close();

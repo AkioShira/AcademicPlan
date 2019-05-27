@@ -6,5 +6,6 @@ import lombok.Data;
 public class StateSertification {
     int idSertification;
     int idTitle;
+    int idSertificationType;
     int semester;
 }

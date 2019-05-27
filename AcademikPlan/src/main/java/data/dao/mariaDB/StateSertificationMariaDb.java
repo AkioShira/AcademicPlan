@@ -28,13 +28,14 @@ public class StateSertificationMariaDb extends ConnectionService implements Stat
     public boolean insertSertifications(List<StateSertification> sertifications) {
         PreparedStatement statement = null;
         ResultSet rs = null;
-        String query="INSERT INTO state_sertification SET idTitle = ?, semester = ?";
+        String query="INSERT INTO state_sertification SET idTitle = ?, idSertificationType = ?, semester = ?";
         try{
             connection.setAutoCommit(false);
             statement = connection.prepareStatement(query);
             for(StateSertification state : sertifications) {
                 statement.setInt(1, state.getIdTitle());
-                statement.setInt(2, state.getSemester());
+                statement.setInt(2, state.getIdSertificationType());
+                statement.setInt(3, state.getSemester());
                 statement.addBatch();
             }
             statement.executeBatch();
@@ -59,17 +60,40 @@ public class StateSertificationMariaDb extends ConnectionService implements Stat
     }
 
     @Override
+    public boolean deleteSertification(StateSertification state) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="DELETE FROM state_sertification WHERE idSertification = "+state.getIdSertification();
+        try{
+            statement = connection.prepareStatement(query);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return false;
+    }
+
+    @Override
+    public StateSertification getStateSertificationById(int id) {
+        return getStateSertifications("SELECT * FROM state_sertification WHERE idSertification = "+id).get(0);
+    }
+
+    @Override
     public boolean updateSertifications(List<StateSertification> sertifications) {
         PreparedStatement statement = null;
         ResultSet rs = null;
-        String query="UPDATE state_sertification SET idTitle = ?, semester = ? WHERE idSertification=?";
+        String query="UPDATE state_sertification SET idTitle = ?, idSertificationType = ?, semester = ? WHERE idSertification=?";
         try{
             connection.setAutoCommit(false);
             statement = connection.prepareStatement(query);
             for(StateSertification state : sertifications) {
                 statement.setInt(1, state.getIdTitle());
-                statement.setInt(2, state.getSemester());
-                statement.setInt(3, state.getIdSertification());
+                statement.setInt(2, state.getIdSertificationType());
+                statement.setInt(3, state.getSemester());
+                statement.setInt(4, state.getIdSertification());
                 statement.addBatch();
             }
             statement.executeBatch();
@@ -104,6 +128,7 @@ public class StateSertificationMariaDb extends ConnectionService implements Stat
                 StateSertification state = new StateSertification();
                 state.setIdSertification(rs.getInt("idSertification"));
                 state.setIdTitle(rs.getInt("idTitle"));
+                state.setIdSertificationType(rs.getInt("idSertificationType"));
                 state.setSemester(rs.getInt("semester"));
                 sertifications.add(state);
             }

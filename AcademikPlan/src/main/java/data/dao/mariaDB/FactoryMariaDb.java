@@ -64,4 +64,24 @@ public class FactoryMariaDb implements FactoryDao {
     public RoleMariaDb getRoleMariaDB(Connection connection) {
         return new RoleMariaDb(connection);
     }
+
+    @Override
+    public SertificationTypesMariaDb getSertificationTypesMariaDb(Connection connection) {
+        return new SertificationTypesMariaDb(connection);
+    }
+
+    @Override
+    public PartMariaDb getPartMariaDb(Connection connection) {
+        return new PartMariaDb(connection);
+    }
+
+    @Override
+    public CycleMariaDb getCycleMariaDb(Connection connection) {
+        return new CycleMariaDb(connection);
+    }
+
+    @Override
+    public SubjectMariaDb getSubjectMariaDb(Connection connection) {
+        return new SubjectMariaDb(connection);
+    }
 }

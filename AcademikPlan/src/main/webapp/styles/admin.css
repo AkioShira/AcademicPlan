@@ -36,7 +36,7 @@ a:hover {
 .center-block {
     position: absolute; /* Абсолютное позиционирование */
     width: 600px; /* Ширина блока */
-    min-height: 500px; /* Высота блока */
+    height: 550px; /* Высота блока */
     /* Отступ от блока */
     margin: 40px auto 50px;
     left: 0; /* Положение блока от левого края */
