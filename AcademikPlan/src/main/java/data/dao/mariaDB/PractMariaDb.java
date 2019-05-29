@@ -34,7 +34,7 @@ public class PractMariaDb extends ConnectionService implements PractDao {
     public boolean insertPracts(List<Pract> practs) {
         PreparedStatement statement = null;
         ResultSet rs = null;
-        String query="INSERT INTO practs SET idTitle = ?, idPractType = ?, semester = ?, week = ?";
+        String query="INSERT INTO practs SET idTitle = ?, idPractType = ?, semester = ?, week = ?, ze = ?";
         try{
             connection.setAutoCommit(false);
             statement = connection.prepareStatement(query);
@@ -43,6 +43,7 @@ public class PractMariaDb extends ConnectionService implements PractDao {
                 statement.setInt(2, pract.getIdPractType());
                 statement.setInt(3, pract.getSemester());
                 statement.setInt(4, pract.getWeek());
+                statement.setDouble(5, pract.getZe());
                 statement.addBatch();
             }
             statement.executeBatch();
@@ -70,7 +71,7 @@ public class PractMariaDb extends ConnectionService implements PractDao {
     public boolean updatePracts(List<Pract> practs) {
         PreparedStatement statement = null;
         ResultSet rs = null;
-        String query="UPDATE practs SET idTitle = ?, idPractType = ?, semester = ?, week = ? WHERE idPract=?";
+        String query="UPDATE practs SET idTitle = ?, idPractType = ?, semester = ?, week = ?, ze = ? WHERE idPract=?";
         try{
             connection.setAutoCommit(false);
             statement = connection.prepareStatement(query);
@@ -79,7 +80,8 @@ public class PractMariaDb extends ConnectionService implements PractDao {
                 statement.setInt(2, pract.getIdPractType());
                 statement.setInt(3, pract.getSemester());
                 statement.setInt(4, pract.getWeek());
-                statement.setInt(5, pract.getIdPract());
+                statement.setDouble(5, pract.getZe());
+                statement.setInt(6, pract.getIdPract());
                 statement.addBatch();
             }
             statement.executeBatch();
@@ -134,6 +136,7 @@ public class PractMariaDb extends ConnectionService implements PractDao {
                 pract.setIdTitle(rs.getInt("idTitle"));
                 pract.setSemester(rs.getInt("semester"));
                 pract.setWeek(rs.getInt("week"));
+                pract.setZe(rs.getDouble("ze"));
                 practsList.add(pract);
             }
         } catch (SQLException e) {

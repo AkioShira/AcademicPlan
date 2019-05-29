@@ -52,11 +52,31 @@
                 </li>
             </c:forEach>
             <li>
+                <form action="/result" method="GET">
+                    <input type="submit" value="ИТОГ" class="button menu" style="width: 100px;"/>
+                </form>
+            </li>
+            <li>
                 <form action="/plans" method="GET">
                     <input type="submit" value="Назад" class="button menu" style="width: 100px;"/>
                 </form>
             </li>
         </ul>
+    </div>
+
+    <div class="toolbar">
+        <form>
+            <input type="button" onclick="showCycle();" value="Редактировать циклы" class="button green" style="width: 180px;"/>
+        </form>
+        <form>
+            <input type="button" onclick="showPracts();" value="Редактировать практики" class="button green" style="width: 180px;"/>
+        </form>
+        <form>
+            <input type="button" onclick="showSertification();" value="Редактировать аттестации" class="button green" style="width: 180px;"/>
+        </form>
+        <form action="/toPdf" method="POST">
+            <input type="submit" value="Экспорт в PDF" class="button gray"/>
+        </form>
     </div>
 
     <div style="height: calc(100% - (120px));overflow: auto;">
@@ -296,20 +316,7 @@
             </form>
         </div>
     </div>
-    <div class="toolbar">
-        <form>
-            <input type="button" onclick="showCycle();" value="Редактировать циклы" class="button green" style="width: 180px;"/>
-        </form>
-        <form>
-            <input type="button" onclick="showPracts();" value="Редактировать практики" class="button green" style="width: 180px;"/>
-        </form>
-        <form>
-            <input type="button" onclick="showSertification();" value="Редактировать аттестации" class="button green" style="width: 180px;"/>
-        </form>
-        <form action="/toPdf" method="POST">
-            <input type="submit" value="Экспорт в PDF" class="button gray"/>
-        </form>
-    </div>
+
 </div>
 
 <%@ include file="/title-pract.jsp" %>

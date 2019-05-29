@@ -135,4 +135,21 @@ public class CycleMariaDb extends ConnectionService implements CycleDao {
         }
         return cyclesList;
     }
+
+    @Override
+    public int getCountCycleByTitle(int idTitle) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        try{
+            statement = connection.prepareStatement("SELECT COUNT(c.name) FROM cycles c WHERE c.idTitle = "+idTitle);
+            rs = statement.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return -1;
+    }
 }

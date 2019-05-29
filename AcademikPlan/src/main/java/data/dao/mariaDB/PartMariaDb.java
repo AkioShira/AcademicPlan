@@ -30,6 +30,11 @@ public class PartMariaDb extends ConnectionService implements PartDao {
     }
 
     @Override
+    public List<Part> getPartesByTitle(int idTitle) {
+        return getPartes("SELECT * FROM partes p INNER JOIN cycles c ON p.idCycle = c.idCycle WHERE c.idTitle = "+idTitle);
+    }
+
+    @Override
     public boolean insertPart(Part part) {
         PreparedStatement statement = null;
         ResultSet rs = null;

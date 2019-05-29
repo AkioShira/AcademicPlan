@@ -42,7 +42,7 @@ public class SubjectMariaDb extends ConnectionService implements SubjectDao {
             statement = connection.prepareStatement(query);
             for(Subject subject : subjects) {
                 statement.setInt(1, subject.getIdPart());
-                statement.setDouble(2, subject.getNumber());
+                statement.setInt(2, subject.getNumber());
                 statement.setString(3, subject.getName());
                 statement.setString(4, subject.getDepart());
                 statement.setInt(5, subject.getExams());
@@ -85,7 +85,7 @@ public class SubjectMariaDb extends ConnectionService implements SubjectDao {
             statement = connection.prepareStatement(query);
             for(Subject subject : subjects) {
                 statement.setInt(1, subject.getIdPart());
-                statement.setDouble(2, subject.getNumber());
+                statement.setInt(2, subject.getNumber());
                 statement.setString(3, subject.getName());
                 statement.setString(4, subject.getDepart());
                 statement.setInt(5, subject.getExams());
@@ -120,7 +120,7 @@ public class SubjectMariaDb extends ConnectionService implements SubjectDao {
     }
 
     @Override
-    public double getMaxNumberByPart(int idPart) {
+    public int getMaxNumberByPart(int idPart) {
         PreparedStatement statement = null;
         ResultSet rs = null;
         String query="SELECT MAX(s.number) FROM subjects s WHERE s.idPart = "+idPart;
@@ -154,6 +154,8 @@ public class SubjectMariaDb extends ConnectionService implements SubjectDao {
         return false;
     }
 
+
+
     private List<Subject> getSubjects(String query) {
         List<Subject> subjectList = new ArrayList<Subject>();
         PreparedStatement statement = null;
@@ -165,7 +167,7 @@ public class SubjectMariaDb extends ConnectionService implements SubjectDao {
                 Subject subject = new Subject();
                 subject.setIdSubject(rs.getInt("idSubject"));
                 subject.setIdPart(rs.getInt("idPart"));
-                subject.setNumber(rs.getDouble("number"));
+                subject.setNumber(rs.getInt("number"));
                 subject.setName(rs.getString("name"));
                 subject.setDepart(rs.getString("depart"));
                 subject.setExams(rs.getInt("exams"));
@@ -186,61 +188,151 @@ public class SubjectMariaDb extends ConnectionService implements SubjectDao {
     }
 
     @Override
-    public List<Double> getSumByPart(int idPart) {
+    public List<Double> getSumByPart(int idPart, int studyTime) {
         List<Double> sumList = new ArrayList<>();
         PreparedStatement statement = null;
         ResultSet rs = null;
-        String query="SELECT SUM((s.lec*18+s.lab*18+s.pract*18+s.self*18 + s.bsr)/36) AS 'sum' FROM subjects s WHERE s.idPart = "+idPart+" UNION ALL\n" +
-                "SELECT COUNT(s.exams) FROM subjects s WHERE s.idPart = "+idPart+" AND s.exams>0 UNION ALL\n" +
-                "SELECT COUNT(s.credits) FROM subjects s WHERE s.idPart = "+idPart+" UNION ALL\n" +
-                "SELECT SUM(s.lec*18+s.lab*18+s.pract*18+s.self*18 + s.bsr) FROM subjects s WHERE s.idPart = "+idPart+" UNION ALL\n" +
-                "SELECT SUM(s.lec*18+s.lab*18+s.pract*18) FROM subjects s WHERE s.idPart = "+idPart+" UNION ALL\n" +
-                "SELECT SUM(s.lec*18) FROM subjects s WHERE s.idPart = "+idPart+"  UNION ALL\n" +
-                "SELECT SUM(s.lab*18) FROM subjects s WHERE s.idPart = "+idPart+" UNION ALL\n" +
-                "SELECT SUM(s.pract*18) FROM subjects s WHERE s.idPart = "+idPart+" UNION ALL\n" +
-                "SELECT SUM(s.self*18 + s.bsr) FROM subjects s WHERE s.idPart = "+idPart+" UNION ALL\n" +
-                "SELECT SUM(s.self*18) FROM subjects s WHERE s.idPart = "+idPart+" UNION ALL\n" +
-                "SELECT SUM(s.bsr) FROM subjects s WHERE s.idPart = "+idPart+" UNION ALL\n" +
-                "\n" +
-                "SELECT SUM(s.lec) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=1 OR s.credits=1) UNION ALL\n" +
-                "SELECT SUM(s.lab) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=1 OR s.credits=1) UNION ALL\n" +
-                "SELECT SUM(s.pract) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=1 OR s.credits=1) UNION ALL\n" +
-                "SELECT SUM(s.self) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=1 OR s.credits=1) UNION ALL\n" +
-                "\n" +
-                "SELECT SUM(s.lec) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=2 OR s.credits=2) UNION ALL\n" +
-                "SELECT SUM(s.lab) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=2 OR s.credits=2) UNION ALL\n" +
-                "SELECT SUM(s.pract) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=2 OR s.credits=2) UNION ALL\n" +
-                "SELECT SUM(s.self) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=2 OR s.credits=2) UNION ALL\n" +
-                "\n" +
-                "SELECT SUM(s.lec) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=3 OR s.credits=3) UNION ALL\n" +
-                "SELECT SUM(s.lab) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=3 OR s.credits=3) UNION ALL\n" +
-                "SELECT SUM(s.pract) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=3 OR s.credits=3) UNION ALL\n" +
-                "SELECT SUM(s.self) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=3 OR s.credits=3) UNION ALL\n" +
-                "\n" +
-                "SELECT SUM(s.lec) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=4 OR s.credits=4) UNION ALL\n" +
-                "SELECT SUM(s.lab) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=4 OR s.credits=4) UNION ALL\n" +
-                "SELECT SUM(s.pract) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=4 OR s.credits=4) UNION ALL\n" +
-                "SELECT SUM(s.self) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=4 OR s.credits=4) UNION ALL\n" +
-                "\n" +
-                "  SELECT SUM(s.lec) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=5 OR s.credits=5) UNION ALL\n" +
-                "SELECT SUM(s.lab) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=5 OR s.credits=5) UNION ALL\n" +
-                "SELECT SUM(s.pract) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=5 OR s.credits=5) UNION ALL\n" +
-                "SELECT SUM(s.self) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=5 OR s.credits=5) UNION ALL\n" +
-                "\n" +
-                "  SELECT SUM(s.lec) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=6 OR s.credits=6) UNION ALL\n" +
-                "SELECT SUM(s.lab) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=6 OR s.credits=6) UNION ALL\n" +
-                "SELECT SUM(s.pract) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=6 OR s.credits=6) UNION ALL\n" +
-                "SELECT SUM(s.self) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=6 OR s.credits=6) UNION ALL\n" +
-                "\n" +
-                "  SELECT SUM(s.lec) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=7 OR s.credits=7) UNION ALL\n" +
-                "SELECT SUM(s.lab) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=7 OR s.credits=7) UNION ALL\n" +
-                "SELECT SUM(s.pract) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=7 OR s.credits=7) UNION ALL\n" +
-                "SELECT SUM(s.self) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=7 OR s.credits=7) UNION ALL\n" +
-                "\n" +
-                "  SELECT SUM(s.lec) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=8 OR s.credits=8) UNION ALL\n" +
-                "SELECT SUM(s.lab) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=8 OR s.credits=8) UNION ALL\n" +
-                "SELECT SUM(s.pract) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=8 OR s.credits=8) UNION ALL\n" +
-                "SELECT SUM(s.self) FROM subjects s WHERE s.idPart = "+idPart+" AND (s.exams=8 OR s.credits=8)";
+        String query="CALL sumPart("+idPart+", "+studyTime+")";
+        try{
+            statement = connection.prepareStatement(query);
+            rs = statement.executeQuery();
+            while(rs.next()){
+                sumList.add(rs.getDouble("sum"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return sumList;
+    }
+
+    @Override
+    public List<Double> getSumAudByTitle(int idTitle) {
+        List<Double> audList = new ArrayList<>();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="CALL sumAud("+idTitle+")";
+        try{
+            statement = connection.prepareStatement(query);
+            rs = statement.executeQuery();
+            while(rs.next()){
+                audList.add(rs.getDouble("sum"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return audList;
+    }
+
+    @Override
+    public List<Double> getSumSelfByTitle(int idTitle) {
+        List<Double> selfList = new ArrayList<>();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="CALL sumSelf("+idTitle+")";
+        try{
+            statement = connection.prepareStatement(query);
+            rs = statement.executeQuery();
+            while(rs.next()){
+                selfList.add(rs.getDouble("sum"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return selfList;
+    }
+
+    @Override
+    public List<Double> getCountExamsByTitle(int idTitle) {
+        List<Double> examList = new ArrayList<>();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="CALL examCount("+idTitle+")";
+        try{
+            statement = connection.prepareStatement(query);
+            rs = statement.executeQuery();
+            while(rs.next()){
+                examList.add(rs.getDouble("count"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return examList;
+    }
+
+    @Override
+    public List<Double> getCountCreditsByTitle(int idTitle) {
+        List<Double> creditList = new ArrayList<>();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="CALL creditCount("+idTitle+")";
+        try{
+            statement = connection.prepareStatement(query);
+            rs = statement.executeQuery();
+            while(rs.next()){
+                creditList.add(rs.getDouble("count"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return creditList;
+    }
+
+    @Override
+    public List<Double> getCountKPByTitle(int idTitle) {
+        List<Double> kpList = new ArrayList<>();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="CALL kpCount("+idTitle+")";
+        try{
+            statement = connection.prepareStatement(query);
+            rs = statement.executeQuery();
+            while(rs.next()){
+                kpList.add(rs.getDouble("count"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return kpList;
+    }
+
+    @Override
+    public List<Double> getSumCredByTitle(int idTitle) {
+        List<Double> sumList = new ArrayList<>();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="CALL sumZE("+idTitle+")";
+        try{
+            statement = connection.prepareStatement(query);
+            rs = statement.executeQuery();
+            while(rs.next()){
+                sumList.add(rs.getDouble("sum"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeResurse(statement, rs);
+        }
+        return sumList;
+    }
+
+    @Override
+    public List<Double> getSumBSRByTitle(int idTitle) {
+        List<Double> sumList = new ArrayList<>();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String query="CALL sumBSR("+idTitle+")";
         try{
             statement = connection.prepareStatement(query);
             rs = statement.executeQuery();
@@ -258,7 +350,7 @@ public class SubjectMariaDb extends ConnectionService implements SubjectDao {
     public static void main(String ...arc){
         try {
             SubjectMariaDb subjectMariaDb = new SubjectMariaDb(ConnectionPool.getConnection());
-            List<Double> list = subjectMariaDb.getSumByPart(6);
+            List<Double> list = subjectMariaDb.getSumByPart(10, 4);
             for(double i : list)
                 System.out.println(i);
         } catch (SQLException e) {

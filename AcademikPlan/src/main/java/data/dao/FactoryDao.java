@@ -20,4 +20,5 @@ public interface FactoryDao {
     CycleMariaDb getCycleMariaDb(Connection connection);
     PartMariaDb getPartMariaDb(Connection connection);
     SubjectMariaDb getSubjectMariaDb(Connection connection);
+    SubSubjectMariaDb getSubSubjectMariaDb(Connection connection);
 }

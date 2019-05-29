@@ -5,19 +5,9 @@
   Time: 19:27
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<style><%@ include file="/styles/title.css" %>
-<%@ include file="/styles/cycle.css" %>
-    <%@ include file="/styles/message.css" %>
-    <%@ include file="/styles/popup.css" %></style>
 <fmt:setLocale value="en_US"/>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Цикл</title>
-</head>
+
 <script type='text/javascript'>
 
     function deletePart(idpk, name){

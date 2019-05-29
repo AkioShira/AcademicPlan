@@ -9,4 +9,5 @@ public class Pract {
     int idPractType;
     int semester;
     int week;
+    double ze;
 }

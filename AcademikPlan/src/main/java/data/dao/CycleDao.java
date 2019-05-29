@@ -10,4 +10,5 @@ public interface CycleDao {
     boolean insertCycle(Cycle cycle);
     boolean updateCycle(Cycle cycle);
     boolean deleteCycle(Cycle cycle);
+    int getCountCycleByTitle(int idTitle);
 }

@@ -34,7 +34,8 @@ public class InsertPract extends HttpServlet {
             pract.setIdTitle((int) session.getAttribute("idTitle"));
             pract.setIdPractType(id);
             pract.setSemester(0);
-            pract.setSemester(0);
+            pract.setWeek(0);
+            pract.setZe(0);
             if(!practDao.insertPracts(Arrays.asList(pract)))
                 session.setAttribute("erMessage", "Не удалось провести операцию");
             else session.setAttribute("message", "Практика успешно добавлена");

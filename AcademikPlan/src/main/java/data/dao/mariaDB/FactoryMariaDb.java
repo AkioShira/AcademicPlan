@@ -81,6 +81,11 @@ public class FactoryMariaDb implements FactoryDao {
     }
 
     @Override
+    public SubSubjectMariaDb getSubSubjectMariaDb(Connection connection) {
+        return new SubSubjectMariaDb(connection);
+    }
+
+    @Override
     public SubjectMariaDb getSubjectMariaDb(Connection connection) {
         return new SubjectMariaDb(connection);
     }

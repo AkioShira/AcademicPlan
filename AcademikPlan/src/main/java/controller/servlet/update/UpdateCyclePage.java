@@ -22,7 +22,6 @@ public class UpdateCyclePage extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
         int id = Integer.parseInt(req.getParameter("idCycle"));
-        String shortNameCycle = req.getParameter("shortNameCycleInsert");
         String nameCycle = req.getParameter("nameCycleInsert");
 
         Connection connection = null;
@@ -31,7 +30,6 @@ public class UpdateCyclePage extends HttpServlet {
             FactoryMariaDb fb = new FactoryMariaDb();
             CycleMariaDb cycleDao = fb.getCycleMariaDb(connection);
             Cycle cycle = cycleDao.getCycleById(id);
-            cycle.setShortName(shortNameCycle);
             cycle.setName(nameCycle);
 
             //Обновить части
@@ -47,6 +45,7 @@ public class UpdateCyclePage extends HttpServlet {
 
             //Обновить предметы
             SubjectMariaDb subjectDao = fb.getSubjectMariaDb(connection);
+            SubSubjectMariaDb subSubjectDao = fb.getSubSubjectMariaDb(connection);
 
             int i = 1;
             int exam = 0;
@@ -55,7 +54,7 @@ public class UpdateCyclePage extends HttpServlet {
                 List<Subject> subjectList = subjectDao.getSubjectsByPart(part.getIdPart());
                 for(Subject subject : subjectList){
                     String[] name = req.getParameterValues("subject-"+part.getIdPart()+"-"+i);
-                    subject.setNumber(Double.parseDouble(name[0]));
+                    subject.setNumber(Integer.parseInt(name[0]));
                     subject.setName(name[1]);
                     subject.setDepart(name[2]);
                     exam = Integer.parseInt(name[3]);
@@ -75,6 +74,14 @@ public class UpdateCyclePage extends HttpServlet {
                         subject.setSelf(Double.parseDouble(name[9]));
                     }
                     i++;
+                    // Обновить предметы по выбору
+                    List<SubSubject> subSubjectList = subSubjectDao.getSubSubjectsBySubject(subject.getIdSubject());
+                    for(SubSubject ss : subSubjectList){
+                        String ssName = req.getParameter("subsubject-"+ss.getIdSubSubject());
+                        ss.setName(ssName);
+                    }
+                    if(!subSubjectList.isEmpty())
+                        subSubjectDao.updateSubSubjects(subSubjectList);
                 }
                 subjectDao.updateSubjects(subjectList);
             }

@@ -60,16 +60,25 @@ public class CyclePage extends HttpServlet {
             PartMariaDb partDao = fb.getPartMariaDb(connection);
             List<Part> partList = partDao.getPartesByCycle(idCycle);
 
+            HashMap<Integer, String> partMap = new HashMap<Integer, String>();
+            for(Part p : partList)
+                partMap.put(p.getIdPart(), p.getShortName());
+
             //Заполнение дисциплин
             SubjectMariaDb subjectDao = fb.getSubjectMariaDb(connection);
             List<Subject> subjectList = new ArrayList<Subject>();
             for(Part part : partList)
                 subjectList.addAll(subjectDao.getSubjectsByPart(part.getIdPart()));
 
+            //Заполнение дисциплин по выбору
+            SubSubjectMariaDb subSubjectDao = fb.getSubSubjectMariaDb(connection);
+            for(Subject s : subjectList)
+                s.setSubSubjectList(subSubjectDao.getSubSubjectsBySubject(s.getIdSubject()));
+
             //Заполнение суммы частей
             List<List<Double>> sumList = new ArrayList<>();
             for(Part part : partList)
-                sumList.add(subjectDao.getSumByPart(part.getIdPart()));
+                sumList.add(subjectDao.getSumByPart(part.getIdPart(), title.getStudyTime()));
 
             //Заполнение суммы по циклу
             List<Double> sumAllList = new ArrayList<>();
@@ -82,6 +91,8 @@ public class CyclePage extends HttpServlet {
                 }
             }
 
+
+
             req.setAttribute("title", title);
             req.setAttribute("cycleContent", cycleContent);
             req.setAttribute("cycle", cycle);
@@ -90,6 +101,7 @@ public class CyclePage extends HttpServlet {
             req.setAttribute("subjectList", subjectList);
             req.setAttribute("sumList", sumList);
             req.setAttribute("sumAllList", sumAllList);
+            req.setAttribute("partMap", partMap);
         }catch (SQLException e) {
             e.printStackTrace();
         } finally {

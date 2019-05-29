@@ -76,21 +76,13 @@
 <!-- ОКНО ДОБАВЛЕНИЯ ЦИКЛА-->
 <div id="insert_cycle_popup" class="parent_popup">
     <div class="popup-big">
-        <div class="popup-form" style="height:250px;">
+        <div class="popup-form" style="height:200px;">
             <div class="top-div">
                 Добавить цикл
             </div>
             <form action="/insertCycle" autocomplete="off" method="POST">
-                <div class="center-div-update" style="height:100px;">
+                <div class="center-div-update" style="height:50px;">
                     <table class="center-table" style="width: 600px;">
-                        <tr>
-                            <td style="width: 150px; font-size: 16px;">Код цикла</td>
-                            <td>
-                                <input type="text" pattern="^(?![ ])[А-Яа-яA-Za-z0-9 ]{1,10}"
-                                       title="Код цикла должен быть не более 10 символов и состоять из букв и/или цифр."
-                                       minlength="1" maxlength="10" style="width: 400px" class="text-field" required="required" name="shortNameCycleInsert" value=""/>
-                            </td>
-                        </tr>
                         <tr style="background-color: white">
                             <td style="width: 150px; font-size: 16px;">Название</td>
                             <td>

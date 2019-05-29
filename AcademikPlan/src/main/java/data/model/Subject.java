@@ -2,11 +2,13 @@ package data.model;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Subject {
     int idSubject;
     int idPart;
-    double number;
+    int number;
     String name;
     String depart;
     int exams;
@@ -16,4 +18,5 @@ public class Subject {
     double lab;
     double pract;
     double self;
+    List<SubSubject> subSubjectList;
 }

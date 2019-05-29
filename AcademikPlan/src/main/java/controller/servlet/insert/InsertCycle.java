@@ -24,7 +24,7 @@ public class InsertCycle extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
-        String shortName = req.getParameter("shortNameCycleInsert");
+        int id = (int) session.getAttribute("idTitle");
         String name = req.getParameter("nameCycleInsert");
         Connection connection = null;
         try{
@@ -34,7 +34,7 @@ public class InsertCycle extends HttpServlet {
             Cycle cycle = new Cycle();
             cycle.setIdTitle((int) session.getAttribute("idTitle"));
             cycle.setName(name);
-            cycle.setShortName(shortName);
+            cycle.setShortName("Б"+(cycleDao.getCountCycleByTitle(id)+1));
             if(!cycleDao.insertCycle(cycle))
                 session.setAttribute("erMessage", "Не удалось провести операцию");
             else session.setAttribute("message", "Цикл успешно добавлен");

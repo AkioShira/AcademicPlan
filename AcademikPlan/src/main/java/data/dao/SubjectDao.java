@@ -10,6 +10,13 @@ public interface SubjectDao {
     boolean insertSubjects(List<Subject> subjects);
     boolean updateSubjects(List<Subject> subjects);
     boolean deleteSubject(Subject subject);
-    double getMaxNumberByPart(int idPart);
-    List<Double> getSumByPart(int idPart);
+    int getMaxNumberByPart(int idPart);
+    List<Double> getSumByPart(int idPart, int studyTime);
+    List<Double> getSumAudByTitle(int idTitle);
+    List<Double> getSumSelfByTitle(int idTitle);
+    List<Double> getCountExamsByTitle(int idTitle);
+    List<Double> getCountCreditsByTitle(int idTitle);
+    List<Double> getCountKPByTitle(int idTitle);
+    List<Double> getSumCredByTitle(int idTitle);
+    List<Double> getSumBSRByTitle(int idTitle);
 }

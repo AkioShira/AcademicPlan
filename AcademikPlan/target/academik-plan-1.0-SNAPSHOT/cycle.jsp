@@ -26,6 +26,13 @@
         document.getElementById('text-subject-delete').innerHTML = "Удалить дисциплину '"+name+"'?";
     }
 
+    function deleteSubSubject(idpk, name){
+        document.getElementById('delete_subsubject_popup').style.display='block';
+        var el=document.getElementById('idSubSubjectDelete');
+        el.value = idpk;
+        document.getElementById('text-subsubject-delete').innerHTML = "Удалить дисциплину '"+name+"'?";
+    }
+
     function showErMessage() {
         var x = document.getElementById("snackbar");
         x.className = "show";
@@ -57,11 +64,33 @@
                     </li>
             </c:forEach>
             <li>
+                <form action="/result" method="GET">
+                    <input type="submit" value="ИТОГ" class="button menu" style="width: 100px;"/>
+                </form>
+            </li>
+            <li>
                 <form action="/plans" method="GET">
                     <input type="submit" value="Назад" class="button menu" style="width: 100px;"/>
                 </form>
             </li>
         </ul>
+    </div>
+
+    <div class="toolbar">
+        <form>
+            <input type="button" onclick="document.getElementById('part_popup').style.display='block';" value="Редактировать части" class="button green"/>
+        </form>
+        <form>
+            <input type="button" onclick="document.getElementById('sub_subject_popup').style.display='block';" value="Добавить предмет по выбору" class="button blue" style="width: 200px;"/>
+        </form>
+        <form>
+            <input type="button" onclick="document.getElementById('subject_popup').style.display='block';" value="Добавить предмет" class="button blue"/>
+        </form>
+
+        <form action="/toPdf" method="POST">
+            <input type="submit" value="Экспорт в PDF" class="button gray"/>
+        </form>
+
     </div>
 
     <div style="height: calc(100% - (120px));overflow: auto;">
@@ -99,9 +128,10 @@
                             <td rowspan="2">${cycleContent.get(13).value}</td>
                             <td rowspan="2">${cycleContent.get(14).value}</td>
                             <td rowspan="2">${cycleContent.get(15).value}</td>
-                            <c:forEach var = "i" begin = "1" end = "${title.studyTime*2}">
+                            <c:forEach var = "i" begin = "1" end = "${title.studyTime*2-1}">
                                 <td colspan="4">${i} (18)</td>
                             </c:forEach>
+                            <td colspan="4">${title.studyTime*2} (9)</td>
                         </tr>
                         <tr>
                             <c:forEach var = "i" begin = "1" end = "${title.studyTime*2}">
@@ -113,10 +143,7 @@
                         </tr>
                         <tr style="background-color: #e0ecf9">
                             <td style="text-align: left">
-                                <input type="text" pattern="^(?![ ])[А-Яа-яA-Za-z0-9 ]{1,10}"
-                                       title="Код цикла должен быть не более 10 символов и состоять из букв и/или цифр."
-                                       minlength="1" maxlength="10" style="background-color: #e0ecf9; width: 50px; font-size: 16px;" class="text-field-n"
-                                       required="required" name="shortNameCycleInsert" value="${cycle.shortName}"/>
+                                ${cycle.shortName}
                             </td>
                             <td colspan="${title.studyTime*8+14}">
                                 <input type="text" pattern="^(?![ ])[А-Яа-яA-Za-z0-9,.- ]{1,80}"
@@ -150,9 +177,9 @@
                                         <!-- Код дисциплины -->
                                         <td style="text-align: left">
                                             ${cycle.shortName}.${part.shortName}
-                                            <input type="text" pattern="\d{1,2}\.?\d{0,1}"
+                                            <input type="text" pattern="\d{1,2}"
                                                    title="Неверно введен код дисциплины."
-                                                   minlength="1" maxlength="4" style="width: 40px;" class="text-field-n"
+                                                   minlength="1" maxlength="2" style="width: 20px;" class="text-field-n"
                                                    required="required" name="subject-${part.idPart}-${sstatus.count}"
                                                    value="<fmt:formatNumber type="number" groupingUsed="false"  value="${subject.number}" />" />
                                         </td>
@@ -167,7 +194,7 @@
                                         <td>
                                             <input type="text" pattern="^(?![ ])[А-Яа-яA-Za-z0-9,.- ]{1,10}"
                                                    title="Шифр кафедры должен быть не более 10 символов и состоять из букв и/или цифр."
-                                                   minlength="1" maxlength="10" style="width: 50px" class="text-field-n"
+                                                   minlength="1" maxlength="10" style="width: 55px" class="text-field-n"
                                                    required="required" name="subject-${part.idPart}-${sstatus.count}" value="${subject.depart}"/>
                                         </td>
                                         <!-- з.е -->
@@ -226,24 +253,24 @@
                                             <c:if test="${subject.exams==i || subject.credits==i}">
                                                 <td>
                                                     <input type="text" pattern="\d{1}\.?\d{0,1}"
-                                                           title="Количество лекций в неделю имеет неверное значение."
+                                                           title="Количество лекций в неделю должно быть числом."
                                                            maxlength="3" style="width: 20px; font-size: 12px;" class="text-field-n"
                                                            required="required" name="subject-${part.idPart}-${sstatus.count}"
                                                            value="<fmt:formatNumber type="number" groupingUsed="false" value="${subject.lec}" />"/>
                                                 </td>
                                                 <td><input type="text" pattern="\d{1}\.?\d{0,1}"
-                                                           title="Количество лабораторных занятий в неделю имеет неверное значение."
+                                                           title="Количество лабораторных занятий в неделю должно быть числом."
                                                            maxlength="3" style="width: 20px; font-size: 12px;" class="text-field-n"
                                                            required="required" name="subject-${part.idPart}-${sstatus.count}"
                                                            value="<fmt:formatNumber type="number" groupingUsed="false" value="${subject.lab}" />"/>
                                                 </td>
                                                 <td><input type="text" pattern="\d{1}\.?\d{0,1}"
-                                                           title="Количество практических занятий в неделю имеет неверное значение."
+                                                           title="Количество практических занятий в неделю должно быть числом."
                                                            maxlength="3" style="width: 20px; font-size: 12px;" class="text-field-n"
                                                            required="required" name="subject-${part.idPart}-${sstatus.count}"
                                                            value="<fmt:formatNumber type="number" groupingUsed="false" value="${subject.pract}" />"/></td>
                                                 <td><input type="text" pattern="\d{1}\.?\d{0,1}"
-                                                           title="Количество самостоятельных занятий в неделю имеет неверное значение."
+                                                           title="Количество самостоятельных занятий в неделю должно быть числом."
                                                            maxlength="3" style="width: 20px; font-size: 12px;" class="text-field-n"
                                                            required="required" name="subject-${part.idPart}-${sstatus.count}"
                                                            value="<fmt:formatNumber type="number" groupingUsed="false" value="${subject.self}" />"/></td>
@@ -258,6 +285,28 @@
                                             <input type="button" class="button red button-table" onclick="deleteSubject(${subject.idSubject}, '${subject.name}');" value="Удалить"/>
                                         </td>
                                     </tr>
+                                    <c:forEach items="${subject.subSubjectList}" var="sub" varStatus="ssstatus">
+                                        <tr>
+                                            <td style="text-align: left">
+                                                    ${cycle.shortName}.${part.shortName}${subject.number}.${ssstatus.count}
+                                            </td>
+                                            <td style="text-align: left">
+                                                <input type="text" pattern="^(?![ ])[А-Яа-яA-Za-z0-9,.- ]{1,80}"
+                                                       title="Название дисциплины должно быть не более 80 символов и состоять из букв и/или цифр."
+                                                       minlength="1" maxlength="80" style="width: 400px" class="text-field-n"
+                                                       required="required" name="subsubject-${sub.idSubSubject}" value="${sub.name}"/>
+                                            </td>
+                                            <td style="text-align: left">
+                                                ${subject.depart}
+                                            </td>
+                                            <c:forEach var = "j" begin = "1" end = "${title.studyTime*8+11}">
+                                                <td style="color: #999999">0</td>
+                                            </c:forEach>
+                                            <td>
+                                                <input type="button" class="button red button-table" onclick="deleteSubSubject(${sub.idSubSubject}, '${sub.name}');" value="Удалить"/>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                 </c:if>
                             </c:forEach>
                             <tr>
@@ -290,21 +339,10 @@
             </form>
         </div>
     </div>
-    <div class="toolbar">
-        <form>
-            <input type="button" onclick="document.getElementById('part_popup').style.display='block';" value="Редактировать части" class="button green"/>
-        </form>
-        <form>
-            <input type="button" onclick="document.getElementById('subject_popup').style.display='block';" value="Добавить предмет" class="button blue"/>
-        </form>
-        <form action="/toPdf" method="POST">
-            <input type="submit" value="Экспорт в PDF" class="button gray"/>
-        </form>
 
-    </div>
 </div>
 
-<!-- ОКНО ПОДТВЕРЖДЕНИЯ УДАЛЕНИЯ ЧАСТИ -->
+<!-- ОКНО ПОДТВЕРЖДЕНИЯ УДАЛЕНИЯ ПРЕДМЕТА -->
 <div id="delete_subject_popup" class="parent_popup">
     <div class="popup">
         <form action="/deleteSubject" method="POST" class="popup-form" style="height:140px;">
@@ -317,6 +355,22 @@
             </div>
         </form>
         <a class="close" title="Закрыть" onclick="document.getElementById('delete_subject_popup').style.display='none';">X</a>
+    </div>
+</div>
+
+<!-- ОКНО ПОДТВЕРЖДЕНИЯ УДАЛЕНИЯ ПРЕДМЕТА ПО ВЫБОРУ -->
+<div id="delete_subsubject_popup" class="parent_popup">
+    <div class="popup">
+        <form action="/deleteSubSubject" method="POST" class="popup-form" style="height:140px;">
+            <div id="text-subsubject-delete" class="top-div">
+            </div>
+            <div class="bottom-div-two">
+                <input type="number" hidden id="idSubSubjectDelete" name="idSubSubjectDelete"/>
+                <input type="submit" class="button red button-little" value="Подтвердить"/>
+                <input type="button" class="button gray button-little" onclick="document.getElementById('delete_subsubject_popup').style.display='none';" value="Отмена"/>
+            </div>
+        </form>
+        <a class="close" title="Закрыть" onclick="document.getElementById('delete_subsubject_popup').style.display='none';">X</a>
     </div>
 </div>
 
@@ -372,6 +426,47 @@
         </div>
         <a class="close" title="Закрыть" onclick="document.getElementById('subject_popup').style.display='none';">X</a></div>
 </div>
+
+<!-- ДОБАВИТЬ ПРЕДМЕТ ПО ВЫБОРУ -->
+<div id="sub_subject_popup" class="parent_popup">
+    <div class="popup-big">
+        <div class="popup-form" style="height:300px;">
+            <div class="top-div">
+                Добавить предмет по выбору
+            </div>
+            <form action="/insertSubSubject" autocomplete="off" method="POST">
+                <div class="center-div-update" style="height:150px;">
+                    <table class="center-table" style="width: 600px;">
+                        <tr>
+                            <td style="width: 150px; font-size: 16px;">Дисциплина</td>
+                            <td>
+                                <select name="subjectSelect" class="text-field" style="width: 400px">
+                                    <c:forEach items="${subjectList}" var="subject">
+                                        <option value="${subject.idSubject}">${partMap.get(subject.idPart)}.${subject.number} ${subject.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr style="background-color: white;">
+                            <td style="width: 150px; font-size: 16px; ">Имя дисциплины</td>
+                            <td>
+                                <input type="text" pattern="^(?![ ])[А-Яа-яA-Za-z0-9,.- ]{1,80}"
+                                       title="Название дисциплины должно быть не более 80 символов и состоять из букв и/или цифр."
+                                       minlength="1" maxlength="80" style="width: 400px" class="text-field" required="required" name="nameSubject" value=""/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="bottom-div-zero">
+                    <input type="submit" class="button green button-little" value="Сохранить" name="insert"/>
+                    <input type="button" class="button gray button-little" onclick="document.getElementById('sub_subject_popup').style.display='none';" value="Отмена"/>
+                </div>
+            </form>
+        </div>
+        <a class="close" title="Закрыть" onclick="document.getElementById('sub_subject_popup').style.display='none';">X</a></div>
+</div>
+
 
 <div id="snackbar"><c:out value="${sessionScope.erMessage}"/></div>
 <c:if test="${sessionScope.erMessage!=null}">
