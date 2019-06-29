@@ -21,4 +21,8 @@ public interface FactoryDao {
     PartMariaDb getPartMariaDb(Connection connection);
     SubjectMariaDb getSubjectMariaDb(Connection connection);
     SubSubjectMariaDb getSubSubjectMariaDb(Connection connection);
+    PhysicalMariaDb getPhysicalMariaDb(Connection connection);
+    NameMariaDb getNameMariaDb(Connection connection);
+    PlanTypeMariaDb getPlanTypeMariaDb(Connection connection);
+    ControlMariaDb getControlMariaDb(Connection connection);
 }

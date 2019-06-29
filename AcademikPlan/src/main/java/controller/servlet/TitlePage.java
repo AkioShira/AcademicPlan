@@ -152,9 +152,40 @@ public class TitlePage extends HttpServlet {
             for(SertificationType t : stateTypes)
                 stateMap.put(t.getIdSertificationType(), t.getName());
 
+            //Заполнение физ культуры
+            PhysicalMariaDb physicalDao = fb.getPhysicalMariaDb(connection);
+            List<Physical> physicalList = physicalDao.getPhysicalsByTitle(id);
+            if(physicalList.isEmpty()) {
+                for (int i = 1; i <= 2; i++) {
+                    Physical physical = new Physical();
+                    physical.setIdPhysicalType(i);
+                    physicalList.add(physical);
+                }
+                for (Physical p : physicalList) {
+                    p.setBsr(0);
+                    p.setIdTitle(id);
+                }
+                physicalDao.insertPhysical(physicalList);
+            }
+
             //Заполнение циклов
             List<Cycle> cycleList = fb.getCycleMariaDb(connection).getCyclesByTitle(id);
 
+            //Заполнение имен
+            NameMariaDb nameDao = fb.getNameMariaDb(connection);
+            Name name;
+            try {
+                name = nameDao.getNameByTitle(id);
+            }catch (Exception e){
+                name = new Name();
+                name.setIdTitle(id);
+                name.setDepartName("");
+                name.setDecanName("");
+                name.setProrectorName("");
+                name.setStudyName("");
+                name.setRectorName("");
+                nameDao.insertName(name);
+            }
 
             practTypes.remove(0);
             stateTypes.remove(0);
@@ -170,6 +201,7 @@ public class TitlePage extends HttpServlet {
             req.setAttribute("stateTypes", stateTypes);
             req.setAttribute("stateMap", stateMap);
             req.setAttribute("cycleList", cycleList);
+            req.setAttribute("name", name);
         }catch (SQLException e) {
             e.printStackTrace();
         } finally {

@@ -1,11 +1,9 @@
 package controller.servlet.insert;
 
 import connection.pooling.ConnectionPool;
-import data.dao.mariaDB.DirectionMariaDb;
-import data.dao.mariaDB.FactoryMariaDb;
-import data.dao.mariaDB.StudyShedulesMariaDb;
-import data.dao.mariaDB.TitleMariaDb;
+import data.dao.mariaDB.*;
 import data.model.Direction;
+import data.model.Name;
 import data.model.StudyShedule;
 import data.model.Title;
 
@@ -30,12 +28,11 @@ public class InsertTitle extends HttpServlet {
         String name = req.getParameter("nameInsert");
         int yearCreation = Integer.parseInt(req.getParameter("yearCreationInsert"));
         String qualification = req.getParameter("qualificationInsert");
-        int studyTime = Integer.parseInt(req.getParameter("studyTimeInsert"));
-        String studyLevel = req.getParameter("studyLevelInsert");
         int idGroupDirection = Integer.parseInt(req.getParameter("groupDirectionInsert"));
         int idDirection = Integer.parseInt(req.getParameter("directionInsert"));
         int idProfile = Integer.parseInt(req.getParameter("profileInsert"));
         int idDepartment = Integer.parseInt(req.getParameter("departmentInsert"));
+        int idPlan = Integer.parseInt(req.getParameter("planInsert"));
         Connection connection = null;
         try{
             connection = ConnectionPool.getConnection();
@@ -45,8 +42,18 @@ public class InsertTitle extends HttpServlet {
             title.setName(name);
             title.setYearCreation(yearCreation);
             title.setQualification(qualification);
-            title.setStudyTime(studyTime);
-            title.setStudyLevel(studyLevel);
+            if(idPlan == 1)
+                title.setStudyTime(4);
+            else if(idPlan == 2)
+                title.setStudyTime(2);
+            else title.setStudyTime(1);
+
+            if(idPlan == 1)
+                title.setStudyLevel("Бакалавриат");
+            else if(idPlan == 2)
+                title.setStudyLevel("Магистратура");
+            else title.setStudyLevel("Специалитет");
+            title.setIdPlan(idPlan);
             title.setIdGroupDirection(idGroupDirection);
             title.setIdDirection(idDirection);
             title.setIdProfile(idProfile);
@@ -57,6 +64,7 @@ public class InsertTitle extends HttpServlet {
                 session.setAttribute("erMessage", "Не удалось провести операцию");
                 throw new SQLException();
             }else session.setAttribute("message", "Титул успешно добавлен");
+
 
 
         } catch (SQLException e) {

@@ -1,11 +1,10 @@
 package controller.servlet.insert;
 
 import connection.pooling.ConnectionPool;
-import data.dao.mariaDB.CycleMariaDb;
-import data.dao.mariaDB.FactoryMariaDb;
-import data.dao.mariaDB.StateSertificationMariaDb;
+import data.dao.mariaDB.*;
 import data.model.Cycle;
 import data.model.StateSertification;
+import data.model.Title;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +33,16 @@ public class InsertCycle extends HttpServlet {
             Cycle cycle = new Cycle();
             cycle.setIdTitle((int) session.getAttribute("idTitle"));
             cycle.setName(name);
-            cycle.setShortName("Б"+(cycleDao.getCountCycleByTitle(id)+1));
+
+            String shortName;
+            TitleMariaDb titleDao = fb.getTitleMariaDb(connection);
+            Title title = titleDao.getTitleById(id);
+            if(title.getIdPlan()==1)
+                shortName = "Б";
+            else if(title.getIdPlan()==2)
+                shortName = "М";
+            else shortName = "C";
+            cycle.setShortName(shortName+(cycleDao.getCountCycleByTitle(id)+1));
             if(!cycleDao.insertCycle(cycle))
                 session.setAttribute("erMessage", "Не удалось провести операцию");
             else session.setAttribute("message", "Цикл успешно добавлен");

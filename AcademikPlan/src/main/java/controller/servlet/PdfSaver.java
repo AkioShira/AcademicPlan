@@ -5,6 +5,7 @@ import com.lowagie.text.DocumentException;
 
 import com.lowagie.text.pdf.BaseFont;
 import connection.pooling.ConnectionPool;
+import controller.generate.ResultGenerate;
 import controller.generate.SubjectGenerate;
 import controller.generate.TitleGenerate;
 import controller.xml.editor.XmlEditor;
@@ -40,7 +41,8 @@ public class PdfSaver extends HttpServlet {
             int id = (int) session.getAttribute("idTitle");
             TitleGenerate title = new TitleGenerate(connection, xmlEditor, id);
             SubjectGenerate subject = new SubjectGenerate(connection, xmlEditor, id);
-            byte[] pdfDoc = performPdfDocument(title, subject);
+            ResultGenerate result = new ResultGenerate(connection, xmlEditor, id);
+            byte[] pdfDoc = performPdfDocument(title, subject, result);
 
             resp.setContentLength(pdfDoc.length);
             resp.getOutputStream().write(pdfDoc);
@@ -48,7 +50,7 @@ public class PdfSaver extends HttpServlet {
             resp.setContentType("text/html");
 
             PrintWriter out = resp.getWriter();
-            out.write("<strong>Something wrong</strong><br /><br />");
+            out.write("<strong>Something wrong</strong><br/><br/>");
             ex.printStackTrace(out);
         }
     }
@@ -57,7 +59,7 @@ public class PdfSaver extends HttpServlet {
      * Метод, подготавливащий PDF документ.
      * @return PDF документ
      */
-    private byte[] performPdfDocument(TitleGenerate title, SubjectGenerate subject) throws IOException, DocumentException {
+    private byte[] performPdfDocument(TitleGenerate title, SubjectGenerate subject, ResultGenerate result) throws IOException, DocumentException {
         String html = "<!doctype html>\n" +
                 "<html>\n" +
                 "<head>\n" +
@@ -68,7 +70,7 @@ public class PdfSaver extends HttpServlet {
                 "\t<div style=\"font-size: 14px;\">" + title.getHeadTable()+title.getStudyShedules()+title.getBudget()+
                 title.getPractic()+title.getStateSertification();
         html += "<div class=\"new_page\">&nbsp;</div>"+subject.getSubjects();
-
+        html += "<div class=\"new_page\">&nbsp;</div>"+result.getResultHead()+result.getContent();
         html += "</div></body>\n" +
                 "</html>";
 
@@ -104,10 +106,10 @@ public class PdfSaver extends HttpServlet {
         out.flush();
         out.close();
 
-        byte[] result = outputStream.toByteArray();
+        byte[] res = outputStream.toByteArray();
         outputStream.close();
 
-        return result;
+        return res;
     }
 
     @Override

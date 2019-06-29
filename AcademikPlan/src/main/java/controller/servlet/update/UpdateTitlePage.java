@@ -2,10 +2,7 @@ package controller.servlet.update;
 
 import connection.pooling.ConnectionPool;
 import data.dao.mariaDB.*;
-import data.model.Pract;
-import data.model.StateSertification;
-import data.model.StudyShedule;
-import data.model.Title;
+import data.model.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,9 +26,9 @@ public class UpdateTitlePage extends HttpServlet {
         int yearReception = Integer.parseInt(req.getParameter("yearReception"));
         int yearCreation = Integer.parseInt(req.getParameter("yearCreation"));
         String qualification = req.getParameter("qualification");
-        int studyTime = Integer.parseInt(req.getParameter("studyTime"));
         String studyLevel = req.getParameter("studyLevel");
         String formEducation = req.getParameter("formEducation");
+        String rectorName = req.getParameter("rectorName");
         int groupDirection = 1;
         int direction = 1;
         int profile = 1;
@@ -56,13 +53,18 @@ public class UpdateTitlePage extends HttpServlet {
             title.setFormEducation(formEducation);
             title.setYearReception(yearReception);
             title.setQualification(qualification);
-            title.setStudyTime(studyTime);
             title.setStudyLevel(studyLevel);
             title.setIdGroupDirection(groupDirection);
             title.setIdDirection(direction);
             title.setIdProfile(profile);
 
             StudyShedulesMariaDb sheduleDao = fb.getStudySheduleMariaDb(connection);
+
+            //Обновить ректора
+            NameMariaDb nameDao = fb.getNameMariaDb(connection);
+            Name nameTitle = nameDao.getNameByTitle(id);
+            nameTitle.setRectorName(rectorName);
+            nameDao.updateName(nameTitle);
 
             //Обновить график учебного процесса
             for(int i = 1; i<=maxStudyTime; i++){
@@ -99,7 +101,7 @@ public class UpdateTitlePage extends HttpServlet {
                 int idSertification = 1;
                 try {
                     idSertification = Integer.parseInt(req.getParameter("stateType"+i));
-                }catch (NumberFormatException e){     }
+                }catch (NumberFormatException e){ }
                 statelist.get(i-1).setIdSertificationType(idSertification);
                 String state = req.getParameter("state"+i);
                 statelist.get(i-1).setSemester(Integer.parseInt(state));

@@ -5,7 +5,7 @@ import data.model.Role;
 import java.util.List;
 
 public interface RoleDao {
-    Role getRoleById(int id);
-    List<Role> getAllRoles();
-    void setOrder(Role.sortParameter s);
+Role getRoleById(int id);
+List<Role> getAllRoles();
+void setOrder(Role.sortParameter s);
 }

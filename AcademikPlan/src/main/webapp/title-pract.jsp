@@ -43,7 +43,7 @@
                             <td>${pract.semester}</td>
                             <td>${pract.week}</td>
                             <td>
-                                <c:if test="${status.count!=1}">
+                                <c:if test="${practList.size()>1}">
                                     <input type="button" class="button red button-little" onclick="deletePract(${pract.idPract}, '${typeMap.get(pract.idPractType)}');" value="Удалить"/>
                                 </c:if>
                             </td>

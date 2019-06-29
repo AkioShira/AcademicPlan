@@ -3,9 +3,7 @@ package controller.servlet.update;
 import connection.pooling.ConnectionPool;
 import data.dao.mariaDB.FactoryMariaDb;
 import data.dao.mariaDB.PractTypesMariaDb;
-import data.dao.mariaDB.ProfileMariaDb;
 import data.model.PractType;
-import data.model.Profile;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +15,10 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * Name: Шишко А.А.
+ * Date: 01.06.2019
+ */
 @WebServlet("/updatePractType")
 public class UpdatePractType extends HttpServlet {
 

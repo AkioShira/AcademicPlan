@@ -32,9 +32,11 @@ public class TitleGenerate {
         GroupDirectionMariaDb groupDao = fb.getGroupDirectionMariaDb(connection);
         DirectionMariaDb directionDao = fb.getDirectionMariaDb(connection);
         ProfileMariaDb profileDao = fb.getProfileMariaDb(connection);
+        NameMariaDb nameDao = fb.getNameMariaDb(connection);
         GroupDirection groupDirection = groupDao.getDirectionById(title.getIdGroupDirection());
         Direction direction = directionDao.getDirectionById(title.getIdDirection());
         Profile profile = profileDao.getProfileById(title.getIdProfile());
+        Name name = nameDao.getNameByTitle(title.getIdTitle());
 
         return "<table class=\"head-table\" style=\"width: 100%; font-size: 12px;\">\n" +
                 "\t\t\t<tr style=\"text-align:center; \">\n" +
@@ -46,7 +48,7 @@ public class TitleGenerate {
                 "\t\t\t<tr>\n" +
                 "                <td style=\"text-align: left; padding-left: 100px\">\n" +
                 "                    <h4>"+titleList.get(2).getValue()+"</h4>\n" +
-                "                    И.о. ректора _____ "+titleList.get(3).getValue()+"<br>\n" +
+                "                    И.о. ректора _____ "+name.getRectorName()+"<br>\n" +
                 "                    \"__\"____ "+title.getYearCreation()+" г.<br>\n"
                 + titleList.get(4).getValue()+" __.__. "+title.getYearCreation()+ " г. №__\n </td>\n" +
                 "                <td style=\"text-align: right; padding-right: 100px\">\n" +

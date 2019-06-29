@@ -8,4 +8,5 @@ public class StateSertification {
     int idTitle;
     int idSertificationType;
     int semester;
+    double ze;
 }

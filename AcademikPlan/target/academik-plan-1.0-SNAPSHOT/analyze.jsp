@@ -15,9 +15,7 @@
     function showAnalyze() {
         document.getElementById('analyze_popup').style.display='block';
     }
-
 </script>
-
 
 <div id="analyze_popup" class="parent_popup">
     <div class="popup-big" style="width:900px;">
@@ -66,7 +64,12 @@
                                 <td><fmt:formatNumber type="number" groupingUsed="false" value="${examList.get(i-1)}" /></td>
                                 <td><fmt:formatNumber type="number" groupingUsed="false" value="${creditList.get(i-1)}" /></td>
                                 <td><fmt:formatNumber type="number" groupingUsed="false" value="${kpList.get(i-1)}" /></td>
-                                <td><fmt:formatNumber type="number" groupingUsed="false" value="${sumZeList.get(i-1)}" /></td>
+                                <c:if test="${sumZeList.get(i-1) <= 30}">
+                                    <td style="color: green"><fmt:formatNumber type="number" groupingUsed="false" value="${sumZeList.get(i-1)}" /></td>
+                                </c:if>
+                                <c:if test="${sumZeList.get(i-1) > 30}">
+                                    <td style="color: red"><fmt:formatNumber type="number" groupingUsed="false" value="${sumZeList.get(i-1)}" /></td>
+                                </c:if>
                             </tr>
                         </c:forEach>
                     </table>

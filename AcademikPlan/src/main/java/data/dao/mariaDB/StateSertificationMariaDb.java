@@ -28,7 +28,7 @@ public class StateSertificationMariaDb extends ConnectionService implements Stat
     public boolean insertSertifications(List<StateSertification> sertifications) {
         PreparedStatement statement = null;
         ResultSet rs = null;
-        String query="INSERT INTO state_sertification SET idTitle = ?, idSertificationType = ?, semester = ?";
+        String query="INSERT INTO state_sertification SET idTitle = ?, idSertificationType = ?, semester = ?, ze=?";
         try{
             connection.setAutoCommit(false);
             statement = connection.prepareStatement(query);
@@ -36,6 +36,7 @@ public class StateSertificationMariaDb extends ConnectionService implements Stat
                 statement.setInt(1, state.getIdTitle());
                 statement.setInt(2, state.getIdSertificationType());
                 statement.setInt(3, state.getSemester());
+                statement.setInt(4, 0);
                 statement.addBatch();
             }
             statement.executeBatch();
@@ -85,19 +86,15 @@ public class StateSertificationMariaDb extends ConnectionService implements Stat
     public boolean updateSertifications(List<StateSertification> sertifications) {
         PreparedStatement statement = null;
         ResultSet rs = null;
-        String query="UPDATE state_sertification SET idTitle = ?, idSertificationType = ?, semester = ? WHERE idSertification=?";
+
         try{
-            connection.setAutoCommit(false);
-            statement = connection.prepareStatement(query);
+
             for(StateSertification state : sertifications) {
-                statement.setInt(1, state.getIdTitle());
-                statement.setInt(2, state.getIdSertificationType());
-                statement.setInt(3, state.getSemester());
-                statement.setInt(4, state.getIdSertification());
-                statement.addBatch();
+                String query="UPDATE state_sertification SET idTitle = "+state.getIdTitle()+", idSertificationType = "+state.getIdSertificationType()+
+                        ", semester = "+state.getSemester()+",  ze="+state.getZe()+" WHERE idSertification="+state.getIdSertification();
+                statement = connection.prepareStatement(query);
+                statement.execute();
             }
-            statement.executeBatch();
-            connection.commit();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -107,11 +104,7 @@ public class StateSertificationMariaDb extends ConnectionService implements Stat
                 ex.printStackTrace();
             }
         }finally {
-            try {
-                connection.setAutoCommit(true);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
             closeResurse(statement, rs);
         }
         return false;
@@ -130,6 +123,7 @@ public class StateSertificationMariaDb extends ConnectionService implements Stat
                 state.setIdTitle(rs.getInt("idTitle"));
                 state.setIdSertificationType(rs.getInt("idSertificationType"));
                 state.setSemester(rs.getInt("semester"));
+                state.setZe(rs.getDouble("ze"));
                 sertifications.add(state);
             }
         } catch (SQLException e) {

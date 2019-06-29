@@ -50,7 +50,7 @@ public class SubjectGenerate {
         html.append("<tr style = \"font-size: 9px;\">\n" + "<td rowspan=\"2\">").append(headList.get(9).getValue()).append("</td>\n").append("<td rowspan=\"2\">").append(headList.get(10).getValue()).append("</td>\n").append("<td rowspan=\"2\">").append(headList.get(11).getValue()).append("</td>\n").append("<td rowspan=\"2\">").append(headList.get(12).getValue()).append("</td>\n").append("<td rowspan=\"2\">").append(headList.get(13).getValue()).append("</td>\n").append("<td rowspan=\"2\">").append(headList.get(14).getValue()).append("</td>\n").append("<td rowspan=\"2\">").append(headList.get(15).getValue()).append("</td>\n");
         for(int i =1; i<title.getStudyTime()*2; i++)
             html.append("<td colspan=\"4\">").append(i).append(" (18)</td>");
-        html.append("<td colspan=\"4\">").append(title.getStudyTime() * 2).append(" (19)</td>");
+        html.append("<td colspan=\"4\">").append(title.getStudyTime() * 2).append(" (9)</td>");
 
         html.append("</tr><tr style = \"font-size: 9px;\">");
         for(int i =1; i<=title.getStudyTime()*2; i++) {

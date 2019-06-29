@@ -66,6 +66,9 @@
 
     <div class="toolbar">
         <form>
+            <input type="button" onclick="showControl();" value="Контроль версий" class="button purple" style="width: 180px;"/>
+        </form>
+        <form>
             <input type="button" onclick="showCycle();" value="Редактировать циклы" class="button green" style="width: 180px;"/>
         </form>
         <form>
@@ -95,7 +98,10 @@
                         <tr>
                             <td style="text-align: left; padding-left: 100px">
                                 <h4>${titleContent.get(2).value}</h4>
-                                И.о. ректора _____ ${titleContent.get(3).value}<br>
+                                И.о. ректора _____ <input type="text" pattern="^(?![ ])[А-Яа-яA-Za-z,.- ]{1,50}"
+                                                          title="Имя ректора должно быть не более 50 символов и состоять из букв."
+                                                          minlength="1" maxlength="50" style="width: 200px;" class="text-field"
+                                                          required="required" name="rectorName" value="${name.rectorName}"/><br>
                                 "__"____ <input type="text" pattern="[0-9]{4}"
                                                 title="Год должен быть в формате ГГГГ."
                                                 minlength="4" maxlength="4" style="width: 60px" class="text-field"
@@ -110,9 +116,7 @@
                                                minlength="1" maxlength="20" style="width: 200px" class="text-field" required="required" name="qualification" value="${title.qualification}"/>
                                     </p><br>
                                 ${titleContent.get(6).value} <p>
-                                    <input type="text" pattern="[1-4]{1}"
-                                           title="Время обучения должно быть однозначное число от 1 до 4."
-                                           minlength="1" style="width: 40px" class="text-field" required="required" name="studyTime" value="${title.studyTime}"/>
+                                    ${title.studyTime}
                                     г.</p><br>
                                 ${titleContent.get(7).value} <p>среднего общего образования</p><br>
                             </td>
@@ -322,6 +326,7 @@
 <%@ include file="/title-pract.jsp" %>
 <%@ include file="/title-sertification.jsp" %>
 <%@ include file="/title-cycle.jsp" %>
+<%@ include file="/title-control.jsp" %>
 
 <div id="snackbar"><c:out value="${sessionScope.erMessage}"/></div>
 <c:if test="${sessionScope.erMessage!=null}">

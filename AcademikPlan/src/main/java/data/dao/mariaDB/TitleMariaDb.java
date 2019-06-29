@@ -52,7 +52,7 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
                 + "', formEducation = '" + title.getFormEducation()
                 + "', idGroupDirection = "+ title.getIdGroupDirection() + ", idDirection = " + title.getIdDirection()
                 + ", idProfile = " + title.getIdProfile() + ", idDepartment = " + title.getIdDepartment()
-                + ", visible = " + title.isVisible();
+                + ", idPlan = "+title.getIdPlan()+", visible = " + title.isVisible();
         try{
             statement = connection.prepareStatement(query);
             statement.execute();
@@ -76,7 +76,7 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
                 + "', formEducation = '" + title.getFormEducation()
                 + "', idGroupDirection = "+ title.getIdGroupDirection() + ", idDirection = " + title.getIdDirection()
                 + ", idProfile = " + title.getIdProfile() + ", idDepartment = " + title.getIdDepartment()
-                + ", visible = " + title.isVisible() + " WHERE idTitle = "+ title.getIdTitle();
+                + ", idPlan = "+title.getIdPlan()+", visible = " + title.isVisible() + " WHERE idTitle = "+ title.getIdTitle();
         try{
             statement = connection.prepareStatement(query);
             statement.execute();
@@ -140,6 +140,7 @@ public class TitleMariaDb extends ConnectionService implements TitleDao {
                 title.setIdDirection(rs.getInt("idDirection"));
                 title.setIdProfile(rs.getInt("idProfile"));
                 title.setIdDepartment(rs.getInt("idDepartment"));
+                title.setIdPlan(rs.getInt("idPlan"));
                 title.setVisible(rs.getInt("visible") == 1);
                 titleList.add(title);
             }

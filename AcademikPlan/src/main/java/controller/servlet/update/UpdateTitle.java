@@ -27,19 +27,18 @@ public class UpdateTitle extends HttpServlet {
         String name = req.getParameter("nameUpdate");
         int yearCreation = Integer.parseInt(req.getParameter("yearCreationUpdate"));
         String qualification = req.getParameter("qualificationUpdate");
-        int studyTime = Integer.parseInt(req.getParameter("studyTimeUpdate"));
-        String studyLevel = req.getParameter("studyLevelUpdate");
+        int idPlan = Integer.parseInt(req.getParameter("planUpdate"));
         int groupDirection = 1;
         int direction = 1;
         int profile = 1;
         try {
-            groupDirection = Integer.parseInt(req.getParameter("groupDirection"));
+            groupDirection = Integer.parseInt(req.getParameter("groupDirectionUpdate"));
         }catch (NumberFormatException e){        }
         try {
-            direction = Integer.parseInt(req.getParameter("direction"));
+            direction = Integer.parseInt(req.getParameter("directionUpdate"));
         }catch (NumberFormatException e){       }
         try {
-            profile = Integer.parseInt(req.getParameter("profile"));
+            profile = Integer.parseInt(req.getParameter("profileUpdate"));
         }catch (NumberFormatException e){     }
         int department = Integer.parseInt(req.getParameter("departmentUpdate"));
 
@@ -53,8 +52,18 @@ public class UpdateTitle extends HttpServlet {
             title.setYearCreation(yearCreation);
             title.setIdDepartment(department);
             title.setQualification(qualification);
-            title.setStudyTime(studyTime);
-            title.setStudyLevel(studyLevel);
+            if(idPlan == 1)
+                title.setStudyTime(4);
+            else if(idPlan == 2)
+                title.setStudyTime(2);
+            else title.setStudyTime(1);
+
+            if(idPlan == 1)
+                title.setStudyLevel("Бакалавриат");
+            else if(idPlan == 2)
+                title.setStudyLevel("Магистратура");
+            else title.setStudyLevel("Специалитет");
+            title.setIdPlan(idPlan);
             title.setIdGroupDirection(groupDirection);
             title.setIdDirection(direction);
             title.setIdProfile(profile);

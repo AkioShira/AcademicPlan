@@ -1,7 +1,6 @@
 package data.dao;
 
 import data.model.Pract;
-
 import java.util.List;
 
 public interface PractDao {
@@ -10,4 +9,5 @@ public interface PractDao {
     boolean insertPracts(List<Pract> practs);
     boolean updatePracts(List<Pract> practs);
     boolean deletePract(Pract pract);
+    void setOrder(Pract.sortParameter s);
 }

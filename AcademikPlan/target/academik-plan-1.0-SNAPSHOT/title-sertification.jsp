@@ -41,7 +41,7 @@
                             <td>${stateMap.get(state.idSertificationType)}</td>
                             <td>${state.semester}</td>
                             <td>
-                                <c:if test="${status.count!=1}">
+                                <c:if test="${stateList.size()>1}">
                                     <input type="button" class="button red button-little" onclick="deleteSertification(${state.idSertification}, '${stateMap.get(state.idSertificationType)}');" value="Удалить"/>
                                 </c:if>
                             </td>

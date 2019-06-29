@@ -1,7 +1,6 @@
 package data.dao;
 
 import data.model.Department;
-
 import java.util.List;
 
 public interface DepartmentsDao {

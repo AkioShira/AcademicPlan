@@ -34,6 +34,7 @@ public class TitleManagment extends HttpServlet {
             ProfileMariaDb profileDao = fb.getProfileMariaDb(connection);
             List<Profile> profileList = profileDao.getAllProfiles();
             DepartmentMariaDb departmentDao = fb.getDepartmentMariaDB(connection);
+            PlanTypeMariaDb planTypeMariaDb = fb.getPlanTypeMariaDb(connection);
 
             List<Title> titleListVisible = new ArrayList<>();
             List<Title> titleListUnvisible = new ArrayList<>();
@@ -54,6 +55,8 @@ public class TitleManagment extends HttpServlet {
             for(Department d : departmentList)
                 departmentMap.put(d.getIdDepartment(), d.getShortName());
 
+            List<PlanType> planList = planTypeMariaDb.getAllPlans();
+
             groupDirectionList.remove(0);
             directionList.remove(0);
             profileList.remove(0);
@@ -66,6 +69,7 @@ public class TitleManagment extends HttpServlet {
             req.setAttribute("profileList", profileList);
             req.setAttribute("departmentList", departmentList);
 
+            req.setAttribute("planList", planList);
             req.setAttribute("departmentMap", departmentMap);
         } catch (SQLException e) {
             e.printStackTrace();

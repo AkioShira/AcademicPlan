@@ -68,19 +68,18 @@
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
 
-    function updateRow(idpk, name, yearCreation, qualification, studyTime, studyLevel, idGroupDirection,
-                       idDirection, idProfile, idDepartment){
+    function updateRow(idpk, name, yearCreation, qualification, idGroupDirection,
+                       idDirection, idProfile, idDepartment, idPlan){
         document.getElementById('update_popup').style.display='block';
         document.getElementById('idTitleUpdate').value = idpk;
         document.getElementById('nameUpdate').value = name;
         document.getElementById('yearCreationUpdate').value = yearCreation;
         document.getElementById('qualificationUpdate').value = qualification;
-        document.getElementById('studyTimeUpdate').value = studyTime;
-        document.getElementById('studyLevelUpdate').value = studyLevel;
         document.getElementById('groupDirectionUpdate').value = idGroupDirection;
         document.getElementById('directionUpdate').value = idDirection;
         document.getElementById('profileUpdate').value = idProfile;
         document.getElementById('departmentUpdate').value = idDepartment;
+        document.getElementById('planUpdate').value = idPlan;
     }
 </script>
 <!-- ОКНО ВОССТАНОВЛЕНИЯ -->
@@ -204,20 +203,6 @@
                                        minlength="1" maxlength="20" required="required" id="qualificationUpdate" name="qualificationUpdate" class="text-field-popup"/></td>
                         </tr>
                         <tr>
-                            <td>Время обучения</td>
-                            <td><input type="text"
-                                       pattern="[1-6]{1}"
-                                       title="Время обучения должно быть однозначное число от 1 до 6."
-                                       minlength="1" maxlength="1" required="required" id="studyTimeUpdate" name="studyTimeUpdate" class="text-field-popup"/></td>
-                        </tr>
-                        <tr>
-                            <td>Уровень обучения</td>
-                            <td><input type="text"
-                                       pattern="^(?![ ])[А-Яа-яA-Za-z ]{1,40}"
-                                       title="Уровень обучения должен быть не более 40 символов и состоять из букв."
-                                       minlength="1" maxlength="40" required="required" id="studyLevelUpdate" name="studyLevelUpdate" class="text-field-popup"/></td>
-                        </tr>
-                        <tr>
                             <td style="width: 200px">Группа направления подготовки</td>
                             <td>
                                 <select id="groupDirectionUpdate" name="groupDirectionUpdate" class="text-field-popup">
@@ -253,6 +238,16 @@
                                 <select id="departmentUpdate" name="departmentUpdate" class="text-field-popup">
                                     <c:forEach items="${departmentList}" var="dep">
                                         <option value="${dep.idDepartment}">${dep.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Уровень образования</td>
+                            <td>
+                                <select id="planUpdate" name="planUpdate" class="text-field-popup">
+                                    <c:forEach items="${planList}" var="dep">
+                                        <option value="${dep.idPlan}">${dep.name}</option>
                                     </c:forEach>
                                 </select>
                             </td>
@@ -300,20 +295,6 @@
                                        minlength="1" maxlength="20" required="required" id="qualificationInsert" name="qualificationInsert" class="text-field-popup"/></td>
                         </tr>
                         <tr>
-                            <td>Время обучения</td>
-                            <td><input type="text"
-                                       pattern="[1-8]{1}"
-                                       title="Время обучения должно быть однозначное число от 1 до 8."
-                                       minlength="1" maxlength="1" required="required" id="studyTimeInsert" name="studyTimeInsert" class="text-field-popup"/></td>
-                        </tr>
-                        <tr>
-                            <td>Уровень обучения</td>
-                            <td><input type="text"
-                                       pattern="^(?![ ])[А-Яа-яA-Za-z ]{1,40}"
-                                       title="Уровень обучения должен быть не более 40 символов и состоять из букв."
-                                       minlength="1" maxlength="40" required="required" id="studyLevelInsert" name="studyLevelInsert" class="text-field-popup"/></td>
-                        </tr>
-                        <tr>
                             <td style="width: 200px">Группа направления подготовки</td>
                             <td>
                                 <select id="groupDirectionInsert" name="groupDirectionInsert" class="text-field-popup">
@@ -349,6 +330,16 @@
                                 <select id="departmentInsert" name="departmentInsert" class="text-field-popup">
                                     <c:forEach items="${departmentList}" var="dep">
                                         <option value="${dep.idDepartment}">${dep.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Уровень образования</td>
+                            <td>
+                                <select id="planInsert" name="planInsert" class="text-field-popup">
+                                    <c:forEach items="${planList}" var="dep">
+                                        <option value="${dep.idPlan}">${dep.name}</option>
                                     </c:forEach>
                                 </select>
                             </td>
@@ -417,8 +408,8 @@
                     <td>
                         <input type="button" class="button red" onclick="deleteRow(${title.idTitle}, '${title.name}');" value="Удалить"/>
                         <input type="button" class="button blue" onclick="updateRow(${title.idTitle}, '${title.name}',
-                            ${title.yearCreation}, '${title.qualification}', ${title.studyTime}, '${title.studyLevel}',
-                            ${title.idGroupDirection}, ${title.idDirection}, ${title.idProfile}, ${title.idDepartment});" value="Редактировать"/>
+                            ${title.yearCreation}, '${title.qualification}',
+                            ${title.idGroupDirection}, ${title.idDirection}, ${title.idProfile}, ${title.idDepartment}, ${title.idPlan});" value="Редактировать"/>
                     </td>
                 </tr>
         </c:forEach>

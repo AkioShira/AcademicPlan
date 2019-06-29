@@ -12,8 +12,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Name: Шишко А.А.
+ * Date: 01.06.2019
+ */
 public class PractMariaDb extends ConnectionService implements PractDao {
     private Connection connection;
+    private String sortPrameter = "idPract";
 
 
     PractMariaDb(Connection connection){
@@ -21,20 +26,40 @@ public class PractMariaDb extends ConnectionService implements PractDao {
     }
 
     @Override
-    public Pract getPractById(int id) {
-        return getPractTypes("SELECT * FROM practs WHERE idPract = "+id).get(0);
+    public void setOrder(Pract.sortParameter s) {
+        sortPrameter = s.toString();
     }
 
+    /**
+     * Получить практики по ключу
+     * @param id - первичный ключ
+     * @return объект
+     */
+    @Override
+    public Pract getPractById(int id) {
+        return getPractTypes("SELECT * FROM practs WHERE idPract = "+id+" ORDER BY "+ sortPrameter).get(0);
+    }
+
+    /**
+     * Получить список практик, что содержатся в титуле
+     * @param idTitle - первичный ключ титула
+     * @return лист с объектами
+     */
     @Override
     public List<Pract> getPractsByTitle(int idTitle) {
-        return getPractTypes("SELECT * FROM practs WHERE idTitle = "+idTitle);
+        return getPractTypes("SELECT * FROM practs WHERE idTitle = "+idTitle+" ORDER BY "+sortPrameter);
     }
 
+    /**
+     * Добавить список практик в базу данных
+     * @param practs - список объектов
+     * @return результат выполнения
+     */
     @Override
     public boolean insertPracts(List<Pract> practs) {
         PreparedStatement statement = null;
         ResultSet rs = null;
-        String query="INSERT INTO practs SET idTitle = ?, idPractType = ?, semester = ?, week = ?, ze = ?";
+        String query="INSERT INTO practs SET idTitle = ?, idPractType = ?, semester = ?, week = ?";
         try{
             connection.setAutoCommit(false);
             statement = connection.prepareStatement(query);
@@ -43,7 +68,6 @@ public class PractMariaDb extends ConnectionService implements PractDao {
                 statement.setInt(2, pract.getIdPractType());
                 statement.setInt(3, pract.getSemester());
                 statement.setInt(4, pract.getWeek());
-                statement.setDouble(5, pract.getZe());
                 statement.addBatch();
             }
             statement.executeBatch();
@@ -67,11 +91,16 @@ public class PractMariaDb extends ConnectionService implements PractDao {
         return false;
     }
 
+    /**
+     * Редатировать список практик в базе данных
+     * @param practs - список объектов
+     * @return результат выполнения
+     */
     @Override
     public boolean updatePracts(List<Pract> practs) {
         PreparedStatement statement = null;
         ResultSet rs = null;
-        String query="UPDATE practs SET idTitle = ?, idPractType = ?, semester = ?, week = ?, ze = ? WHERE idPract=?";
+        String query="UPDATE practs SET idTitle = ?, idPractType = ?, semester = ?, week = ? WHERE idPract=?";
         try{
             connection.setAutoCommit(false);
             statement = connection.prepareStatement(query);
@@ -80,8 +109,7 @@ public class PractMariaDb extends ConnectionService implements PractDao {
                 statement.setInt(2, pract.getIdPractType());
                 statement.setInt(3, pract.getSemester());
                 statement.setInt(4, pract.getWeek());
-                statement.setDouble(5, pract.getZe());
-                statement.setInt(6, pract.getIdPract());
+                statement.setInt(5, pract.getIdPract());
                 statement.addBatch();
             }
             statement.executeBatch();
@@ -105,6 +133,11 @@ public class PractMariaDb extends ConnectionService implements PractDao {
         return false;
     }
 
+    /**
+     * Удалить практику с базы данных
+     * @param pract - объект
+     * @return результат выполнения
+     */
     @Override
     public boolean deletePract(Pract pract) {
         PreparedStatement statement = null;
@@ -136,7 +169,6 @@ public class PractMariaDb extends ConnectionService implements PractDao {
                 pract.setIdTitle(rs.getInt("idTitle"));
                 pract.setSemester(rs.getInt("semester"));
                 pract.setWeek(rs.getInt("week"));
-                pract.setZe(rs.getDouble("ze"));
                 practsList.add(pract);
             }
         } catch (SQLException e) {
@@ -147,6 +179,9 @@ public class PractMariaDb extends ConnectionService implements PractDao {
         return practsList;
     }
 
+    /**
+     * Функция main для отладки
+     */
     public static void main(String ...argc){
         try {
             PractMariaDb practDao = new PractMariaDb(ConnectionPool.getConnection());
