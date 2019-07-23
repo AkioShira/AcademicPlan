@@ -11,115 +11,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/controller/generate/ResultGenerate.java" line="49" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7600fc8c-8387-46bc-ad72-e0e3d09efff5" name="Default Changelist" comment="User restore commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/generate/ResultGenerate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateResultPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/ControlDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/NameDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/PhysicalDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/PlanTypeDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/ControlMariaDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/NameMariaDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PhysicalMariaDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PlanTypeMariaDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/model/Control.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/model/Name.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/model/Physical.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/model/PlanType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/title-control.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/dd111e1c-b5ed-4e45-a2b1-44baa7cfc487.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/dd111e1c-b5ed-4e45-a2b1-44baa7cfc487.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/filter/PlanFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/filter/PlanFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/generate/SubjectGenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/generate/SubjectGenerate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/generate/TitleGenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/generate/TitleGenerate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/PdfSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/PdfSaver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/ResultPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/ResultPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/TitleManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/TitleManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/TitlePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/TitlePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertCycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertCycle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertPract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertPract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/insert/InsertTitle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdatePractType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdatePractType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitlePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/servlet/update/UpdateTitlePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/DepartmentsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/DepartmentsDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/DirectionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/DirectionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/FactoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/FactoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/PractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/PractDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/PractTypesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/PractTypesDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/ProfileDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/ProfileDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/RoleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/SertificationTypesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/SertificationTypesDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/StateSertificationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/StateSertificationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/StudySheduleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/StudySheduleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/SubjectDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/SubjectDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/FactoryMariaDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/FactoryMariaDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractMariaDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/PractMariaDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/StateSertificationMariaDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/StateSertificationMariaDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/TitleMariaDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/dao/mariaDB/TitleMariaDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/model/Pract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/model/Pract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/model/StateSertification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/model/StateSertification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/model/Title.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/model/Title.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/analyze.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/analyze.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/title-managment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/title-managment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/title-pract.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/title-pract.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/title-sertification.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/title-sertification.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/title.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/title.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/PlanFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/filter/PlanFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/generate/SubjectGenerate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/generate/SubjectGenerate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/generate/TitleGenerate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/generate/TitleGenerate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/PdfSaver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/PdfSaver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/ResultPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/ResultPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/TitleManagment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/TitleManagment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/TitlePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/TitlePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/insert/InsertCycle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/insert/InsertCycle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/insert/InsertPract.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/insert/InsertPract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/insert/InsertTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/insert/InsertTitle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/update/UpdatePractType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/update/UpdatePractType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/update/UpdateTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/update/UpdateTitle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/update/UpdateTitlePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/controller/servlet/update/UpdateTitlePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/FactoryDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/FactoryDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/PractDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/PractDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/FactoryMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/FactoryMariaDb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/PractMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/PractMariaDb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/StateSertificationMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/StateSertificationMariaDb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/TitleMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/dao/mariaDB/TitleMariaDb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/model/Pract.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/model/Pract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/model/StateSertification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/model/StateSertification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/model/Title$sortParameter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/model/Title$sortParameter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/model/Title.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/WEB-INF/classes/data/model/Title.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/analyze.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/analyze.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title-managment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title-managment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title-pract.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title-pract.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title-sertification.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title-sertification.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/academik-plan-1.0-SNAPSHOT/title.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/filter/PlanFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/filter/PlanFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/generate/SubjectGenerate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/generate/SubjectGenerate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/generate/TitleGenerate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/generate/TitleGenerate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/PdfSaver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/PdfSaver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/ResultPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/ResultPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/TitleManagment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/TitleManagment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/TitlePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/TitlePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/insert/InsertCycle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/insert/InsertCycle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/insert/InsertPract.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/insert/InsertPract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/insert/InsertTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/insert/InsertTitle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/update/UpdatePractType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/update/UpdatePractType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/update/UpdateTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/update/UpdateTitle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/servlet/update/UpdateTitlePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/servlet/update/UpdateTitlePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/dao/FactoryDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/FactoryDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/dao/PractDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/PractDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/FactoryMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/FactoryMariaDb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/PractMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/PractMariaDb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/StateSertificationMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/StateSertificationMariaDb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/TitleMariaDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/dao/mariaDB/TitleMariaDb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/model/Pract.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/model/Pract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/model/StateSertification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/model/StateSertification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/model/Title$sortParameter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/model/Title$sortParameter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/model/Title.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/model/Title.class" afterDir="false" />
-    </list>
+    <list default="true" id="7600fc8c-8387-46bc-ad72-e0e3d09efff5" name="Default Changelist" comment="User restore commit" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -379,8 +271,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -578,6 +468,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -1020,6 +912,7 @@
       <workItem from="1561397542888" duration="3054000" />
       <workItem from="1561400903980" duration="647000" />
       <workItem from="1561578851404" duration="168000" />
+      <workItem from="1563870680901" duration="1121000" />
     </task>
     <task id="LOCAL-00001" summary="commit login.jsp">
       <created>1553979508624</created>
@@ -1053,7 +946,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="679030000" />
+    <option name="totallyTimeSpent" value="680151000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1067,7 +960,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15778251" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15938166" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1077,14 +970,14 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.23445825" weight="0.23522976" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7707889" weight="0.2936078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.77025586" weight="0.2936078" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.68976545" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.22921109" side_tool="true" visible="true" weight="0.29469123" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.22974414" side_tool="true" visible="true" weight="0.2936078" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.6007463" weight="0.2654388" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
