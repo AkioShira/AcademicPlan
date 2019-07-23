@@ -136,8 +136,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/SubjectDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+            <state relative-caret-position="68">
+              <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -468,8 +468,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -913,6 +913,7 @@
       <workItem from="1561400903980" duration="647000" />
       <workItem from="1561578851404" duration="168000" />
       <workItem from="1563870680901" duration="1121000" />
+      <workItem from="1563878260963" duration="131000" />
     </task>
     <task id="LOCAL-00001" summary="commit login.jsp">
       <created>1553979508624</created>
@@ -946,7 +947,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="680151000" />
+    <option name="totallyTimeSpent" value="680282000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -960,7 +961,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15938166" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19029851" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -970,14 +971,14 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.23445825" weight="0.23522976" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.77025586" weight="0.2936078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7697228" weight="0.2936078" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.68976545" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.22974414" side_tool="true" visible="true" weight="0.2936078" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.23027718" side_tool="true" visible="true" weight="0.2936078" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.6007463" weight="0.2654388" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -1412,8 +1413,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/SubjectDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        <state relative-caret-position="68">
+          <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
         </state>
       </provider>
     </entry>
