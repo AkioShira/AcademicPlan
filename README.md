@@ -24,8 +24,7 @@ Web-сервер: Apache Tomcat Server;<br>
 ![about](screens/plans.png)
 ####  Управление учебными планами <br>
 На странице управления есть возможности для добавления, удаления, редактирования и восстановления удалённых данных. <br><br>
-![about](screens/managment plans.png)<br>
-![about](screens/managment plans1.png)
+![about](screens/managment plans.png)
 ####  Панель администратора <br>
 На панели администратора находятся аналогичные страницы для редактирования прочих данных.<br><br>
 ![about](screens/admin.png)
