@@ -17,3 +17,5 @@ Web-сервер: Apache Tomcat Server;<br>
 Сборщик проекта: Maven.<br>
 
 ### Пример работы: <br>
+####  Окно авторизации <br><br>
+![about](screens/authorization.png)
